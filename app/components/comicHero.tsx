@@ -53,6 +53,29 @@ export default function HeroSection() {
               DESENVOLVEDOR FULL STACK
             </p>
           </motion.div>
+
+         <ActionBadge
+          text="BOOM!"
+          variant="yellow"
+          rotation={-8}
+          delay={0.6}
+          positionType="static">
+
+          </ActionBadge>
+
+          {/* <motion.div
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="flex flex-wrap gap-3"
+          >
+            <button className="bg-[#FF4444] text-white border-4 border-black px-6 py-2 text-xl shadow-[4px_4px_0_0_#000] hover:shadow-[6px_6px_0_0_#000] hover:-translate-x-1 hover:-translate-y-1 transition-all active:shadow-none active:translate-x-0 active:translate-y-0">
+              VER PROJETOS!
+            </button>
+            <button className="bg-white text-black border-4 border-black px-6 py-2 text-xl shadow-[4px_4px_0_0_#000] hover:shadow-[6px_6px_0_0_#000] hover:-translate-x-1 hover:-translate-y-1 transition-all active:shadow-none active:translate-x-0 active:translate-y-0">
+              CONTATO
+            </button>
+          </motion.div> */}
         </div>
       </div>
     </section>

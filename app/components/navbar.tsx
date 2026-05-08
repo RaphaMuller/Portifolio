@@ -61,7 +61,7 @@ function NavLink({ link }: { link: (typeof navLinks)[0] }) {
 export default function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-yellow-300 border-b-8 border-black backdrop-blur-sm">
-      <div className="absolute top-0 left-0 pointer-events-none">
+      <div className="absolute top-7 right-0 rotate-180 pointer-events-none">
         <Image
           src="/teia-de-aranha.png" 
           alt=""
@@ -70,12 +70,16 @@ export default function Navbar() {
         />
       </div>
 
-      <div className="flex justify-around p-2 h-16">
-        <div className="flex items-center">
-          <Link href="/" className="text-2xl">
-            Dev Hero Portfólio
-          </Link>
-        </div>
+           <div className="absolute top-0 left-0 pointer-events-none">
+        <Image
+          src="/teia-de-aranha.png" 
+          alt=""
+          width={40}
+          height={40}
+        />
+      </div>
+
+      <div className="flex justify-center p-2 h-16">
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-4">
             {navLinks.map((link) => (

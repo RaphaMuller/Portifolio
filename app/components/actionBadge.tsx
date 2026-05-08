@@ -1,5 +1,6 @@
 // components/ActionBadge.tsx
 import { motion } from "framer-motion";
+import { isAbsolute } from "path/win32";
 
 interface ActionBadgeProps {
   text: string;
@@ -7,6 +8,8 @@ interface ActionBadgeProps {
   variant?: "red" | "yellow";
   rotation: number;
   delay: number;
+  positionType?: "absolute" | "static";
+
 }
 
 export const ActionBadge = ({
@@ -15,16 +18,19 @@ export const ActionBadge = ({
   variant = "red",
   rotation,
   delay,
+  positionType = "absolute",
 }: ActionBadgeProps) => {
   const bg = variant === "red" ? "bg-[#FF4444]" : "bg-[#FFE44D]";
   const textColor = variant === "red" ? "text-white" : "text-black";
+  const isAbsolute = positionType === "absolute" ? "absolute z-10" : "relative";
+  const finalRotation = positionType === "static" ? 0 : rotation;
 
   return (
     <motion.div
-      initial={{ rotate: rotation, scale: 0 }}
-      animate={{ rotate: rotation, scale: 1 }}
+      initial={{ rotate: finalRotation, scale: 0 }}
+      animate={{ rotate: finalRotation, scale: 1 }}
       transition={{ type: "spring", stiffness: 300, delay }}
-      className={`absolute z-10 ${className}`}
+      className={`${isAbsolute} ${className}`}
     >
       <div
         className={`${bg} ${textColor} border-4 border-black px-4 py-2 shadow-[5px_5px_0_0_#000] text-3xl md:text-5xl font-comic tracking-tighter uppercase`}
