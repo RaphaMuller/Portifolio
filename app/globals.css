@@ -1,8 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #c9c0c0;
-  --foreground: #171717;
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --color-background-hero-dots-black: radial-gradient(
+    circle,
+    #0000002f 1px,
+    transparent 1px
+  );
+  --color-background-hero-dots-white: radial-gradient(
+    circle,
+    #ffffff27 1px,
+    transparent 1px
+  );
 }
 
 @theme inline {
@@ -10,6 +20,9 @@
   --color-foreground: var(--foreground);
   --font-mono: var(--font-geist-mono);
   --font-permanent: var(--font-permanent);
+  --color-comic-red: #ff4444;
+  --color-comic-yellow: #ffe44d;
+  --color-comic-blue: #0f52ba;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,28 +32,27 @@
   }
 }
 
-/* Centralização dos fundos das seções */
 @layer components {
   .section-hero {
-    @apply min-h-screen pt-16 flex items-center bg-[#4169E1] relative overflow-hidden;
-    
-
-    background-image: radial-gradient(circle, #000 1px, transparent 1px);
+    @apply relative flex min-h-screen items-center overflow-hidden pt-16;
     background-size: 20px 20px;
     background-position: 0 0;
   }
 
-  .section-about {
-    @apply py-20 bg-[#f3f0ff] relative;
+  .hero-dots-black {
+    background-image: var(--color-background-hero-dots-black);
+  }
+
+  .hero-dots-white {
+    background-image: var(--color-background-hero-dots-white);
   }
 }
 
 body {
-  background: var(--bg);
+  background: var(--background);
   color: var(--foreground);
   font-family: var(--font-permanent);
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
   background-attachment: fixed;
-  
 }

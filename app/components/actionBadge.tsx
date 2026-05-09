@@ -1,28 +1,28 @@
-// components/ActionBadge.tsx
 import { motion } from "framer-motion";
-import { isAbsolute } from "path/win32";
 
 interface ActionBadgeProps {
-  text: string;
+  children: React.ReactNode;
   className?: string;
   variant?: "red" | "yellow";
   rotation: number;
-  delay: number;
+  delay?: number;
   positionType?: "absolute" | "static";
-
 }
 
+const variantStyles = {
+  red: "bg-comic-red text-white",
+  yellow: "bg-comic-yellow text-black",
+};
+
 export const ActionBadge = ({
-  text,
+  children,
   className,
   variant = "red",
   rotation,
-  delay,
+  delay = 0.3,
   positionType = "absolute",
 }: ActionBadgeProps) => {
-  const bg = variant === "red" ? "bg-[#FF4444]" : "bg-[#FFE44D]";
-  const textColor = variant === "red" ? "text-white" : "text-black";
-  const isAbsolute = positionType === "absolute" ? "absolute z-10" : "relative";
+  const isAbsolute = positionType === "absolute";
   const finalRotation = positionType === "static" ? 0 : rotation;
 
   return (
@@ -30,37 +30,13 @@ export const ActionBadge = ({
       initial={{ rotate: finalRotation, scale: 0 }}
       animate={{ rotate: finalRotation, scale: 1 }}
       transition={{ type: "spring", stiffness: 300, delay }}
-      className={`${isAbsolute} ${className}`}
+      className={`${isAbsolute ? "absolute z-10" : "relative"} ${className}`}
     >
       <div
-        className={`${bg} ${textColor} border-4 border-black px-4 py-2 shadow-[5px_5px_0_0_#000] text-3xl md:text-5xl font-comic tracking-tighter uppercase`}
+        className={`${variantStyles[variant]} font-comic border-4 border-black px-4 py-2 text-3xl tracking-tighter uppercase shadow-[5px_5px_0_0_#000] md:text-5xl`}
       >
-        {text}
+        {children}
       </div>
     </motion.div>
   );
 };
-
-export const SpeechBubble = ({
-  children,
-  delay = 0.3,
-}: {
-  children: React.ReactNode;
-  delay?: number;
-}) => (
-  <motion.div
-    initial={{ scale: 0, opacity: 0 }}
-    animate={{ scale: 1, opacity: 1 }}
-    transition={{ type: "spring", stiffness: 200, delay }}
-    className="relative bg-white border-4 border-black p-6 shadow-[6px_6px_0_0_#000] mb-4"
-  >
-    <div className="absolute -bottom-5 left-10 w-0 h-0 border-l-[12px] border-l-transparent border-t-[20px] border-t-black border-r-[12px] border-r-transparent" />
-    <div className="absolute -bottom-3 left-11 w-0 h-0 border-l-[10px] border-l-transparent border-t-[16px] border-t-white border-r-[10px] border-r-transparent" />
-
-    <div
-      className="text-black font-medium leading-tight"
-    >
-      {children}
-    </div>
-  </motion.div>
-);

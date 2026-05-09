@@ -25,10 +25,10 @@ function NavLink({ link }: { link: (typeof navLinks)[0] }) {
             initial={{ y: 0, opacity: 0 }}
             animate={{ y: 40, opacity: 1 }}
             exit={{ y: 10, opacity: 0 }}
-            className="absolute z-minus"
+            className="z-minus absolute"
           >
             <div className="flex flex-col items-center">
-              <div className="w-[2px] h-12 bg-black" />
+              <div className="h-12 w-[2px] bg-black" />
               <motion.div
                 initial={{ rotate: 180 }}
                 className="flex items-center justify-center"
@@ -48,9 +48,7 @@ function NavLink({ link }: { link: (typeof navLinks)[0] }) {
 
       <Link
         href={link.href}
-        className="relative z-10 border-2 border-black px-4 py-2 bg-white
-                   hover:bg-[#FF4444] hover:text-white transition-all duration-200
-                   shadow-[2px_2px_0_0_#000] hover:shadow-[3px_3px_0_0_#000] active:shadow-none active:translate-x-[2px] active:translate-y-[2px]"
+        className="relative z-10 border-2 border-black bg-white px-4 py-2 text-black shadow-[2px_2px_0_0_#000] transition-all duration-200 hover:bg-[#FF4444] hover:text-white hover:shadow-[3px_3px_0_0_#000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
       >
         {link.label}
       </Link>
@@ -60,26 +58,16 @@ function NavLink({ link }: { link: (typeof navLinks)[0] }) {
 
 export default function Navbar() {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-yellow-300 border-b-8 border-black backdrop-blur-sm">
-      <div className="absolute top-7 right-0 rotate-180 pointer-events-none">
-        <Image
-          src="/teia-de-aranha.png" 
-          alt=""
-          width={40}
-          height={40}
-        />
+    <nav className="fixed top-0 right-0 left-0 z-50 border-b-8 border-black bg-yellow-300 backdrop-blur-sm">
+      <div className="pointer-events-none absolute top-7 right-0 rotate-180">
+        <Image src="/teia-de-aranha.png" alt="" width={40} height={40} />
       </div>
 
-           <div className="absolute top-0 left-0 pointer-events-none">
-        <Image
-          src="/teia-de-aranha.png" 
-          alt=""
-          width={40}
-          height={40}
-        />
+      <div className="pointer-events-none absolute -top-1 left-0">
+        <Image src="/teia-de-aranha.png" alt="" width={40} height={40} />
       </div>
 
-      <div className="flex justify-center p-2 h-16">
+      <div className="flex h-16 justify-center p-2">
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-4">
             {navLinks.map((link) => (

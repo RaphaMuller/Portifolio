@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Permanent_Marker
- } from "next/font/google";
+import { Geist_Mono, Permanent_Marker } from "next/font/google";
 import "./globals.css";
 
 const geistMono = Geist_Mono({
@@ -8,12 +7,11 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const permanentMarker = Permanent_Marker
-({
-  weight: '400',
-  subsets: ['latin'],
-  variable: '--font-permanent', 
-  display: 'swap',
+const permanentMarker = Permanent_Marker({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-permanent",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -31,7 +29,7 @@ export default function RootLayout({
       lang="en"
       className={`${permanentMarker.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="flex min-h-full flex-col">{children}</body>
     </html>
   );
 }
