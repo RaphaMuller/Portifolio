@@ -6,7 +6,7 @@ import Navbar from "./components/navbar";
 export default function Home() {
   return (
     <main className="flex-col items-center justify-center">
-      <Navbar />
+      <Navbar/>
       <ComicHero />
       <ComicAbout />
     </main>

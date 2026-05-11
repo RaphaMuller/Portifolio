@@ -1,7 +1,7 @@
-import Image from "next/image";
-import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import Link from "next/link";
+import Image from "next/image";
 
 const navLinks = [
   { label: "INÍCIO", href: "#hero" },
@@ -11,11 +11,58 @@ const navLinks = [
   { label: "CONTATO", href: "#contact" },
 ];
 
-function NavLink({ link }: { link: (typeof navLinks)[0] }) {
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+  
+  return (
+    <nav className="fixed top-0 right-0 left-0 z-50 border-b-8 border-black bg-comic-yellow backdrop-blur-sm">
+      <div className="flex h-16 items-center lg:justify-around sm:justify-between px-6 ">
+
+      {/* Title - Sempre visível à esquerda */}
+        <div className="text-2xl font-black tracking-tighter uppercase text-black">
+          <span>{`<Hero.Dev>`}</span>
+        </div>
+
+        {/* Desktop Menu */}
+        <div className="hidden lg:flex items-center space-x-4">
+          {navLinks.map((link) => (
+          <DesktopLink key={link.label} link={link} />
+          ))}
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button 
+        onClick={() => setIsOpen(!isOpen)}
+        className="lg:hidden z-50 p-2 border-4 border-black bg-white shadow-[3px_3px_0_0_#000] active:shadow-none active:translate-x-1"
+        >
+          <div className="space-y-1">
+            <span className={`block h-1 w-6 bg-black transition-transform ${isOpen ? "rotate-45 translate-y-2" : ""}`} />
+            <span className={`block h-1 w-6 bg-black ${isOpen ? "opacity-0" : ""}`} />
+            <span className={`block h-1 w-6 bg-black transition-transform ${isOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+          </div>
+        </button>
+      </div>
+
+      {/* Mobile Dropdown Overlay */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div className="lg:hidden flex flex-col">
+            {navLinks.map((link) => (
+              <MobileLink key={link.label} link={link} onClick={() => setIsOpen(false)} />
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </nav>
+  )
+}
+
+// Link com animação da Aranha (Desktop)
+function DesktopLink({ link }: { link: typeof navLinks[0] }) {
   const [isHovered, setIsHovered] = useState(false);
   return (
-    <div
-      className="relative flex justify-center"
+    <div 
+      className="relative flex justify-center text-black"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -25,57 +72,33 @@ function NavLink({ link }: { link: (typeof navLinks)[0] }) {
             initial={{ y: 0, opacity: 0 }}
             animate={{ y: 40, opacity: 1 }}
             exit={{ y: 10, opacity: 0 }}
-            className="z-minus absolute"
+            className="absolute z-0"
           >
             <div className="flex flex-col items-center">
-              <div className="h-12 w-[2px] bg-black" />
-              <motion.div
-                initial={{ rotate: 180 }}
-                className="flex items-center justify-center"
-              >
-                <Image
-                  src="/Aranha.png"
-                  alt="Aranha"
-                  width={30}
-                  height={30}
-                  className="drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]"
-                />
-              </motion.div>
+              <div className="h-8 w-[2px] bg-white " />
+              <Image src="/Aranha.png" alt="Aranha" width={30} height={30} className="rotate-180" />
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-
-      <Link
-        href={link.href}
-        className="relative z-10 border-2 border-black bg-white px-4 py-2 text-black shadow-[2px_2px_0_0_#000] transition-all duration-200 hover:bg-[#FF4444] hover:text-white hover:shadow-[3px_3px_0_0_#000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
-      >
+      <Link href={link.href} className="relative z-10 border-2 border-black bg-white px-4 py-2 shadow-[2px_2px_0_0_#000] hover:bg-comic-red hover:text-white transition-all">
         {link.label}
       </Link>
     </div>
   );
 }
 
-export default function Navbar() {
+// Link Simples para o Menu Dropdown (Mobile)
+function MobileLink({ link, onClick }: { link: typeof navLinks[0]; onClick: () => void }) {
   return (
-    <nav className="fixed top-0 right-0 left-0 z-50 border-b-8 border-black bg-yellow-300 backdrop-blur-sm">
-      <div className="pointer-events-none absolute top-7 right-0 rotate-180">
-        <Image src="/teia-de-aranha.png" alt="" width={40} height={40} />
-      </div>
-
-      <div className="pointer-events-none absolute -top-1 left-0">
-        <Image src="/teia-de-aranha.png" alt="" width={40} height={40} />
-      </div>
-
-      <div className="flex h-16 justify-center p-2">
-        <div className="flex items-center space-x-4">
-          <div className="flex items-center space-x-4">
-            {navLinks.map((link) => (
-              <NavLink key={link.label} link={link} />
-            ))}
-          </div>
-        </div>
-      </div>
-    </nav>
+    <Link
+      href={link.href}
+      onClick={onClick}
+      className="w-full px-4 border-2 border-t-4 border-black bg-white py-3 text-black shadow-[4px_4px_0_0_#000] active:translate-x-1 uppercase
+      hover:brightness-90"
+    >
+      {link.label}
+    </Link>
   );
 }
+
