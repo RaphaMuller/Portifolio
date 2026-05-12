@@ -32,7 +32,7 @@ export const ActionBadge = ({
       className={`${isAbsolute ? "absolute z-10" : "relative"} ${className}`}
     >
       <div
-        className={`font-bangers tracking-wider uppercase ${Themes[theme]} ${noPadding ? "p-0" : "px-4 py-2"} ${interactive ? interactiveClasses : ""}`}
+        className={`font-bebas-neue tracking-wider uppercase ${Themes[theme]} ${noPadding ? "p-0" : "px-4 py-2"} ${interactive ? interactiveClasses : ""}`}
       >
         {children}
       </div>

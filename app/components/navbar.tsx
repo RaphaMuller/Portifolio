@@ -12,7 +12,7 @@ export default function Navbar() {
 
       {/* Title - Sempre visível à esquerda */}
         <div 
-          className="font-bangers text-2xl md:text-3xl font-black tracking-widest uppercase text-black cursor-pointer"
+          className="font-bebas-neue text-2xl md:text-3xl tracking-widest uppercase text-black cursor-pointer"
           onClick={() => document.querySelector("#hero")?.scrollIntoView({ behavior: "smooth" })}
         >
           <span>{`<Hero.Dev>`}</span>
@@ -89,7 +89,7 @@ function DesktopLink({ link }: { link: typeof navLinks[0] }) {
           </motion.div>
         )}
       </AnimatePresence>
-      <a href={link.href} onClick={handleClick} className="font-bangers relative z-10 border-2 border-black bg-white px-4 py-2 text-xl tracking-wider shadow-[2px_2px_0_0_#000] hover:bg-comic-red hover:text-white transition-all">
+      <a href={link.href} onClick={handleClick} className="font-bebas-neue relative z-10 border-2 border-black bg-white px-4 py-2 text-xl tracking-wider shadow-[2px_2px_0_0_#000] hover:bg-comic-red hover:text-white transition-all">
         {link.label}
       </a>
     </div>
@@ -108,7 +108,7 @@ function MobileLink({ link, onClick }: { link: typeof navLinks[0]; onClick: () =
     <a
       href={link.href}
       onClick={handleClick}
-      className="font-bangers block w-full text-center px-4 border-4 border-black bg-white py-3 text-xl tracking-wider text-black shadow-[4px_4px_0_0_#000] uppercase hover:bg-comic-red hover:text-white transition-all active:translate-x-1 active:translate-y-1 active:shadow-none"
+      className="font-bebas-neue block w-full text-center px-4 border-4 border-black bg-white py-3 text-xl tracking-wider text-black shadow-[4px_4px_0_0_#000] uppercase hover:bg-comic-red hover:text-white transition-all active:translate-x-1 active:translate-y-1 active:shadow-none"
     >
       {link.label}
     </a>

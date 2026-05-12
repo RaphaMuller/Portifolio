@@ -24,7 +24,7 @@ export function ComicPanel({
     <div className={`border-4 border-black shadow-[8px_8px_0_0_#000] bg-white overflow-hidden ${className}`}>
       
       <div className={`${headerThemes[headerTheme]} border-b-4 border-black px-3 py-1`}>
-        <span className="font-bangers text-lg md:text-xl tracking-widest uppercase">{header}</span>
+        <span className="font-bebas-neue text-lg md:text-xl tracking-widest uppercase">{header}</span>
       </div>
 
       {children}

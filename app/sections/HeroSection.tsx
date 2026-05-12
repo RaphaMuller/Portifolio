@@ -16,13 +16,13 @@ export default function HeroSection() {
 
       <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-8 px-4 py-12 md:flex-row">
         <ActionBadge behavior="static" noPadding className="flex-shrink-0">
-            <Image
-              src="/Eu.jpeg"
-              alt="Foto de perfil de Raphael Muller"
-              width={300}
-              height={300}
-              className="object-cover w-48 h-48 md:w-64 md:h-64"
-            />
+          <Image
+            src="/Eu.jpeg"
+            alt="Foto de perfil de Raphael Muller"
+            width={300}
+            height={300}
+            className="object-cover w-48 h-48 md:w-64 md:h-64"
+          />
         </ActionBadge>
 
         <div className="flex flex-1 flex-col gap-4">

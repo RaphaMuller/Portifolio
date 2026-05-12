@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
-import { Bangers, Comic_Neue } from "next/font/google";
+import { Bangers, Comic_Neue, Bebas_Neue } from "next/font/google";
 import "./globals.css";
 
 const bangers = Bangers({
   weight: "400",
   subsets: ["latin"],
   variable: "--font-bangers",
+  display: "swap",
+});
+
+const bebasNeue = Bebas_Neue({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-bebas-neue",
   display: "swap",
 });
 
@@ -29,7 +36,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${bangers.variable} ${comicNeue.variable} h-full antialiased`}
+      className={`${bangers.variable} ${comicNeue.variable} ${bebasNeue.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col font-comic-neue">{children}</body>
     </html>
