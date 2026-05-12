@@ -32,6 +32,12 @@ export const BehaviorPresets: Record<string, BadgeBehavior> = {
     interactive: false,
     transition: { type: "spring", stiffness: 500, delay: 0.6 }
   },
+  staticSweet: {
+    rotation: 0,
+    positionType: "static",
+    interactive: false,
+    transition: { type: "tween", stiffness: 300, delay: 0.6 }
+  },
   staticInteractive: {
     rotation: 0,
     positionType: "static",

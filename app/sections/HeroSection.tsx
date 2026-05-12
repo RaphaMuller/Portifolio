@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function HeroSection() {
   return (
-    <section id="hero" className="section-hero hero-dots-black bg-comic-blue min-h-screen pt-16">
+    <section id="hero" className="section-hero hero-dots-black bg-comic-blue">
 
       <ActionBadge behavior="heroLeft" className="top-24 left-4 md:left-16 !z-20" theme="red">
         <span className="text-3xl md:text-5xl drop-shadow-[2px_2px_0_rgba(0,0,0,1)]">POW!</span>
@@ -15,7 +15,7 @@ export default function HeroSection() {
       </ActionBadge>
 
       <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-8 px-4 py-12 md:flex-row">
-        <ActionBadge behavior="static" noPadding className="flex-shrink-0">
+        <ActionBadge behavior="staticSweet" noPadding className="flex-shrink-0">
           <Image
             src="/Eu.jpeg"
             alt="Foto de perfil de Raphael Muller"
@@ -30,7 +30,7 @@ export default function HeroSection() {
             Olá, mundo! Sou um desenvolvedor criativo pronto para salvar o dia com código!
           </SpeechBubble>
 
-          <ActionBadge theme="yellow" behavior="static">
+          <ActionBadge theme="yellow" behavior="staticSweet">
             <h1 className="text-5xl md:text-7xl leading-none">RAPHAEL MULLER</h1>
             <p className="text-xl md:text-2xl mt-1">DESENVOLVEDOR FULL STACK</p>
           </ActionBadge>

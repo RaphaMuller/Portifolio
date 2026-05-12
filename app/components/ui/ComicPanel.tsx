@@ -30,7 +30,7 @@ export function ComicPanel({
       {children}
 
       {caption && (
-        <div className="p-3 border-t-4 border-black bg-comic-yellow">
+        <div className="p-3 border-t-4 border-black bg-comic-red">
           <p className="text-center text-xs md:text-sm italic">{caption}</p>
         </div>
       )}

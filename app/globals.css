@@ -10,7 +10,7 @@
   );
   --color-background-hero-dots-white: radial-gradient(
     circle,
-    #ffffff27 1px,
+    #ffffff75 1px,
     transparent 1px
   );
 }
@@ -24,6 +24,7 @@
   --color-comic-red: #ff4444;
   --color-comic-yellow: #ffe44d;
   --color-comic-blue: #0f52ba;
+  --color-comic-shadow: rgba(94, 81, 88, 1);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -35,7 +36,7 @@
 
 @layer components {
   .section-hero {
-    @apply relative flex min-h-screen items-center overflow-hidden pt-16;
+    @apply relative flex min-h-screen items-center overflow-hidden pt-16 border-t-4 border-b-4 border-black py-20;
     background-size: 20px 20px;
     background-position: 0 0;
   }
