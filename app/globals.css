@@ -18,8 +18,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-mono: var(--font-geist-mono);
-  --font-permanent: var(--font-permanent);
+  --font-bangers: var(--font-bangers);
+  --font-comic-neue: var(--font-comic-neue);
   --color-comic-red: #ff4444;
   --color-comic-yellow: #ffe44d;
   --color-comic-blue: #0f52ba;
@@ -51,7 +51,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-permanent);
+  font-family: var(--font-comic-neue), sans-serif;
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
   background-attachment: fixed;
