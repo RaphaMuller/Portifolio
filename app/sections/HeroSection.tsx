@@ -6,23 +6,23 @@ export default function HeroSection() {
   return (
     <section id="hero" className="section-hero hero-dots-black bg-comic-blue min-h-screen pt-16">
 
-      <ActionBadge behavior="heroLeft" className="top-24 left-4 md:left-10" theme="red">
-        <span className="text-3xl md:text-5xl">POW!</span>
+      <ActionBadge behavior="heroLeft" className="top-24 left-4 md:left-16 !z-20" theme="red">
+        <span className="text-3xl md:text-5xl drop-shadow-[2px_2px_0_rgba(0,0,0,1)]">POW!</span>
       </ActionBadge>
 
-      <ActionBadge behavior="heroRight" className="top-28 right-4 md:right-10" theme="yellow">
-        <span className="text-2xl md:text-4xl">ZAP!</span>
+      <ActionBadge behavior="heroRight" className="top-28 right-4 md:right-16 !z-20" theme="yellow">
+        <span className="text-2xl md:text-4xl drop-shadow-[2px_2px_0_rgba(0,0,0,1)]">ZAP!</span>
       </ActionBadge>
 
       <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-8 px-4 py-12 md:flex-row">
         <ActionBadge behavior="static" noPadding className="flex-shrink-0">
-          <Image
-            src="/Eu.jpeg"
-            alt="Foto de perfil de Raphael Muller"
-            width={300}
-            height={300}
-            className="object-cover w-52 h-52 md:w-72 md:h-72"
-          />
+            <Image
+              src="/Eu.jpeg"
+              alt="Foto de perfil de Raphael Muller"
+              width={300}
+              height={300}
+              className="object-cover w-48 h-48 md:w-64 md:h-64"
+            />
         </ActionBadge>
 
         <div className="flex flex-1 flex-col gap-4">

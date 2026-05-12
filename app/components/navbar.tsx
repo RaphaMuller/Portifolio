@@ -12,7 +12,7 @@ export default function Navbar() {
 
       {/* Title - Sempre visível à esquerda */}
         <div 
-          className="font-bangers text-3xl font-black tracking-widest uppercase text-black cursor-pointer"
+          className="font-bangers text-2xl md:text-3xl font-black tracking-widest uppercase text-black cursor-pointer"
           onClick={() => document.querySelector("#hero")?.scrollIntoView({ behavior: "smooth" })}
         >
           <span>{`<Hero.Dev>`}</span>
@@ -47,7 +47,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.18 }}
-            className="lg:hidden flex flex-col"
+            className="lg:hidden flex flex-col px-6 pb-6 pt-2 gap-4"
           >
             {navLinks.map((link) => (
               <MobileLink key={link.label} link={link} onClick={() => setIsOpen(false)} />
@@ -108,7 +108,7 @@ function MobileLink({ link, onClick }: { link: typeof navLinks[0]; onClick: () =
     <a
       href={link.href}
       onClick={handleClick}
-      className="font-bangers w-full px-4 border-2 border-t-4 border-black bg-white py-3 text-2xl tracking-wider text-black shadow-[4px_4px_0_0_#000] uppercase hover:brightness-90 active:translate-x-1"
+      className="font-bangers block w-full text-center px-4 border-4 border-black bg-white py-3 text-xl tracking-wider text-black shadow-[4px_4px_0_0_#000] uppercase hover:bg-comic-red hover:text-white transition-all active:translate-x-1 active:translate-y-1 active:shadow-none"
     >
       {link.label}
     </a>
