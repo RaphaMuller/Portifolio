@@ -7,6 +7,7 @@ export const Themes = {
   yellow: `bg-comic-yellow text-black ${baseClasses}`,
   white: `bg-white text-black ${baseClasses}`,
   dark: `bg-black text-comic-yellow border-4 border-black shadow-[5px_5px_0_0_#ff4444]`,
+  blue: `bg-comic-blue text-white ${baseClasses}`
 };
 
 export type ThemePreset = keyof typeof Themes;

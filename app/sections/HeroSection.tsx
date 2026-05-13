@@ -33,11 +33,11 @@ export default function HeroSection() {
           </ActionBadge>
 
           <div className="flex flex-wrap gap-3">
-            <ActionBadge theme="red" {...motionPresets.slideInRight}>
+            <ActionBadge theme="red" {...motionPresets.slideInRight} interactive>
               <button onClick={() => document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" })}>VER PROJETOS!</button>
             </ActionBadge>
 
-            <ActionBadge theme="white" {...motionPresets.slideInRight}>
+            <ActionBadge theme="white" {...motionPresets.slideInRight} interactive>
               <button onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}>CONTATO</button>
             </ActionBadge>
           </div>
