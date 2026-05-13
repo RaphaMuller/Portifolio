@@ -14,7 +14,7 @@ export default function AboutSection() {
     >
       <div className="max-w-6xl mx-auto px-4">
 
-          <ActionBadge theme="dark" behavior="static" className="flex text-3xl md:text-5xl">
+          {/* <ActionBadge theme="dark" behavior="static" className="flex text-3xl md:text-5xl">
             <Image 
             src="/super-man.png" 
             alt="Superman" 
@@ -23,7 +23,7 @@ export default function AboutSection() {
             className="absolute left-85 -top-8 z-10 w-12 h-12 md:w-16 md:h-16 rotate-12 drop-shadow-[2px_2px_0_rgba(0,0,0,1)]"
           />
           CAPÍTULO 1: ORIGEM
-          </ActionBadge>
+          </ActionBadge> */}
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
 
@@ -69,7 +69,7 @@ export default function AboutSection() {
                 className="absolute -top-7 -right-5 z-10 w-12 h-12 md:w-16 md:h-16 rotate-16 drop-shadow-[2px_2px_0_rgba(0,0,0,1)]"
               />
               <div className="mb-4">
-                <ActionBadge theme="red" behavior="static">
+                <ActionBadge theme="red">
                   <span className="text-lg md:text-xl">IDENTIDADE SECRETA</span>
                 </ActionBadge>
               </div>
@@ -88,7 +88,7 @@ export default function AboutSection() {
             >
 
               <div className="mb-5 flex justify-center">
-                <ActionBadge theme="yellow" behavior="static">
+                <ActionBadge theme="yellow">
                   <span className="text-lg md:text-xl">ESTATÍSTICAS DO HERÓI</span>
                 </ActionBadge>
               </div>
@@ -97,7 +97,6 @@ export default function AboutSection() {
                   <ActionBadge
                     key={stat.label}
                     theme="yellow"
-                    behavior="staticInteractive"
                     noPadding
                     className="w-full"
                   >

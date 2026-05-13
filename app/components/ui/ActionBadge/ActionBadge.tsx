@@ -1,38 +1,30 @@
-import { motion } from "framer-motion";
 import { Themes, ThemePreset, interactiveClasses } from "./actionBadgeTheme";
-import { BehaviorPresets, BehaviorPreset } from "./actionBadgeBehavior";
+import { HTMLMotionProps, motion } from "framer-motion";
 
-interface ActionBadgeProps {
+interface ActionBadgeProps extends HTMLMotionProps<"div"> {
   children: React.ReactNode;
   className?: string;
   noPadding?: boolean;
+  interactive?: boolean;
   theme?: ThemePreset;
-  behavior?: BehaviorPreset;
 }
 
 export const ActionBadge = ({
   children,
-  className,
   noPadding = false,
   theme = "white",
-  behavior = "default",
+  interactive,
+  ...props
 }: ActionBadgeProps) => {
-  const selectedBehavior = BehaviorPresets[behavior] || BehaviorPresets["default"];
-
-  const { rotation, positionType, interactive, transition } = selectedBehavior;
-
-  const isAbsolute = positionType === "absolute";
-  const finalRotation = positionType === "static" ? 0 : rotation;
 
   return (
     <motion.div
-      initial={{ rotate: finalRotation, scale: 0 }}
-      animate={{ rotate: finalRotation, scale: 1 }}
-      transition={transition}
-      className={`${isAbsolute ? "absolute z-10" : "relative"} ${className}`}
+    {...props}
     >
       <div
-        className={`font-bebas-neue tracking-wider uppercase ${Themes[theme]} ${noPadding ? "p-0" : "px-4 py-2"} ${interactive ? interactiveClasses : ""}`}
+        className={`font-bebas-neue tracking-wider uppercase ${Themes[theme]} 
+        ${noPadding ? "p-0" : "px-4 py-2"} 
+        ${interactive ? interactiveClasses : ""}`}
       >
         {children}
       </div>
