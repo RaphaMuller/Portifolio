@@ -6,13 +6,10 @@ import { ActionBadge } from "../ActionBadge/ActionBadge";
 export default function BeltPouch({ item }: { item: (typeof beltItems)[0] }) {
   const [flipped, setflipped] = useState(false);
 
-  // Aumentado a altura para acomodar o conteúdo da Ficha Técnica sem cortar
-  const CARD_DIMENSIONS = "w-[160px] h-[310px] sm:w-[180px] sm:h-[350px]";
-
   return (
-    <div className="px-2 py-4">
+    <div className="px-1 sm:px-2 py-4 flex justify-center">
       <motion.div
-        className="relative cursor-pointer"
+        className="relative cursor-pointer w-full max-w-[300px]"
         onClick={() => setflipped(!flipped)}
         style={{ perspective: "1000px" }}
         whileHover={{ y: -6 }}
@@ -22,13 +19,13 @@ export default function BeltPouch({ item }: { item: (typeof beltItems)[0] }) {
           animate={{ rotateY: flipped ? 180 : 0 }}
           transition={{ duration: 0.6, ease: "easeInOut" }}
           style={{ transformStyle: "preserve-3d" }}
-          className={`relative ${CARD_DIMENSIONS}`}
+          className="relative aspect-[300/500] w-full flex flex-col"
         >
           {/* FRONT SIDE */}
           <ActionBadge
             theme="yellow"
             noPadding
-            className={`absolute inset-0 flex flex-col overflow-hidden bg-transparent ${CARD_DIMENSIONS}`}
+            className={`absolute inset-0 flex flex-col overflow-hidden bg-transparent`}
             style={{
               backfaceVisibility: "hidden",
               background: "linear-gradient(160deg, #1c1c1c 0%, #2e2e2e 50%, #1a1a1a 100%)",
@@ -110,7 +107,7 @@ export default function BeltPouch({ item }: { item: (typeof beltItems)[0] }) {
           <ActionBadge
             theme="yellow"
             noPadding
-            className={`absolute inset-0 flex flex-col overflow-hidden bg-transparent ${CARD_DIMENSIONS}`}
+            className={`absolute inset-0 flex flex-col overflow-hidden bg-transparent`}
             style={{
               backfaceVisibility: "hidden",
               transform: "rotateY(180deg)",
@@ -136,40 +133,17 @@ export default function BeltPouch({ item }: { item: (typeof beltItems)[0] }) {
               <div className="border-2 border-[#FFD700]/50 bg-black/60 p-2 sm:p-3 w-full">
                 <p className="text-[10px] sm:text-xs text-gray-300 " 
                >
-                  "{item.tip}"
+                 {item.tip}
                 </p>
               </div>
 
-              {/* Mastery label */}
-              {/* <div className="mt-auto">
-                <p
-                  className="mb-1 text-[10px] text-[#FFD700]/70 sm:text-xs"
-                  style={{
-                    fontFamily: "'Bangers', cursive",
-                    letterSpacing: "0.05em",
-                  }}
-                >
-                  NÍVEL DE DOMÍNIO
-                </p>
-                <div className="flex justify-center gap-1">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <span
-                      key={i}
-                      className="text-sm"
-                      style={{ color: i < item.level ? "#FFD700" : "#333" }}
-                    >
-                      🦇
-                    </span>
-                  ))}
-                </div>
-              </div> */}
             </div>
             
             {/* Bottom rivets back */}
-            {/* <div className="flex justify-between px-3 pb-2">
+            <div className="flex justify-between px-3 pb-2">
               <div className="h-2 w-2 rounded-full border border-black bg-[#222] sm:h-3 sm:w-3" />
               <div className="h-2 w-2 rounded-full border border-black bg-[#222] sm:h-3 sm:w-3" />
-            </div> */}
+            </div>
           </ActionBadge>
         </motion.div>
       </motion.div>
