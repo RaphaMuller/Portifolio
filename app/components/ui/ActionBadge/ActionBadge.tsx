@@ -1,8 +1,10 @@
+"use client";
+
 import { Themes, ThemePreset, interactiveClasses } from "./actionBadgeTheme";
 import { HTMLMotionProps, motion } from "framer-motion";
 
 interface ActionBadgeProps extends HTMLMotionProps<"div"> {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
   noPadding?: boolean;
   interactive?: boolean;
@@ -14,20 +16,18 @@ export const ActionBadge = ({
   noPadding = false,
   theme = "white",
   interactive,
+  className,
   ...props
 }: ActionBadgeProps) => {
 
   return (
     <motion.div
-    {...props}
+      className={`font-bebas-neue tracking-wider uppercase ${Themes[theme]} 
+      ${noPadding ? "p-0" : "px-4 py-2"} 
+      ${interactive ? interactiveClasses : ""} ${className ?? ""}`}
+      {...props}
     >
-      <div
-        className={`font-bebas-neue tracking-wider uppercase ${Themes[theme]} 
-        ${noPadding ? "p-0" : "px-4 py-2"} 
-        ${interactive ? interactiveClasses : ""}`}
-      >
-        {children}
-      </div>
+      {children}
     </motion.div>
   );
 };
