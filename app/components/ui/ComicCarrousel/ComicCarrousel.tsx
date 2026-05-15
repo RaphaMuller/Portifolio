@@ -41,7 +41,7 @@ export default function ComicCarrousel() {
 
   return (
       <ActionBadge 
-      className="w-full max-w-6xl rounded-4xl bg-comic-shadow"
+      className="w-full max-w-7xl rounded-4xl bg-comic-shadow"
       theme="batmanArmor"
       noPadding
       >
@@ -102,7 +102,6 @@ export default function ComicCarrousel() {
           </span>
         </motion.div>
 
-              {/* Custom slick dot styling */}
       <style>{`
         .slick-dots li.slick-active div {
           background-color: #FFD700 !important;

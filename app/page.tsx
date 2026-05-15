@@ -3,6 +3,7 @@ import ComicHero from "@/app/sections/ComicHero";
 import ComicAbout from "@/app/sections/ComicAbout";
 import Navbar from "@/app/components/navbar";
 import ComicSkills from "./sections/ComicSkils";
+import ComicProjects from "./sections/ComicProjects";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <ComicHero />
       <ComicAbout />
       <ComicSkills />
+      <ComicProjects/>
     </main>
   );
 }

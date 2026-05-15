@@ -11,7 +11,7 @@ export default function AboutSection() {
       id="about"
       className="hero-dots-white section-hero hero-dots-white relative overflow-hidden bg-comic-yellow pt-16"
     >
-      <div className="mx-auto max-w-6xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <ActionBadge
         theme="dark"
         {...motionPresets.slideInRight}
