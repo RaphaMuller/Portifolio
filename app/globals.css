@@ -37,6 +37,74 @@
   }
 }
 
+/* Global Font Utilities */
+@utility font-bangers {
+  font-family: var(--font-bangers), cursive;
+  letter-spacing: 0.06em;
+}
+
+@utility font-bangers-wide {
+  font-family: var(--font-bangers), cursive;
+  letter-spacing: 0.08em;
+}
+
+@utility font-comic {
+  font-family: var(--font-comic-neue), cursive;
+}
+
+@utility font-bebas {
+  font-family: var(--font-bebas-neue), sans-serif;
+}
+
+/* Standardized Comic Styles */
+@utility comic-gradient-belt {
+  background: linear-gradient(
+    90deg,
+    #8b6914 0%,
+    #c8960c 20%,
+    #ffd700 50%,
+    #c8960c 80%,
+    #8b6914 100%
+  );
+}
+
+@utility comic-gradient-pouch-front {
+  background: linear-gradient(160deg, #1c1c1c 0%, #2e2e2e 50%, #1a1a1a 100%);
+}
+
+@utility comic-gradient-pouch-back {
+  background: linear-gradient(160deg, #0d0d1a 0%, #1a1a2e 100%);
+}
+
+@utility comic-stitching {
+  background-image: repeating-linear-gradient(
+    90deg,
+    #8b6914 0px,
+    #8b6914 8px,
+    transparent 8px,
+    transparent 14px
+  );
+}
+
+@utility comic-carousel-bg {
+  background: linear-gradient(
+    180deg,
+    #1a1400 0%,
+    #0d0d1a 30%,
+    #0d0d1a 70%,
+    #1a1400 100%
+  );
+}
+
+@utility comic-section-gradient {
+  background: linear-gradient(
+    180deg,
+    #0d0d1a 0%,
+    #1a1a2e 40%,
+    #0d0d1a 100%
+  );
+}
+
 @layer components {
   .section-hero {
     @apply relative flex min-h-screen items-center overflow-hidden border-t-4 border-b-4 border-black pt-16;
@@ -50,20 +118,6 @@
 
   .hero-dots-white {
     background-image: var(--color-background-hero-dots-white);
-  }
-
-  .font-bangers {
-    font-family: "Bangers", cursive;
-    letter-spacing: 0.06em;
-  }
-
-  .font-bangers-wide {
-    font-family: "Bangers", cursive;
-    letter-spacing: 0.08em;
-  }
-
-  .font-comic-neue {
-    font-family: "Comic Neue", cursive;
   }
 }
 

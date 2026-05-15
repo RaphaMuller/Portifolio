@@ -9,35 +9,25 @@ export default function BeltPouch({ item }: { item: (typeof beltItems)[0] }) {
   return (
     <div className="px-1 sm:px-2 py-4 flex justify-center">
       <motion.div
-        className="relative cursor-pointer w-full max-w-[300px]"
+        className="relative cursor-pointer w-full max-w-[300px] [perspective:1000px]"
         onClick={() => setflipped(!flipped)}
-        style={{ perspective: "1000px" }}
         whileHover={{ y: -6 }}
         transition={{ type: "spring", stiffness: 300 }}
       >
         <motion.div
           animate={{ rotateY: flipped ? 180 : 0 }}
           transition={{ duration: 0.6, ease: "easeInOut" }}
-          style={{ transformStyle: "preserve-3d" }}
-          className="relative aspect-[300/500] w-full flex flex-col"
+          className="relative aspect-[300/500] w-full flex flex-col [transform-style:preserve-3d]"
         >
           {/* FRONT SIDE */}
           <ActionBadge
             theme="yellow"
             noPadding
-            className={`absolute inset-0 flex flex-col overflow-hidden bg-transparent`}
-            style={{
-              backfaceVisibility: "hidden",
-              background: "linear-gradient(160deg, #1c1c1c 0%, #2e2e2e 50%, #1a1a1a 100%)",
-              boxShadow: "4px 4px 0 0 #000, inset 0 0 0 1px rgba(255,215,0,0.15)",
-            }}
+            className="absolute inset-0 flex flex-col overflow-hidden bg-transparent [backface-visibility:hidden] comic-gradient-pouch-front shadow-[4px_4px_0_0_#000] ring-1 ring-[#FFD700]/15"
           >
             {/* Flap */}
             <div
-              className="flex items-center justify-between border-b-4 border-black px-3 py-2"
-              style={{
-                background: "linear-gradient(90deg, #C8960C 0%, #FFD700 50%, #C8960C 100%)",
-              }}
+              className="flex items-center justify-between border-b-4 border-black px-3 py-2 bg-gradient-to-r from-[#C8960C] via-[#FFD700] to-[#C8960C]"
             >
               <span className="text-sm font-bold">{item.category}</span>
               <span className="text-base leading-none">🦇</span>
@@ -49,17 +39,12 @@ export default function BeltPouch({ item }: { item: (typeof beltItems)[0] }) {
                 {item.gadgetEmoji}
               </div>
               <p
-                className="mb-1 text-sm text-[#FFD700] sm:text-base"
-                style={{
-                  fontFamily: "'Bangers', cursive",
-                  letterSpacing: "0.08em",
-                }}
+                className="mb-1 text-sm text-[#FFD700] sm:text-base font-bangers-wide"
               >
                 {item.gadget}
               </p>
               <p
-                className="text-xs leading-tight text-gray-400"
-                style={{ fontFamily: "'Comic Neue', cursive" }}
+                className="text-xs leading-tight text-gray-400 font-comic"
               >
                 {item.gadgetDesc}
               </p>
@@ -74,11 +59,7 @@ export default function BeltPouch({ item }: { item: (typeof beltItems)[0] }) {
                 />
               </div>
               <p
-                className="text-base text-white sm:text-lg"
-                style={{
-                  fontFamily: "'Bangers', cursive",
-                  letterSpacing: "0.06em",
-                }}
+                className="text-base text-white sm:text-lg font-bangers"
               >
                 {item.tech}
               </p>
@@ -107,13 +88,7 @@ export default function BeltPouch({ item }: { item: (typeof beltItems)[0] }) {
           <ActionBadge
             theme="yellow"
             noPadding
-            className={`absolute inset-0 flex flex-col overflow-hidden bg-transparent`}
-            style={{
-              backfaceVisibility: "hidden",
-              transform: "rotateY(180deg)",
-              background: "linear-gradient(160deg, #0d0d1a 0%, #1a1a2e 100%)",
-              boxShadow: "4px 4px 0 0 #000",
-            }}
+            className="absolute inset-0 flex flex-col overflow-hidden bg-transparent [backface-visibility:hidden] [transform:rotateY(180deg)] comic-gradient-pouch-back shadow-[4px_4px_0_0_#000]"
           >
             {/* Header */}
             <div className="flex items-center justify-between border-b-4 border-black px-3 py-2 bg-black text-[#FFD700]">
@@ -124,8 +99,7 @@ export default function BeltPouch({ item }: { item: (typeof beltItems)[0] }) {
             <div className="flex flex-1 flex-col items-center justify-center gap-2 px-3 py-3 text-center sm:gap-3 sm:px-4 sm:py-4">
               <item.Icon size={48} color={item.iconColor} className="sm:size-[56px]" />
               <p 
-                className="text-lg text-white sm:text-2xl"
-                style={{ fontFamily: "'Bangers', cursive" }}
+                className="text-lg text-white sm:text-2xl font-bangers"
               >
                 {item.tech}
               </p>

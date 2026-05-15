@@ -28,8 +28,8 @@ export default function HeroSection() {
 
           <ActionBadge theme="yellow"
           {...motionPresets.slideInRight}>
-            <h1 className="text-5xl md:text-7xl leading-none">RAPHAEL MULLER</h1>
-            <p className="text-xl md:text-2xl mt-1">DESENVOLVEDOR FULL STACK</p>
+            <h1 className="text-3xl sm:text-5xl md:text-7xl leading-none">RAPHAEL MULLER</h1>
+            <p className="text-base sm:text-xl md:text-2xl mt-1">DESENVOLVEDOR FULL STACK</p>
           </ActionBadge>
 
           <div className="flex flex-wrap gap-3">

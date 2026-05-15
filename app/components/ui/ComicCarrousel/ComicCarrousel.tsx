@@ -35,7 +35,7 @@ export default function ComicCarrousel() {
       </div>
     ),
     customPaging: () => (
-      <div className="w-3 h-3 rounded-full bg-[#FFD700]/40 border border-[#FFD700] hover:bg-[#FFD700] transition-colors cursor-pointer" />
+      <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-[#FFD700]/40 border border-[#FFD700] hover:bg-[#FFD700] transition-colors cursor-pointer" />
     ),
   };
 
@@ -46,11 +46,10 @@ export default function ComicCarrousel() {
       noPadding
       >
         {/* Section title */}
-          <div className="flex justify-center py-6">
+          <div className="flex justify-center py-4 sm:py-6">
             <ActionBadge
               theme="yellow"
-              className="flex justify-center mb-2 text-2xl sm:text-4xl md:text-5xl whitespace-nowrap"
-              style={{ fontFamily: "'Bangers', cursive", letterSpacing: "0.08em" }}
+              className="flex justify-center mb-2 text-xl sm:text-4xl md:text-5xl whitespace-nowrap font-bangers-wide px-4"
             >
               <span>🦇 CINTO DE UTILIDADES</span>
             </ActionBadge>
@@ -58,42 +57,22 @@ export default function ComicCarrousel() {
 
         {/* === BELT STRUCTURE === */}
         <div className="relative">
-          <div
-            className="h-6 border-y-4 border-black relative"
-            style={{
-              background: "linear-gradient(90deg, #8B6914 0%, #C8960C 20%, #FFD700 50%, #C8960C 80%, #8B6914 100%)",
-              boxShadow: "0 2px 0 rgba(0,0,0,0.5)",
-            }}
-          >
+          <div className="h-6 border-y-4 border-black relative comic-gradient-belt shadow-[0_2px_0_rgba(0,0,0,0.5)]">
             {/* Stitching line */}
-            <div
-              className="relative top-1/2 left-0 right-0 h-px -translate-y-1/2"
-              style={{
-                backgroundImage: "repeating-linear-gradient(90deg, #8B6914 0px, #8B6914 8px, transparent 8px, transparent 14px)",
-              }}
-            />
+            <div className="relative top-1/2 left-0 right-0 h-px -translate-y-1/2 comic-stitching" />
           </div>
 
           <div className="absolute top-[9px] left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
             <ActionBadge
               theme="yellow"
-              className="px-4 text-xl sm:text-2xl"
-              style={{
-                background: "linear-gradient(135deg, #FFD700, #C8960C)",
-                fontFamily: "'Bangers', cursive",
-              }}
+              className="px-4 text-xl sm:text-2xl font-bangers [background:linear-gradient(135deg,#FFD700,#C8960C)]"
             >
               🦇
             </ActionBadge>
           </div>
 
           {/* Carousel area */}
-          <div
-            className="border-x-4 border-black px-2 sm:px-4 md:px-12 lg:px-16 py-2"
-            style={{
-              background: "linear-gradient(180deg, #1a1400 0%, #0d0d1a 30%, #0d0d1a 70%, #1a1400 100%)",
-            }}
-          >
+          <div className="border-x-4 border-black px-2 sm:px-4 md:px-12 lg:px-16 py-2 comic-carousel-bg">
             <Slider {...settings}>
               {beltItems.map((item) => (
                 <BeltPouch key={item.tech} item={item} />
@@ -103,19 +82,8 @@ export default function ComicCarrousel() {
           </div>
 
           {/* Belt strap — bottom */}
-          <div
-            className="h-6 border-y-4 border-black  relative"
-            style={{
-              background: "linear-gradient(90deg, #8B6914 0%, #C8960C 20%, #FFD700 50%, #C8960C 80%, #8B6914 100%)",
-              boxShadow: "0 -2px 0 rgba(0,0,0,0.5)",
-            }}
-          >
-            <div
-              className="relative left-0 right-0 h-px top-1/2 -translate-y-1/2"
-              style={{
-                backgroundImage: "repeating-linear-gradient(90deg, #8B6914 0px, #8B6914 8px, transparent 8px, transparent 14px)",
-              }}
-            />
+          <div className="h-6 border-y-4 border-black relative comic-gradient-belt shadow-[0_-2px_0_rgba(0,0,0,0.5)]">
+            <div className="relative left-0 right-0 h-px top-1/2 -translate-y-1/2 comic-stitching" />
           </div>
         </div>
 
@@ -128,8 +96,7 @@ export default function ComicCarrousel() {
           className="flex justify-center items-center py-2"
         >
           <span
-            className="text-[#FFD700]/60 text-xs"
-            style={{ fontFamily: "'Comic Neue', cursive" }}
+            className="text-[#FFD700]/60 text-[10px] sm:text-xs font-comic text-center px-4"
           >
             "Eu sou o programador que Gotham merece... e que os bugs temem."
           </span>

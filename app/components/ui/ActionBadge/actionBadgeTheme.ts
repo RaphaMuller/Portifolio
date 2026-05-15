@@ -1,5 +1,5 @@
 export const interactiveClasses = "hover:shadow-[6px_6px_0_0_#000] hover:-translate-x-1 hover:-translate-y-1 transition-all active:shadow-none active:translate-x-0 active:translate-y-0" ;
-export const InteractiveButtonCarroussel = ""
+export const interactiveButtonCarroussel = ""
 
 const baseClasses = "border-4 border-black shadow-[5px_5px_0_0_#000]";
 
