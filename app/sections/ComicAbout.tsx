@@ -41,7 +41,7 @@ export default function AboutSection() {
           <div className="flex flex-col gap-5">
             <ActionBadge theme="white" {...motionPresets.slideInRight}>
               <div className="mb-4">
-                <ActionBadge theme="red">
+                <ActionBadge theme="red" {...motionPresets.stamp}>
                   <span className="text-lg md:text-xl">IDENTIDADE SECRETA</span>
                 </ActionBadge>
               </div>
@@ -53,7 +53,7 @@ export default function AboutSection() {
             {/* Stats */}
             <ActionBadge theme="blue" {...motionPresets.slideInRight}>
               <div className="mb-5 flex justify-center">
-                <ActionBadge theme="yellow">
+                <ActionBadge theme="yellow" {...motionPresets.stamp}>
                   <span className="text-lg md:text-xl">
                     ESTATÍSTICAS DO HERÓI
                   </span>
@@ -64,6 +64,7 @@ export default function AboutSection() {
                   <ActionBadge
                     key={stat.label}
                     theme="yellow"
+                    {...motionPresets.stamp}
                     noPadding
                     className="w-full"
                   >

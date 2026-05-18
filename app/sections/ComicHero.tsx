@@ -7,16 +7,6 @@ import BuildingSkyline from "../components/ui/ComicSkyline/buildingSkyline";
 export default function HeroSection() {
   return (
     <section id="hero" className="section-hero hero-dots-black bg-comic-blue">
-
-      <div className="absolute mb-6 h-screen flex flex-row items-end">
-        <BuildingSkyline
-        skylines="w-full"
-        theme="default"
-        position="relative"
-        />
-
-      </div>
-
       <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-8 px-4 py-12 md:flex-row">
         <ActionBadge
           noPadding
