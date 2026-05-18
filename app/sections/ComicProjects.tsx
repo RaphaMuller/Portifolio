@@ -1,9 +1,9 @@
-import BuildingSkyline from "../components/ui/ComicSkyline/buildingSkyline";
+import { ComicProjectsGrid } from "../components/ui/ComicProjects/comic-projects";
 
 export default function ComicProjects() {
   return (
-    <section className="section-hero bg-comic-blue">
-       
+    <section>
+      <ComicProjectsGrid />
     </section>
   );
 }
