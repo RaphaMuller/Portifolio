@@ -6,37 +6,36 @@ import BuildingSkyline from "../components/ui/ComicSkyline/buildingSkyline";
 
 export default function HeroSection() {
   return (
-    <section id="hero" className="comic-section comic-section-hero hero-dots-black bg-comic-blue">
+    <section
+      id="hero"
+      className="comic-section comic-section-hero hero-dots-black bg-comic-blue"
+    >
+      <ActionBadge
+        theme="red"
+        {...motionPresets.stamp}
+        className="absolute top-24 lg:top-32 right-12 md:right-20 lg:right-24 rotate-16 text-xl sm:text-5xl "
+      >
+        ZAP!
+      </ActionBadge>
+
+      <ActionBadge
+        theme="yellow"
+        {...motionPresets.stamp}
+        className="absolute top-24 lg:top-32 left-12 md:left-20 lg:left-24 -rotate-16 text-xl sm:text-5xl"
+      >
+        POW!
+      </ActionBadge>
+
       <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-8 px-4 py-12 md:flex-row">
-       
-          <ActionBadge
-            noPadding
-            {...motionPresets.slideInLeft}
-          >
-            <Image
-              src="/Eu.jpeg"
-              alt="Selfie"
-              width={3820}
-              height={2560}
-              className="h-48 w-48 object-cover md:h-64 md:w-64"
-            />
-          </ActionBadge>
-
-          {/* <ActionBadge
-            theme="red"
-            {...motionPresets.stamp}
-            className="absolute sm:-top-6 sm:-right-8 rotate-12 text-2xl sm:text-3xl"
-          >
-            POW!
-          </ActionBadge>
-
-          <ActionBadge
-            theme="yellow"
-            {...motionPresets.stamp}
-            className="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-8 -rotate-12 text-2xl sm:text-3xl"
-          >
-            ZAP!
-          </ActionBadge> */}
+        <ActionBadge noPadding {...motionPresets.slideInLeft}>
+          <Image
+            src="/Eu.jpeg"
+            alt="Selfie"
+            width={3820}
+            height={2560}
+            className="h-48 w-48 object-cover md:h-64 md:w-64"
+          />
+        </ActionBadge>
 
         <div className="flex flex-1 flex-col gap-4">
           <SpeechBubble>
@@ -58,6 +57,7 @@ export default function HeroSection() {
               theme="red"
               {...motionPresets.slideInRight}
               interactive
+              className="md:text-xl"
             >
               <button
                 onClick={() =>
@@ -74,6 +74,7 @@ export default function HeroSection() {
               theme="white"
               {...motionPresets.slideInRight}
               interactive
+              className="md:text-xl"
             >
               <button
                 onClick={() =>
@@ -89,7 +90,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <BuildingSkyline position="absolute" theme="default"/>
+      <BuildingSkyline position="absolute" theme="default" />
     </section>
   );
 }

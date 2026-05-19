@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { ActionBadge } from "../ActionBadge/ActionBadge";
 import { ProjectCard } from "./project-card";
 import { projects } from "@/app/constants/projectsData";
