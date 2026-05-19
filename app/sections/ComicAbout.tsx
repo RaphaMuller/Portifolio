@@ -9,9 +9,9 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="hero-dots-white section-hero hero-dots-white relative overflow-hidden bg-comic-yellow pt-16"
+      className="comic-section hero-dots-white bg-comic-yellow"
     >
-      <div className="mx-auto max-w-7xl px-4">
+      <div className="mx-auto max-w-7xl px-4 w-full">
         <ActionBadge
         theme="dark"
         {...motionPresets.slideInRight}
@@ -45,7 +45,7 @@ export default function AboutSection() {
                   <span className="text-lg md:text-xl">IDENTIDADE SECRETA</span>
                 </ActionBadge>
               </div>
-              <p className="text-sm leading-relaxed text-black md:text-base">
+              <p className="text-sm text-black md:text-base font-medium">
                 {aboutData.description}
               </p>
             </ActionBadge>

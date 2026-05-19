@@ -28,6 +28,7 @@
   --font-comic: "Bangers", cursive;
   --tracking-comic: 0.08em;
   --color-bat-gold: #f2c94c;
+  --color-comic-green: #228B22;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -106,10 +107,14 @@
 }
 
 @layer components {
-  .section-hero {
-    @apply relative flex min-h-screen items-center overflow-hidden border-t-4 border-b-4 border-black pt-16;
+  .comic-section {
+    @apply relative flex min-h-screen w-full items-center justify-center overflow-hidden border-b-4 border-black py-16 md:py-24;
     background-size: 20px 20px;
     background-position: 0 0;
+  }
+
+  .comic-section-hero {
+    @apply border-t-4;
   }
 
   .hero-dots-black {
@@ -125,7 +130,6 @@
   background-color: #1a1a2e;
   background-image: radial-gradient(circle, rgba(255, 228, 77, 0.15) 1px, transparent 1px);
   background-size: 24px 24px;
-  border-bottom: 4px solid black;
 }
 
 @utility comic-project-overlay {

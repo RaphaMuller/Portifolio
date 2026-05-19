@@ -17,7 +17,6 @@ export function ComicBuilding({ config, theme }: ComicBuildingProps) {
     const newLitWindows: Record<string, boolean> = {};
     for (let f = 0; f < floors; f++) {
       for (let w = 0; w < windowsPerFloor; w++) {
-        // Chance de acender para 40%
         newLitWindows[`${f}-${w}`] = Math.random() > 0.6;
       }
     }
@@ -62,8 +61,6 @@ export function ComicBuilding({ config, theme }: ComicBuildingProps) {
   };
 
   const getContainerClasses = () => {
-    // IMPORTANTE: O gap vertical DEVE ser 'gap-1' (4px) fixo. 
-    // O gerador calcula o número de andares assumindo 4px de gap. Gaps responsivos quebram o layout.
     if (windowType === 'horizontal') return 'flex flex-col gap-1 py-3 px-2 w-full h-full justify-center items-center';
     return 'flex flex-col gap-1 py-3 px-1 w-full h-full justify-center items-center';
   };

@@ -4,33 +4,43 @@ export const motionPresets = {
   cardEntry: {
     initial: { scale: 0, opacity: 0 },
     animate: { scale: 1, opacity: 1 },
-    transition: { type: "tween", stiffness: 260, damping: 20 },
+    transition: { type: "tween", stiffness: 260, damping: 20 } as const,
   },
   flipFace: {
-    transition: { duration: 0.5, ease: "easeInOut" },
+    transition: { duration: 0.5, ease: "easeInOut" as const },
   },
   hoverLift: {
     whileHover: { y: -6 },
-    transition: { type: "spring", stiffness: 300 },
+    transition: { type: "spring", stiffness: 300 } as const,
   },
   slideInRight: {
-    initial: { x: 50, opacity: 0 },
-    whileInView: { x: 0, opacity: 1 },
+    initial: { x: 20, y: 30, opacity: 0 },
+    whileInView: { x: 0, y: 0, opacity: 1 },
     viewport: { once: true, margin: "-50px" },
-    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.7, ease: "easeOut" as const },
   },
   
   slideInLeft: {
-    initial: { x: -50, opacity: 0 },
-    whileInView: { x: 0, opacity: 1 },
+    initial: { x: -20, y: 30, opacity: 0 },
+    whileInView: { x: 0, y: 0, opacity: 1 },
     viewport: { once: true, margin: "-50px" },
-    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.7, ease: "easeOut" as const },
   },
 
   stamp: {
-    initial: { scale: 2.5, opacity: 0, rotate: -15 },
-    whileInView: { scale: 1, opacity: 1, rotate: 0 },
+    initial: { scale: 0.9, y: 30, opacity: 0 },
+    whileInView: { scale: 1, y: 0, opacity: 1 },
     viewport: { once: true, margin: "-50px" },
-    transition: { type: "spring", stiffness: 300, damping: 15 },
+    transition: { duration: 0.6, ease: "easeOut" as const },
   },
-} satisfies Record<string, HTMLMotionProps<"div">>;
+
+  projectCard: {
+    rest: { y: 0 },
+    hover: { y: -6 },
+  },
+
+  projectActionBadge: {
+    rest: { scale: 0, opacity: 0 },
+    hover: { scale: 1, opacity: 1 },
+  },
+} satisfies Record<string, HTMLMotionProps<"div"> | any>;

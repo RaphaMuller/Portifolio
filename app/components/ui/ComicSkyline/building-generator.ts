@@ -3,7 +3,7 @@ import { BuildingConfig, BuildingPerspective, WindowType } from './building';
 export function generateSkyline(): BuildingConfig[] {
   const count = 16;
   
-  const heights = [36, 42, 48, 54, 60];
+  const heights = [36, 42, 48, 54];
   const widths = [20, 24, 28, 32];
   const perspectives: BuildingPerspective[] = ['left', 'right'];
   const windowTypes: WindowType[] = ['grid', 'horizontal', 'tall'];

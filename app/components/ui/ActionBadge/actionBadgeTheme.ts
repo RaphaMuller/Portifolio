@@ -9,6 +9,7 @@ export const Themes = {
   white: `bg-white text-black ${baseClasses}`,
   dark: `bg-black text-comic-yellow border-4 border-black shadow-[5px_5px_0_0_#ff4444]`,
   blue: `bg-comic-blue text-white ${baseClasses}`,
+  green: `bg-comic-green text-white ${baseClasses}`,
   batmanArmor: `bg-[#2f2f2f] text-[#f2c94c] border-4 border-[#1a1a1a] shadow-[5px_5px_0_0_#f2c94c]`,
 };
 

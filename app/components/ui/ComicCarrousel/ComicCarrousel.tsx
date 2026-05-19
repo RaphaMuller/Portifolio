@@ -52,7 +52,7 @@ export default function ComicCarrousel() {
         <ActionBadge
           theme="yellow"
           {...motionPresets.stamp}
-          className="flex justify-center mb-2 text-xl sm:text-4xl md:text-5xl whitespace-nowrap font-bangers-wide px-4"
+          className="flex justify-center mb-2 text-xl sm:text-3xl md:text-4xl whitespace-nowrap font-bangers-wide px-4"
         >
           <span>🦇 CINTO DE UTILIDADES</span>
         </ActionBadge>
