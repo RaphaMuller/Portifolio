@@ -8,7 +8,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="comic-section comic-section-hero hero-dots-black bg-comic-blue"
+      className="comic-section comic-section-hero hero-dots-white bg-comic-blue"
     >
       <ActionBadge
         theme="red"
@@ -90,7 +90,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <BuildingSkyline position="absolute" theme="default" />
+      <BuildingSkyline position="absolute" theme="default" className="opacity-90" />
     </section>
   );
 }

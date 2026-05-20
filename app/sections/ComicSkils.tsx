@@ -12,7 +12,7 @@ export default function ComicSkills() {
     >
       <div className="max-w-7xl w-full mx-auto mb-10 z-10 relative">
         <ActionBadge
-          theme="dark"
+          theme="batmanArmor"
           {...motionPresets.slideInRight}
           className="inline-block px-4 sm:px-6 py-2 text-2xl sm:text-3xl md:text-5xl mb-8 md:mb-12"
         >

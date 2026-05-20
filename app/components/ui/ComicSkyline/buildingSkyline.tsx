@@ -7,7 +7,7 @@ import { generateSkyline } from "./building-generator";
 
 interface SkylineProps {
   position?: "relative" | "absolute";
-  theme: "dark" | "vintage" | "default" | "noir";
+  theme: "dark" | "default" | "noir";
   className?: string;
 }
 

@@ -1,4 +1,4 @@
-export type BuildingTheme = 'dark' | 'vintage' | 'default' | 'noir';
+export type BuildingTheme = 'dark' | 'default' | 'noir';
 export type BuildingPerspective = 'left' | 'right';
 export type WindowType = 'grid' | 'horizontal' | 'tall';
 

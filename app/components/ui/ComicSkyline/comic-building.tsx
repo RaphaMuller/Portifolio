@@ -28,21 +28,14 @@ export function ComicBuilding({ config, theme }: ComicBuildingProps) {
       bg: 'bg-slate-900',
       shadow: 'bg-slate-800',
       roof: 'bg-slate-950',
-      windowOn: 'bg-yellow-200 shadow-[0_0_8px_2px_rgba(253,224,71,0.6)]',
+      windowOn: 'bg-yellow-300 shadow-[0_0_8px_2px_rgba(253,224,71,0.6)]',
       windowOff: 'bg-slate-800'
-    },
-    vintage: {
-      bg: 'bg-amber-800',
-      shadow: 'bg-amber-900',
-      roof: 'bg-amber-950',
-      windowOn: 'bg-orange-200 shadow-[0_0_8px_2px_rgba(254,215,170,0.6)]',
-      windowOff: 'bg-amber-950'
     },
     default: {
       bg: 'bg-comic-shadow',
-      shadow: 'bg-slate-700',
-      roof: 'bg-slate-600',
-      windowOn: 'bg-white shadow-[0_0_8px_2px_rgba(255,255,255,0.7)]',
+      shadow: 'bg-slate-800',
+      roof: 'bg-slate-800',
+      windowOn: 'bg-white shadow-[0_0_12px_2px_rgba(255,255,255,0.7)]',
       windowOff: 'bg-slate-800'
     },
     noir: {

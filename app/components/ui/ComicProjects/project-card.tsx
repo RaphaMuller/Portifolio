@@ -96,9 +96,9 @@ export function ProjectCard({ project, index, isSelected, onToggle }: ProjectCar
               </p>
               <div className="flex gap-2">
                 <ActionBadge
-                  theme="dark"
+                  theme="yellow"
                   interactive
-                  className="flex items-center gap-1 text-xs cursor-pointer"
+                  className="flex items-center gap-1 text-xs px-2 py-0.5 cursor-pointer"
                   onClick={(e: React.MouseEvent) => {
                     e.stopPropagation();
                     if (project.githubUrl) window.open(project.githubUrl, "_blank");
