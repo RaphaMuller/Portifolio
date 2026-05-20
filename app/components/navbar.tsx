@@ -1,81 +1,98 @@
-import Image from "next/image";
-import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { navLinks } from "@/app/constants/navLinks";
 
-const navLinks = [
-  { label: "INÍCIO", href: "#hero" },
-  { label: "SOBRE", href: "#about" },
-  { label: "HABILIDADES", href: "#skills" },
-  { label: "PROJETOS", href: "#projects" },
-  { label: "CONTATO", href: "#contact" },
-];
-
-function NavLink({ link }: { link: (typeof navLinks)[0] }) {
-  const [isHovered, setIsHovered] = useState(false);
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+  
   return (
-    <div
-      className="relative flex justify-center"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
+    <nav className="fixed top-0 right-0 left-0 z-50 border-b-8 border-black bg-comic-yellow backdrop-blur-sm">
+      <div className="flex h-16 items-center justify-between lg:justify-around px-6">
+
+      {/* Title - Sempre visível à esquerda */}
+        <div 
+          className="font-bangers-wide text-2xl md:text-3xl tracking-widest uppercase text-black cursor-pointer"
+          onClick={() => document.querySelector("#hero")?.scrollIntoView({ behavior: "smooth" })}
+        >
+          <span>{`<Hero.Dev>`}</span>
+        </div>
+
+        {/* Desktop Menu */}
+        <div className="hidden lg:flex items-center space-x-4">
+          {navLinks.map((link) => (
+          <DesktopLink key={link.label} link={link} />
+          ))}
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
+          className="lg:hidden z-50 p-2 border-4 border-black bg-white shadow-[3px_3px_0_0_#000] active:shadow-none active:translate-x-1"
+        >
+          <div className="space-y-1">
+            <span className={`block h-1 w-6 bg-black transition-transform ${isOpen ? "rotate-45 translate-y-2" : ""}`} />
+            <span className={`block h-1 w-6 bg-black ${isOpen ? "opacity-0" : ""}`} />
+            <span className={`block h-1 w-6 bg-black transition-transform ${isOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+          </div>
+        </button>
+      </div>
+
+      {/* Mobile Dropdown Overlay */}
       <AnimatePresence>
-        {isHovered && (
+        {isOpen && (
           <motion.div
-            initial={{ y: 0, opacity: 0 }}
-            animate={{ y: 40, opacity: 1 }}
-            exit={{ y: 10, opacity: 0 }}
-            className="z-minus absolute"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.18 }}
+            className="lg:hidden flex flex-col px-6 pb-6 pt-2 gap-4"
           >
-            <div className="flex flex-col items-center">
-              <div className="h-12 w-[2px] bg-black" />
-              <motion.div
-                initial={{ rotate: 180 }}
-                className="flex items-center justify-center"
-              >
-                <Image
-                  src="/Aranha.png"
-                  alt="Aranha"
-                  width={30}
-                  height={30}
-                  className="drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]"
-                />
-              </motion.div>
-            </div>
+            {navLinks.map((link) => (
+              <MobileLink key={link.label} link={link} onClick={() => setIsOpen(false)} />
+            ))}
           </motion.div>
         )}
       </AnimatePresence>
+    </nav>
+  )
+}
 
-      <Link
-        href={link.href}
-        className="relative z-10 border-2 border-black bg-white px-4 py-2 text-black shadow-[2px_2px_0_0_#000] transition-all duration-200 hover:bg-[#FF4444] hover:text-white hover:shadow-[3px_3px_0_0_#000] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
+// Link (Desktop)
+function DesktopLink({ link }: { link: typeof navLinks[0] }) {
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    document.querySelector(link.href)?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  return (
+    <div className="relative flex justify-center text-black">
+      <a 
+        href={link.href} 
+        onClick={handleClick} 
+        className="font-bangers-wide relative z-10 border-2 border-black bg-white px-4 py-2 text-xl tracking-wider shadow-[2px_2px_0_0_#000] hover:bg-comic-red hover:text-white transition-all"
       >
         {link.label}
-      </Link>
+      </a>
     </div>
   );
 }
 
-export default function Navbar() {
+// Link Simples para o Menu Dropdown (Mobile)
+function MobileLink({ link, onClick }: { link: typeof navLinks[0]; onClick: () => void }) {
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    onClick();
+    document.querySelector(link.href)?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <nav className="fixed top-0 right-0 left-0 z-50 border-b-8 border-black bg-yellow-300 backdrop-blur-sm">
-      <div className="pointer-events-none absolute top-7 right-0 rotate-180">
-        <Image src="/teia-de-aranha.png" alt="" width={40} height={40} />
-      </div>
-
-      <div className="pointer-events-none absolute -top-1 left-0">
-        <Image src="/teia-de-aranha.png" alt="" width={40} height={40} />
-      </div>
-
-      <div className="flex h-16 justify-center p-2">
-        <div className="flex items-center space-x-4">
-          <div className="flex items-center space-x-4">
-            {navLinks.map((link) => (
-              <NavLink key={link.label} link={link} />
-            ))}
-          </div>
-        </div>
-      </div>
-    </nav>
+    <a
+      href={link.href}
+      onClick={handleClick}
+      className="font-bangers-wide block w-full text-center px-4 border-4 border-black bg-white py-3 text-xl tracking-wider text-black shadow-[4px_4px_0_0_#000] uppercase hover:bg-comic-red hover:text-white transition-all active:translate-x-1 active:translate-y-1 active:shadow-none"
+    >
+      {link.label}
+    </a>
   );
 }

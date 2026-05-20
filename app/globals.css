@@ -3,14 +3,14 @@
 :root {
   --background: #0a0a0a;
   --foreground: #ededed;
-  --color-background-hero-dots-black: radial-gradient(
+  --color-background-hero-dots-red: radial-gradient(
     circle,
-    #0000002f 1px,
+    #ff00009a 1px,
     transparent 1px
   );
   --color-background-hero-dots-white: radial-gradient(
     circle,
-    #ffffff27 1px,
+    #ffffff46 1px,
     transparent 1px
   );
 }
@@ -18,11 +18,17 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-mono: var(--font-geist-mono);
-  --font-permanent: var(--font-permanent);
+  --font-bangers: var(--font-bangers);
+  --font-comic-neue: var(--font-comic-neue);
+  --font-bebas-neue: var(--font-bebas-neue);
   --color-comic-red: #ff4444;
   --color-comic-yellow: #ffe44d;
   --color-comic-blue: #0f52ba;
+  --color-comic-shadow: rgba(94, 81, 88, 1);
+  --font-comic: "Bangers", cursive;
+  --tracking-comic: 0.08em;
+  --color-bat-gold: #f2c94c;
+  --color-comic-green: #228B22;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -32,15 +38,83 @@
   }
 }
 
+/* Global Font Utilities */
+@utility font-bangers {
+  font-family: var(--font-bangers), cursive;
+  letter-spacing: 0.06em;
+}
+
+@utility font-bangers-wide {
+  font-family: var(--font-bangers), cursive;
+  letter-spacing: 0.08em;
+}
+
+@utility font-comic {
+  font-family: var(--font-comic-neue), cursive;
+}
+
+@utility font-bebas {
+  font-family: var(--font-bebas-neue), sans-serif;
+}
+
+/* Standardized Comic Styles */
+@utility comic-gradient-belt {
+  background: linear-gradient(
+    90deg,
+    #8b6914 0%,
+    #c8960c 20%,
+    #ffd700 50%,
+    #c8960c 80%,
+    #8b6914 100%
+  );
+}
+
+@utility comic-gradient-pouch-front {
+  background: linear-gradient(160deg, #1c1c1c 0%, #2e2e2e 50%, #1a1a1a 100%);
+}
+
+@utility comic-gradient-pouch-back {
+  background: linear-gradient(160deg, #0d0d1a 0%, #1a1a2e 100%);
+}
+
+@utility comic-stitching {
+  background-image: repeating-linear-gradient(
+    90deg,
+    #8b6914 0px,
+    #8b6914 8px,
+    transparent 8px,
+    transparent 14px
+  );
+}
+
+@utility comic-carousel-bg {
+  background: linear-gradient(
+    180deg,
+    #1a1400 0%,
+    #0d0d1a 30%,
+    #0d0d1a 70%,
+    #1a1400 100%
+  );
+}
+
+@utility comic-section-gradient {
+  background: linear-gradient(
+    180deg,
+    #0d0d1a 0%,
+    #1a1a2e 40%,
+    #0d0d1a 100%
+  );
+}
+
 @layer components {
-  .section-hero {
-    @apply relative flex min-h-screen items-center overflow-hidden pt-16;
+  .comic-section {
+    @apply relative flex min-h-screen w-full items-center justify-center overflow-hidden border-b-4 border-black py-16 md:py-24;
     background-size: 20px 20px;
     background-position: 0 0;
   }
 
-  .hero-dots-black {
-    background-image: var(--color-background-hero-dots-black);
+  .hero-dots-red {
+    background-image: var(--color-background-hero-dots-red);
   }
 
   .hero-dots-white {
@@ -48,10 +122,25 @@
   }
 }
 
+@utility comic-projects-section {
+  background-color: #1a1a2e;
+  background-image: radial-gradient(circle, rgba(255, 228, 77, 0.15) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+@utility comic-project-overlay {
+  background-color: rgba(0, 0, 0, 0.25);
+  mix-blend-mode: multiply;
+}
+
+@utility comic-project-content {
+  background-color: #ffffff;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-permanent);
+  font-family: var(--font-comic-neue), sans-serif;
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
   background-attachment: fixed;
