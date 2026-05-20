@@ -7,9 +7,7 @@ export interface Project {
   description: string;
   image: string;
   tags: string[];
-  /** ActionBadge theme used for tag pills and accents */
   theme: ThemePreset;
-  /** Comic-style onomatopoeia shown on hover over the image */
   action: string;
   githubUrl?: string;
   demoUrl?: string;

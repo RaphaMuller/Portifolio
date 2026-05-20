@@ -35,10 +35,9 @@ export function ProjectCard({ project, index, isSelected, onToggle }: ProjectCar
           sizes="(max-width: 768px) 100vw, 33vw"
         />
 
-        {/* Theme colour overlay */}
+
         <div className="absolute inset-0 comic-project-overlay" />
 
-        {/* Action badge — appears on card hover via variants propagation */}
         <motion.div
           variants={motionPresets.projectActionBadge}
           transition={{ type: "spring", stiffness: 400, damping: 20 }}
@@ -53,7 +52,6 @@ export function ProjectCard({ project, index, isSelected, onToggle }: ProjectCar
           </ActionBadge>
         </motion.div>
 
-        {/* Panel number */}
         <ActionBadge
           theme="green"
           noPadding
@@ -63,12 +61,10 @@ export function ProjectCard({ project, index, isSelected, onToggle }: ProjectCar
         </ActionBadge>
       </div>
 
-      {/* ── Content panel ── */}
       <div className="p-4 border-t-4 border-black comic-project-content flex flex-col flex-1">
         <h3 className="text-xl text-black mb-1 font-bangers-wide">{project.title}</h3>
         <p className="text-xs text-gray-500 mb-2 font-sans font-medium">{project.subtitle}</p>
 
-        {/* Tags */}
         <div className="flex flex-wrap gap-1.5 mb-3">
           {project.tags.map((tag) => (
             <ActionBadge
@@ -97,7 +93,6 @@ export function ProjectCard({ project, index, isSelected, onToggle }: ProjectCar
               <div className="flex gap-2">
                 <ActionBadge
                   theme="yellow"
-                  interactive
                   className="flex items-center gap-1 text-xs px-2 py-0.5 cursor-pointer"
                   onClick={(e: React.MouseEvent) => {
                     e.stopPropagation();
@@ -109,7 +104,6 @@ export function ProjectCard({ project, index, isSelected, onToggle }: ProjectCar
                 </ActionBadge>
                 <ActionBadge
                   theme="yellow"
-                  interactive
                   className="flex items-center gap-1 text-xs px-2 py-0.5 cursor-pointer"
                   onClick={(e: React.MouseEvent) => {
                     e.stopPropagation();

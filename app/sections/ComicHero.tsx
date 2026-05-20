@@ -90,7 +90,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <BuildingSkyline position="absolute" theme="default" className="opacity-90" />
+      {/* <BuildingSkyline position="absolute" theme="default" className="opacity-90" /> */}
     </section>
   );
 }

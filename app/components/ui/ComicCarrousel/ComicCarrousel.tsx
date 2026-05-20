@@ -42,7 +42,7 @@ export default function ComicCarrousel() {
 
   return (
     <ActionBadge
-      className="w-full max-w-7xl rounded-4xl bg-comic-shadow"
+      className="w-full max-w-7xl rounded-4xl bg-comic-shadow "
       theme="batmanArmor"
       noPadding
       {...motionPresets.slideInLeft}
@@ -51,7 +51,6 @@ export default function ComicCarrousel() {
       <div className="flex justify-center py-4 sm:py-6">
         <ActionBadge
           theme="yellow"
-          {...motionPresets.stamp}
           className="flex justify-center mb-2 text-xl sm:text-3xl md:text-4xl whitespace-nowrap font-bangers-wide px-4"
         >
           <span>🦇 CINTO DE UTILIDADES</span>
@@ -99,9 +98,9 @@ export default function ComicCarrousel() {
         className="flex justify-center items-center py-2"
       >
         <span
-          className="text-[#FFD700]/60 text-[10px] sm:text-xs font-comic text-center px-4"
+          className="text-[#FFD700]/60 text-[10px] sm:text-xs text-center px-4"
         >
-          "Eu sou o programador que Gotham merece... e que os bugs temem."
+          &ldquo;Eu sou o programador que Gotham merece... e que os bugs temem.&ldquo;
         </span>
       </motion.div>
 

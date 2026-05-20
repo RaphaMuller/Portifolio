@@ -3,9 +3,9 @@
 :root {
   --background: #0a0a0a;
   --foreground: #ededed;
-  --color-background-hero-dots-black: radial-gradient(
+  --color-background-hero-dots-red: radial-gradient(
     circle,
-    #0000002f 1px,
+    #ff00009a 1px,
     transparent 1px
   );
   --color-background-hero-dots-white: radial-gradient(
@@ -113,12 +113,8 @@
     background-position: 0 0;
   }
 
-  .comic-section-hero {
-    @apply border-t-4;
-  }
-
-  .hero-dots-black {
-    background-image: var(--color-background-hero-dots-black);
+  .hero-dots-red {
+    background-image: var(--color-background-hero-dots-red);
   }
 
   .hero-dots-white {

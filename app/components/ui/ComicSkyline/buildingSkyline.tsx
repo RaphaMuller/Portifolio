@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { ComicBuilding } from './comic-building';
 import { generateSkyline } from "./building-generator";
@@ -44,10 +44,10 @@ export default function BuildingSkyline({
             initial={{ y: "100%", opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ 
-              duration: 0.8, 
+              duration: 0.6, 
               delay: index * 0.1,
               type: "spring",
-              bounce: 0.3
+              bounce: 0.2
             }}
           >
             <ComicBuilding config={building} theme={theme} />
