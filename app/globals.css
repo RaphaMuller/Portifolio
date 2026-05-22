@@ -16,19 +16,48 @@
 }
 
 @theme inline {
+  
+  /*Colors and themes*/
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-bangers: var(--font-bangers);
-  --font-comic-neue: var(--font-comic-neue);
-  --font-bebas-neue: var(--font-bebas-neue);
   --color-comic-red: #ff4444;
   --color-comic-yellow: #ffe44d;
   --color-comic-blue: #0f52ba;
   --color-comic-shadow: rgba(94, 81, 88, 1);
-  --font-comic: "Bangers", cursive;
-  --tracking-comic: 0.08em;
   --color-bat-gold: #f2c94c;
   --color-comic-green: #228B22;
+  --color-comic-projects-bg: #1a1a2e;
+  --color-comic-project-overlay: rgba(0, 0, 0, 0.25);
+
+  /* Fontes e Variações de Tracking */
+  --font-bangers: var(--font-bangers), cursive;
+  --font-comic: var(--font-comic-neue), cursive;
+  --font-bebas: var(--font-bebas-neue), sans-serif;
+  --tracking-comic: 0.08em;
+  --tracking-bangers-tight: 0.06em;
+  --tracking-bangers-wide: 0.08em;
+
+  /* Gradientes e Imagens de Fundo */
+  --background-image-comic-gradient-belt: linear-gradient(90deg, #8b6914 0%, #c8960c 20%, #ffd700 50%, #c8960c 80%, #8b6914 100%);
+  --background-image-comic-gradient-pouch-front: linear-gradient(160deg, #1c1c1c 0%, #2e2e2e 50%, #1a1a1a 100%);
+  --background-image-comic-gradient-pouch-back: linear-gradient(160deg, #0d0d1a 0%, #1a1a2e 100%);
+  --background-image-comic-carousel-bg: linear-gradient(180deg, #1a1400 0%, #0d0d1a 30%, #0d0d1a 70%, #1a1400 100%);
+  --background-image-comic-section-gradient: linear-gradient(180deg, #0d0d1a 0%, #1a1a2e 40%, #0d0d1a 100%);
+
+  /* Padrões de Repetição */
+  --background-image-comic-stitching: repeating-linear-gradient(90deg, #8b6914 0px, #8b6914 8px, transparent 8px, transparent 14px
+
+    /* Imagens de Fundo */
+  --background-image-comic-projects-dots: radial-gradient(circle, rgba(255, 228, 77, 0.15) 1px, transparent 1px
+
+    /* Tamanhos de Background */
+  --background-size-comic-dots-size: 24px 24px;
+
+  );
+  );
+
+  
+
 }
 
 @media (prefers-color-scheme: dark) {
@@ -106,6 +135,17 @@
   );
 }
 
+@utility comic-projects-section {
+  background-color: #1a1a2e;
+  background-image: radial-gradient(circle, rgba(255, 228, 77, 0.15) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+@utility comic-project-overlay {
+  background-color: rgba(0, 0, 0, 0.25);
+  mix-blend-mode: multiply;
+}
+
 @layer components {
   .comic-section {
     @apply relative flex min-h-screen w-full items-center justify-center overflow-hidden border-b-4 border-black py-16 md:py-24;
@@ -122,20 +162,6 @@
   }
 }
 
-@utility comic-projects-section {
-  background-color: #1a1a2e;
-  background-image: radial-gradient(circle, rgba(255, 228, 77, 0.15) 1px, transparent 1px);
-  background-size: 24px 24px;
-}
-
-@utility comic-project-overlay {
-  background-color: rgba(0, 0, 0, 0.25);
-  mix-blend-mode: multiply;
-}
-
-@utility comic-project-content {
-  background-color: #ffffff;
-}
 
 body {
   background: var(--background);

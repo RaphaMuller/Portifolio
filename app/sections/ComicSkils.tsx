@@ -9,7 +9,7 @@ export default function ComicSkills() {
       className="comic-section flex-col px-4 comic-section-gradient"
       id="skills"
     >
-      <div className="relative flex w-full max-w-7xl flex-col">
+      <div className="relative flex w-full max-w-7xl flex-col z-10">
         <ActionBadge
           theme="batmanArmor"
           {...motionPresets.slideInRight}
@@ -20,13 +20,11 @@ export default function ComicSkills() {
 
         <ComicCarrousel />
       </div>
-      {/* <div className="">
-        <BuildingSkyline
-          position="relative"
-          theme="noir"
-          className="opacity-80"
-        />
-      </div> */}
+      {/* <BuildingSkyline
+        position="absolute"
+        theme="dark"
+        className="opacity-70 z-0"
+      /> */}
     </section>
   );
 }

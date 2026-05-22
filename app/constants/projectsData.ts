@@ -43,4 +43,4 @@ export const projects: Project[] = [
     githubUrl: "#",
     demoUrl: "#",
   },
-];
+] as const;

@@ -61,7 +61,7 @@ export function ProjectCard({ project, index, isSelected, onToggle }: ProjectCar
         </ActionBadge>
       </div>
 
-      <div className="p-4 border-t-4 border-black comic-project-content flex flex-col flex-1">
+      <div className="p-4 border-t-4 border-black flex flex-col flex-1">
         <h3 className="text-xl text-black mb-1 font-bangers-wide">{project.title}</h3>
         <p className="text-xs text-gray-500 mb-2 font-sans font-medium">{project.subtitle}</p>
 

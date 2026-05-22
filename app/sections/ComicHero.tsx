@@ -31,8 +31,8 @@ export default function HeroSection() {
           <Image
             src="/Eu.jpeg"
             alt="Selfie"
-            width={3820}
-            height={2560}
+            width={3840}
+            height={2160}
             className="h-48 w-48 object-cover md:h-64 md:w-64"
           />
         </ActionBadge>

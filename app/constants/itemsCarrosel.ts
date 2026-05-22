@@ -130,4 +130,4 @@ export const beltItems = [
     category: "DevOps",
     tip: "Orquestra como Batman coordena a Liga da Justiça",
   },
-];
+] as const;
