@@ -51,7 +51,7 @@ export default function ComicCarrousel() {
       <div className="flex justify-center py-4 sm:py-6">
         <ActionBadge
           theme="yellow"
-          className="flex justify-center mb-2 text-xl sm:text-3xl md:text-4xl whitespace-nowrap font-bangers-wide px-4"
+          className="flex justify-center mb-2 text-xl sm:text-3xl md:text-4xl whitespace-nowrap font-bangers tracking-bangers-wide px-4"
         >
           <span>🦇 CINTO DE UTILIDADES</span>
         </ActionBadge>
@@ -59,22 +59,22 @@ export default function ComicCarrousel() {
 
       {/* === BELT STRUCTURE === */}
       <div className="relative">
-        <div className="h-6 border-y-4 border-black relative comic-gradient-belt shadow-[0_2px_0_rgba(0,0,0,0.5)]">
+        <div className="h-6 border-y-4 border-black relative bg-comic-gradient-belt shadow-[0_2px_0_rgba(0,0,0,0.5)]">
           {/* Stitching line */}
-          <div className="relative top-1/2 left-0 right-0 h-px -translate-y-1/2 comic-stitching" />
+          <div className="relative top-1/2 left-0 right-0 h-px -translate-y-1/2 bg-comic-stitching" />
         </div>
 
         <div className="absolute top-[9px] left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
           <ActionBadge
             theme="yellow"
-            className="px-4 text-xl sm:text-2xl font-bangers [background:linear-gradient(135deg,#FFD700,#C8960C)]"
+            className="px-4 text-xl sm:text-2xl font-bangers tracking-bangers-tight [background:linear-gradient(135deg,#FFD700,#C8960C)]"
           >
             🦇
           </ActionBadge>
         </div>
 
         {/* Carousel area */}
-        <div className="border-x-4 border-black px-2 sm:px-4 md:px-12 lg:px-16 py-2 comic-carousel-bg">
+        <div className="border-x-4 border-black px-2 sm:px-4 md:px-12 lg:px-16 py-2 bg-comic-carousel-bg">
           <Slider {...settings}>
             {beltItems.map((item) => (
               <BeltPouch key={item.tech} item={item} />
@@ -84,8 +84,8 @@ export default function ComicCarrousel() {
         </div>
 
         {/* Belt strap — bottom */}
-        <div className="h-6 border-y-4 border-black relative comic-gradient-belt shadow-[0_-2px_0_rgba(0,0,0,0.5)]">
-          <div className="relative left-0 right-0 h-px top-1/2 -translate-y-1/2 comic-stitching" />
+        <div className="h-6 border-y-4 border-black relative bg-comic-gradient-belt shadow-[0_-2px_0_rgba(0,0,0,0.5)]">
+          <div className="relative left-0 right-0 h-px top-1/2 -translate-y-1/2 bg-comic-stitching" />
         </div>
       </div>
 

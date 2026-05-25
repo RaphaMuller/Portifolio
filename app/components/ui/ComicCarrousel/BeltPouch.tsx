@@ -23,7 +23,7 @@ export default function BeltPouch({ item }: { item: (typeof beltItems)[0] }) {
           <ActionBadge
             theme="yellow"
             noPadding
-            className="absolute inset-0 flex flex-col overflow-hidden bg-transparent [backface-visibility:hidden] comic-gradient-pouch-front shadow-[4px_4px_0_0_#000] ring-1 ring-[#FFD700]/15"
+            className="absolute inset-0 flex flex-col overflow-hidden bg-transparent [backface-visibility:hidden] bg-comic-gradient-pouch-front shadow-[4px_4px_0_0_#000] ring-1 ring-[#FFD700]/15"
           >
             {/* Flap */}
             <div
@@ -39,7 +39,7 @@ export default function BeltPouch({ item }: { item: (typeof beltItems)[0] }) {
                 {item.gadgetEmoji}
               </div>
               <p
-                className="mb-1 text-sm text-[#FFD700] sm:text-base font-bangers-wide"
+                className="mb-1 text-sm text-[#FFD700] sm:text-base font-bangers tracking-bangers-wide"
               >
                 {item.gadget}
               </p>
@@ -59,7 +59,7 @@ export default function BeltPouch({ item }: { item: (typeof beltItems)[0] }) {
                 />
               </div>
               <p
-                className="text-base text-white sm:text-lg font-bangers"
+                className="text-base text-white sm:text-lg font-bangers tracking-bangers-tight"
               >
                 {item.tech}
               </p>
@@ -88,7 +88,7 @@ export default function BeltPouch({ item }: { item: (typeof beltItems)[0] }) {
           <ActionBadge
             theme="yellow"
             noPadding
-            className="absolute inset-0 flex flex-col overflow-hidden bg-transparent [backface-visibility:hidden] [transform:rotateY(180deg)] comic-gradient-pouch-back shadow-[4px_4px_0_0_#000]"
+            className="absolute inset-0 flex flex-col overflow-hidden bg-transparent [backface-visibility:hidden] [transform:rotateY(180deg)] bg-comic-gradient-pouch-back shadow-[4px_4px_0_0_#000]"
           >
             {/* Header */}
             <div className="flex items-center justify-between border-b-4 border-black px-3 py-2 bg-black text-[#FFD700]">
@@ -99,7 +99,7 @@ export default function BeltPouch({ item }: { item: (typeof beltItems)[0] }) {
             <div className="flex flex-1 flex-col items-center justify-center gap-2 px-3 py-3 text-center sm:gap-3 sm:px-4 sm:py-4">
               <item.Icon size={48} color={item.iconColor} className="sm:size-[56px]" />
               <p 
-                className="text-lg text-white sm:text-2xl font-bangers"
+                className="text-lg text-white sm:text-2xl font-bangers tracking-bangers-tight"
               >
                 {item.tech}
               </p>

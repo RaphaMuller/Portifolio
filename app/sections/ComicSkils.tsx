@@ -6,7 +6,7 @@ import { motionPresets } from "../constants/motionPresets";
 export default function ComicSkills() {
   return (
     <section
-      className="comic-section flex-col px-4 comic-section-gradient"
+      className="comic-section flex-col px-4 bg-comic-section-gradient"
       id="skills"
     >
       <div className="relative flex w-full max-w-7xl flex-col z-10">

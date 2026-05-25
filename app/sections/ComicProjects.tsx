@@ -7,7 +7,7 @@ export default function ComicProjects() {
   return (
     <section
       id="projects"
-      className="comic-section flex-col comic-projects-section"
+      className="comic-section flex-col bg-comic-projects-bg bg-comic-projects-dots bg-[size:var(--background-size-comic-dots-size)]"
     >
       <div className="flex flex-col max-w-7xl relative w-full px-4">
         <ActionBadge
