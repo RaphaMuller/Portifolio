@@ -6,7 +6,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   
   return (
-    <nav className="fixed top-0 right-0 left-0 z-50 border-b-8 border-black bg-comic-yellow backdrop-blur-sm">
+    <nav className="fixed top-0 right-0 left-0 z-50 border-b-8 border-black bg-comic-bege">
       <div className="flex h-16 items-center justify-between lg:justify-around px-6">
 
       {/* Title - Sempre visível à esquerda */}

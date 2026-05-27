@@ -9,7 +9,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="comic-section comic-section-hero hero-dots-white bg-comic-blue"
+      className="comic-section comic-section-hero hero-dots-white bg-comic-lightblue"
     >
       <ActionBadge
         theme="red"

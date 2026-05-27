@@ -3,16 +3,6 @@
 :root {
   --background: #0a0a0a;
   --foreground: #ededed;
-  --color-background-hero-dots-red: radial-gradient(
-    circle,
-    #ff00009a 1px,
-    transparent 1px
-  );
-  --color-background-hero-dots-white: radial-gradient(
-    circle,
-    #ffffff46 1px,
-    transparent 1px
-  );
 }
 
 @theme inline {
@@ -20,14 +10,16 @@
   /*Colors and themes*/
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-comic-red: #ff4444;
-  --color-comic-yellow: #ffe44d;
-  --color-comic-blue: #0f52ba;
+  --color-comic-red: rgba(255, 100, 100, 1);
+  --color-comic-yellow: rgba(255, 245, 116, 1);
+  --color-comic-blue: rgba(155, 165, 255, 1);
   --color-comic-shadow: rgba(94, 81, 88, 1);
   --color-bat-gold: #f2c94c;
   --color-comic-green: #228B22;
   --color-comic-projects-bg: #1a1a2e;
   --color-comic-project-overlay: rgba(0, 0, 0, 0.25);
+  --color-comic-bege: rgba(254, 244, 231, 1);
+  --color-comic-lightblue: rgba(155, 165, 255, 1);
 
   /* Fontes e Variações de Tracking */
   --font-bangers: var(--font-bangers), cursive;
@@ -45,8 +37,6 @@
   --background-image-comic-section-gradient: linear-gradient(180deg, #1e1b4b 20%, #0f172a 100%);
   --background-image-comic-stitching: repeating-linear-gradient(90deg, #8b6914 0px, #8b6914 8px, transparent 8px, transparent 14px);
   --background-image-comic-projects-dots: radial-gradient(circle, rgba(255, 228, 77, 0.15) 1px, transparent 1px);
-  --background-size-comic-dots-size: 24px 24px;
-
 }
 
 @media (prefers-color-scheme: dark) {
@@ -59,14 +49,6 @@
 @layer components {
   .comic-section {
     @apply relative flex min-h-screen w-full items-center justify-center overflow-hidden border-b-4 border-black py-16 md:py-24;
-  }
-
-  .hero-dots-red {
-    background-image: var(--color-background-hero-dots-red);
-  }
-
-  .hero-dots-white {
-    background-image: var(--color-background-hero-dots-white);
   }
 }
 
