@@ -3,6 +3,7 @@ import { SpeechBubble } from "@/app/components/ui/SpeechBubble";
 import Image from "next/image";
 import { motionPresets } from "../constants/motionPresets";
 import BuildingSkyline from "../components/ui/ComicSkyline/buildingSkyline";
+import { motion } from "framer-motion";
 
 export default function HeroSection() {
   return (
@@ -13,7 +14,7 @@ export default function HeroSection() {
       <ActionBadge
         theme="red"
         {...motionPresets.stamp}
-        className="absolute top-24 lg:top-32 right-12 md:right-20 lg:right-24 rotate-16 text-xl sm:text-5xl "
+        className="absolute top-24 right-12 rotate-16 text-xl sm:text-5xl md:right-20 lg:top-32 lg:right-24"
       >
         ZAP!
       </ActionBadge>
@@ -21,7 +22,7 @@ export default function HeroSection() {
       <ActionBadge
         theme="yellow"
         {...motionPresets.stamp}
-        className="absolute top-24 lg:top-32 left-12 md:left-20 lg:left-24 -rotate-16 text-xl sm:text-5xl"
+        className="absolute top-24 left-12 -rotate-16 text-xl sm:text-5xl md:left-20 lg:top-32 lg:left-24"
       >
         POW!
       </ActionBadge>
@@ -52,13 +53,8 @@ export default function HeroSection() {
             </p>
           </ActionBadge>
 
-          <div className="flex flex-wrap gap-3">
-            <ActionBadge
-              theme="red"
-              {...motionPresets.slideInRight}
-              interactive
-              className="md:text-xl"
-            >
+          <motion.div className="flex flex-wrap gap-3" {...motionPresets.slideInRight}>
+            <ActionBadge theme="red" interactive className="md:text-xl">
               <button
                 onClick={() =>
                   document
@@ -70,12 +66,7 @@ export default function HeroSection() {
               </button>
             </ActionBadge>
 
-            <ActionBadge
-              theme="white"
-              {...motionPresets.slideInRight}
-              interactive
-              className="md:text-xl"
-            >
+            <ActionBadge theme="white" interactive className="md:text-xl">
               <button
                 onClick={() =>
                   document
@@ -86,11 +77,11 @@ export default function HeroSection() {
                 CONTATO
               </button>
             </ActionBadge>
-          </div>
+          </motion.div>
         </div>
       </div>
-
-      {/* <BuildingSkyline position="absolute" theme="default" className="opacity-90" /> */}
+{/* 
+      <BuildingSkyline position="absolute" theme="default" className="opacity-90" /> */}
     </section>
   );
 }

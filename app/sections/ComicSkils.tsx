@@ -6,10 +6,10 @@ import { motionPresets } from "../constants/motionPresets";
 export default function ComicSkills() {
   return (
     <section
-      className="comic-section flex-col px-4 bg-comic-section-gradient"
+      className="comic-section flex-col bg-comic-section-gradient px-4"
       id="skills"
     >
-      <div className="relative flex w-full max-w-7xl flex-col z-10">
+      <div className="relative z-10 flex w-full max-w-7xl flex-col">
         <ActionBadge
           theme="batmanArmor"
           {...motionPresets.slideInRight}

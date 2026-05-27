@@ -17,12 +17,7 @@ interface ProjectCardProps {
 export function ProjectCard({ project, index, isSelected, onToggle }: ProjectCardProps) {
   return (
     <motion.div
-      variants={motionPresets.projectCard}
-      initial={{ ...motionPresets.projectCard.rest, opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      whileHover="hover"
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.15 }}
+      {...motionPresets.projectCard}
       className="border-4 border-black bg-white shadow-[6px_6px_0_0_theme('colors.comic-blue')] overflow-hidden self-start h-fit flex flex-col"
     >
       {/* ── Image panel ── */}
@@ -39,7 +34,6 @@ export function ProjectCard({ project, index, isSelected, onToggle }: ProjectCar
         <div className="absolute inset-0 bg-comic-project-overlay mix-blend-multiply" />
 
         <motion.div
-          variants={motionPresets.projectActionBadge}
           transition={{ type: "spring", stiffness: 400, damping: 20 }}
           className="absolute top-3 right-3"
         >

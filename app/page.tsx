@@ -4,6 +4,8 @@ import ComicAbout from "@/app/sections/ComicAbout";
 import Navbar from "@/app/components/navbar";
 import ComicSkills from "./sections/ComicSkils";
 import ComicProjects from "./sections/ComicProjects";
+import { ComicFooter } from "./sections/ComitFooter";
+import { ComicContact } from "./sections/ComicContact";
 
 export default function Home() {
   return (
@@ -13,6 +15,8 @@ export default function Home() {
       <ComicAbout />
       <ComicSkills />
       <ComicProjects/>
+      <ComicContact/>
+      <ComicFooter/>
     </main>
   );
 }
