@@ -9,7 +9,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="comic-section comic-section-hero hero-dots-white bg-comic-lightblue"
+      className="comic-section comic-section-hero hero-dots-white bg-comic-lightblue bg-comic-dots"
     >
       <ActionBadge
         theme="red"
@@ -80,8 +80,8 @@ export default function HeroSection() {
           </motion.div>
         </div>
       </div>
-{/* 
-      <BuildingSkyline position="absolute" theme="default" className="opacity-90" /> */}
+
+      {/* <BuildingSkyline position="absolute" theme="default" className="opacity-90" /> */}
     </section>
   );
 }

@@ -15,7 +15,7 @@
   --color-comic-blue: rgba(155, 165, 255, 1);
   --color-comic-shadow: rgba(94, 81, 88, 1);
   --color-bat-gold: #f2c94c;
-  --color-comic-green: #228B22;
+  --color-comic-green: rgba(40, 178, 56, 1);
   --color-comic-projects-bg: #1a1a2e;
   --color-comic-project-overlay: rgba(0, 0, 0, 0.25);
   --color-comic-bege: rgba(254, 244, 231, 1);
@@ -33,22 +33,36 @@
   --background-image-comic-gradient-belt: linear-gradient(90deg, #8b6914 0%, #c8960c 20%, #ffd700 50%, #c8960c 80%, #8b6914 100%);
   --background-image-comic-gradient-pouch-front: linear-gradient(160deg, #1c1c1c 0%, #2e2e2e 50%, #1a1a1a 100%);
   --background-image-comic-gradient-pouch-back: linear-gradient(160deg, #0d0d1a 0%, #1a1a2e 100%);
-  --background-image-comic-carousel-bg: linear-gradient(180deg, #1a1400 0%, #0d0d1a 30%, #0d0d1a 70%, #1a1400 100%);
-  --background-image-comic-section-gradient: linear-gradient(180deg, #1e1b4b 20%, #0f172a 100%);
+  --background-image-comic-section-gradient: linear-gradient(180deg, #1a1400 0%, #0d0d1a 30%, #0d0d1a 70%, #1a1400 100%);
   --background-image-comic-stitching: repeating-linear-gradient(90deg, #8b6914 0px, #8b6914 8px, transparent 8px, transparent 14px);
   --background-image-comic-projects-dots: radial-gradient(circle, rgba(255, 228, 77, 0.15) 1px, transparent 1px);
+  --background-image-comic-skills: linear-gradient(0deg,rgba(255, 255, 255, 1) 0%, rgba(70, 92, 171, 1) 80%, rgba(25, 75, 255, 1) 100%);
+
+  /*Background Dots Colors*/
+  --comic-dot-color: rgba(1, 1, 1, 0.3);
+  --comic-dot-size: 20px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer utilities {
+  .bg-comic-dots {
+    background-image: 
+      radial-gradient(var(--comic-dot-color) 10%, transparent 10%),
+      radial-gradient(var(--comic-dot-color) 10%, transparent 10%);
+    background-size: var(--comic-dot-size) var(--comic-dot-size);
+    background-position: 0 0, calc(var(--comic-dot-size) / 2) calc(var(--comic-dot-size) / 2);
   }
 }
 
 @layer components {
   .comic-section {
     @apply relative flex min-h-screen w-full items-center justify-center overflow-hidden border-b-4 border-black py-16 md:py-24;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
   }
 }
 

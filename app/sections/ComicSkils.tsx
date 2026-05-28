@@ -6,7 +6,7 @@ import { motionPresets } from "../constants/motionPresets";
 export default function ComicSkills() {
   return (
     <section
-      className="comic-section flex-col bg-comic-section-gradient px-4"
+      className="comic-section flex-col bg-comic-section-gradient px-4 "
       id="skills"
     >
       <div className="relative z-10 flex w-full max-w-7xl flex-col">
@@ -20,11 +20,6 @@ export default function ComicSkills() {
 
         <ComicCarrousel />
       </div>
-      {/* <BuildingSkyline
-        position="absolute"
-        theme="dark"
-        className="opacity-70 z-0"
-      /> */}
     </section>
   );
 }
