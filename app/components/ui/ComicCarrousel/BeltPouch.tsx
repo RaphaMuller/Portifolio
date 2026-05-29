@@ -91,8 +91,8 @@ export default function BeltPouch({ item }: { item: (typeof beltItems)[0] }) {
             className="absolute inset-0 flex flex-col overflow-hidden bg-transparent [backface-visibility:hidden] [transform:rotateY(180deg)] bg-comic-gradient-pouch-back shadow-[4px_4px_0_0_#000]"
           >
             {/* Header */}
-            <div className="flex items-center justify-between border-b-4 border-black px-3 py-2 bg-black text-[#FFD700]">
-              <span className="text-[10px] sm:text-xs font-bold italic">🦇 FICHA TÉCNICA</span>
+            <div className="flex items-center justify-between border-b-4 border-black px-3 py-2 bg-gradient-to-r from-[#ffffff] via-[#585656] ">
+              <span className="text-sm font-bold">🦇 FICHA TÉCNICA</span>
             </div>
 
             {/* Body */}
