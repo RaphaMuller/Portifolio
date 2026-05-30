@@ -65,13 +65,13 @@ export function ComicContact() {
                 {
                   icon: SiGit,
                   label: "github.com/RaphaelMuller",
-                  href: "https://github.com/RaphaelMuller",
+                  href: "https://github.com/RaphaMuller",
                   theme: "white" as const,
                 },
                 {
                   icon: FaLinkedin,
                   label: "linkedin.com/in/RaphaelMuller",
-                  href: "https://linkedin.com/in/RaphaelMuller",
+                  href: "https://www.linkedin.com/in/raphael-muller-9b5477227/",
                   theme: "lightBlue" as const,
                 },
               ].map((item) => (
