@@ -15,7 +15,7 @@ export default function AboutSection() {
         <ActionBadge
         theme="dark"
         {...motionPresets.slideInRight}
-        className="text-lg py-2 text-center sm:px-6 sm:text-2xl md:text-4xl lg:text-5xl mb-8"
+        className="text-lg py-2 text-center self-center sm:px-6 sm:text-2xl md:text-4xl md:self-start lg:text-5xl mb-8"
         >
             CAPÍTULO 1: ORIGEM
         </ActionBadge>

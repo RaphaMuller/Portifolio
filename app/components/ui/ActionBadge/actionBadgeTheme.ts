@@ -11,6 +11,9 @@ export const Themes = {
   blue: `bg-comic-blue text-white ${baseClasses}`,
   green: `bg-comic-green text-white ${baseClasses}`,
   batmanArmor: `bg-[#2f2f2f] text-[#f2c94c] border-4 border-[#1a1a1a] shadow-[5px_5px_0_0_#f2c94c]`,
+  lightBlue: `bg-sky-100 text-sky-900 ${baseClasses}`,
+  contactTitle: `bg-comic-red text-white border-4 border-white shadow-[6px_6px_0_0_#000]`,
+  gmailRed: `bg-comic-red text-white border-4 border-white shadow-[5px_5px_0_0_#fff]`,
 };
 
 export type ThemePreset = keyof typeof Themes;

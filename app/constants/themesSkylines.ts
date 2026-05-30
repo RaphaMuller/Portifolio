@@ -1,7 +1,7 @@
 export const themeClasses = {
   dark: {
     bg: 'bg-slate-900',
-    shadow: 'bg-slate-800',
+    shadow: 'bg-black',
     roof: 'bg-slate-950',
     windowOn: 'bg-yellow-300 shadow-[0_0_8px_2px_rgba(253,224,71,0.6)]',
     windowOff: 'bg-slate-800'
