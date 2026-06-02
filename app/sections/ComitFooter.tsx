@@ -4,7 +4,7 @@ export function ComicFooter() {
       className="border-t-4 border-comic-yellow bg-black py-8 text-white"
     >
       <div className="mx-auto max-w-7xl px-4 text-center">
-        <p className="mb-2 font-bangers text-2xl tracking-bangers-tight text-[#FFE44D]">
+        <p className="mb-2 font-bangers text-2xl tracking-bangers-tight text-comic-yellow">
           FIM!
         </p>
         <p className="text-sm text-gray-400">
@@ -21,7 +21,7 @@ export function ComicFooter() {
                 onClick={() =>
                   document.querySelector(href)?.scrollIntoView({ behavior: "smooth" })
                 }
-                className="h-2 w-2 rounded-full bg-[#FFE44D] transition-colors hover:bg-[#FF4444]"
+                className="h-2 w-2 rounded-full bg-comic-yellow transition-colors hover:bg-comic-red"
               />
             ),
           )}
