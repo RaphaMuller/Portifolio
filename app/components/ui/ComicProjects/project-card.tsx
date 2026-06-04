@@ -18,9 +18,9 @@ export function ProjectCard({ project, index, isSelected, onToggle }: ProjectCar
   return (
     <motion.div
       {...motionPresets.projectCard}
-      className="border-4 border-black bg-white shadow-[6px_6px_0_0_theme('colors.comic-blue')] overflow-hidden self-start h-fit flex flex-col"
+      className="break-inside-avoid mb-6 border-4 border-black bg-white shadow-[6px_6px_0_0_var(--color-comic-blue)] overflow-hidden self-start h-fit flex flex-col"
     >
-      {/* ── Image panel ── */}
+      {/* ImagePanel */}
       <div className="relative overflow-hidden" style={{ height: "180px" }}>
         <Image
           src={project.image}
@@ -55,6 +55,7 @@ export function ProjectCard({ project, index, isSelected, onToggle }: ProjectCar
         </ActionBadge>
       </div>
 
+      {/* Body */}
       <div className="p-4 border-t-4 border-black flex flex-col flex-1">
         <h3 className="text-xl text-black mb-1 font-bangers tracking-bangers-wide">{project.title}</h3>
         <p className="text-xs text-gray-500 mb-2 font-sans font-medium">{project.subtitle}</p>

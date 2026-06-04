@@ -1,7 +1,6 @@
-import { motionPresets } from "../constants/motionPresets";
-import { ActionBadge } from "../components/ui/ActionBadge/ActionBadge";
-import { ComicProjectsGrid } from "../components/ui/ComicProjects/comic-projects";
-import BuildingSkyline from "../components/ui/ComicSkyline/buildingSkyline";
+import { motionPresets } from "@/app/constants/motionPresets";
+import { ActionBadge } from "@/app/components/ui/ActionBadge/ActionBadge";
+import { ComicProjectsGrid } from "@/app/components/ui/ComicProjects/comic-projects";
 
 export default function ComicProjects() {
   return (
@@ -10,6 +9,7 @@ export default function ComicProjects() {
       className="comic-section flex-col bg-comic-skills"
     >
       <div className="flex flex-col max-w-7xl relative w-full px-4">
+        {/* ChapterBadge */}
         <ActionBadge
           theme="blue"
           {...motionPresets.slideInRight}
@@ -18,6 +18,7 @@ export default function ComicProjects() {
           CAPÍTULO 3: AS MISSÕES
         </ActionBadge>
 
+        {/* ProjectsGrid */}
         <ComicProjectsGrid/>
       </div>
   

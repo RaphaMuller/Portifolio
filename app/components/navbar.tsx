@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { navLinks } from "@/app/constants/navLinks";
@@ -9,19 +11,22 @@ export default function Navbar() {
     <nav className="fixed top-0 right-0 left-0 z-50 border-b-8 border-black bg-comic-bege bg-comic-dots">
       <div className="flex h-16 items-center justify-between lg:justify-around px-6">
 
+        {/* Logo */}
         <div 
-          className="font-bangers tracking-bangers-wide text-2xl md:text-3xl tracking-widest uppercase text-black cursor-pointer"
+          className="font-bangers tracking-bangers-wide text-2xl md:text-3xl uppercase text-black cursor-pointer"
           onClick={() => document.querySelector("#hero")?.scrollIntoView({ behavior: "smooth" })}
         >
           <span>{`<Hero.Dev>`}</span>
         </div>
 
+        {/* DesktopNav */}
         <div className="hidden lg:flex items-center space-x-4">
           {navLinks.map((link) => (
           <DesktopLink key={link.label} link={link} />
           ))}
         </div>
 
+        {/* MobileButton */}
         <button
           onClick={() => setIsOpen(!isOpen)}
           aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
@@ -35,6 +40,7 @@ export default function Navbar() {
         </button>
       </div>
 
+      {/* MobileNav */}
       <AnimatePresence>
         {isOpen && (
           <motion.div

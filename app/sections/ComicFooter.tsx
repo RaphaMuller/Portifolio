@@ -1,7 +1,10 @@
+"use client";
+
 export function ComicFooter() {
+  // Footer
   return (
     <footer
-      className="border-t-4 border-comic-yellow bg-black py-8 text-white"
+      className="border-t-4 border-comic-yellow bg-black py-8 text-white w-full"
     >
       <div className="mx-auto max-w-7xl px-4 text-center">
         <p className="mb-2 font-bangers text-2xl tracking-bangers-tight text-comic-yellow">

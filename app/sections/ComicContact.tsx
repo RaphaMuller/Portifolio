@@ -27,7 +27,7 @@ export function ComicContact() {
       className="comic-section flex-col bg-comic-contact-gradient px-4"
     >
       <div className="relative z-10 flex flex-col w-full max-w-7xl px-4">
-        {/* Section title */}
+        {/* ChapterBadge */}
         <ActionBadge
           theme="contactTitle"
           {...motionPresets.slideInRight}
@@ -37,9 +37,9 @@ export function ComicContact() {
         </ActionBadge>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start w-full">
-          {/* Left: Speech bubbles / social */}
+          {/* InfoPanel */}
           <div className="flex flex-col gap-5">
-            {/* Big speech bubble */}
+            {/* SpeechBubble */}
             <SpeechBubble tailPosition="bottom" animateOnScroll delay={0.1}>
               <h3 className="text-2xl text-comic-red mb-3 font-bangers tracking-wide">
                 PRECISA DE UM HERÓI?
@@ -50,7 +50,7 @@ export function ComicContact() {
               </p>
             </SpeechBubble>
 
-            {/* Social links */}
+            {/* SocialLinks */}
             <motion.div
               className="flex flex-col gap-3"
               {...motionPresets.slideInLeft}
@@ -96,7 +96,7 @@ export function ComicContact() {
             </motion.div>
           </div>
 
-          {/* Right: Contact form */}
+          {/* ContactForm */}
           <motion.div
             {...motionPresets.slideInRight}
             className="border-4 border-black bg-white/60 bg-comic-dots p-6 shadow-[8px_8px_0_0_#000] relative z-10"
@@ -134,7 +134,7 @@ export function ComicContact() {
                     required
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="w-full border-2 border-black px-3 py-2 bg-sky-50 focus:outline-none focus:border-comic-red focus:shadow-[2px_2px_0_0_theme(colors.comic-red)] font-comic text-black"
+                    className="w-full border-2 border-black px-3 py-2 bg-sky-50 focus:outline-none focus:border-comic-red focus:shadow-[2px_2px_0_0_var(--color-comic-red)] font-comic text-black text-xs sm:text-sm md:text-base placeholder:text-[10px] sm:placeholder:text-xs md:placeholder:text-sm"
                     placeholder="Peter Parker..."
                   />
                 </div>
@@ -147,7 +147,7 @@ export function ComicContact() {
                     required
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="w-full border-2 border-black px-3 py-2 bg-sky-50 focus:outline-none focus:border-comic-red focus:shadow-[2px_2px_0_0_theme(colors.comic-red)] font-comic text-black"
+                    className="w-full border-2 border-black px-3 py-2 bg-sky-50 focus:outline-none focus:border-comic-red focus:shadow-[2px_2px_0_0_var(--color-comic-red)] font-comic text-black text-xs sm:text-sm md:text-base placeholder:text-[10px] sm:placeholder:text-xs md:placeholder:text-sm"
                     placeholder="heroi@marvel.com"
                   />
                 </div>
@@ -160,7 +160,7 @@ export function ComicContact() {
                     rows={4}
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    className="w-full border-2 border-black px-3 py-2 bg-sky-50 focus:outline-none focus:border-comic-red focus:shadow-[2px_2px_0_0_theme(colors.comic-red)] resize-none font-comic text-black"
+                    className="w-full border-2 border-black px-3 py-2 bg-sky-50 focus:outline-none focus:border-comic-red focus:shadow-[2px_2px_0_0_var(--color-comic-red)] resize-none font-comic text-black text-xs sm:text-sm md:text-base placeholder:text-[10px] sm:placeholder:text-xs md:placeholder:text-sm"
                     placeholder="Preciso de um herói para..."
                   />
                 </div>
@@ -168,7 +168,7 @@ export function ComicContact() {
                 <ActionBadge theme="red" interactive className="text-center justify-center p-0 w-full">
                   <button
                     type="submit"
-                    className="flex w-full items-center justify-center gap-2 py-3 text-xl font-bangers tracking-wider cursor-pointer"
+                    className="flex w-full items-center justify-center gap-2 py-2 text-md sm:py-3 sm:text-xl font-bangers tracking-wider cursor-pointer"
                   >
                     <Send size={18} /> LANÇAR MENSAGEM!
                   </button>
@@ -179,6 +179,7 @@ export function ComicContact() {
         </div>
       </div>
 
+      {/* Skyline */}
       <BuildingSkyline position="absolute" theme="dark" />
     </section>
   );

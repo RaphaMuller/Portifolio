@@ -37,7 +37,7 @@ export function generateSkyline(): BuildingConfig[] {
     }
 
     return {
-      id: `building-${index}-${Math.random().toString(36).substr(2, 9)}`,
+      id: `building-${index}-${Math.random().toString(36).substring(2, 11)}`,
       height,
       width,
       floors,

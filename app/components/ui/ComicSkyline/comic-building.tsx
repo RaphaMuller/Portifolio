@@ -26,13 +26,13 @@ export function ComicBuilding({ config, theme }: ComicBuildingProps) {
 
   return (
     <div className="relative group transition-transform duration-300" style={{ width: `${width * 4}px` }}>
-      {/* Telhado 3D */}
+      {/* Roof */}
       <div className={`absolute -top-3 right-2 h-4 skew-x-[45deg] border-4 border-black ${currentTheme.roof}`} style={{ width: `${width * 4}px` }} />
       
-      {/* Sombra Lateral 3D */}
+      {/* Shadow */}
       <div className={`absolute -top-2 -left-4 w-4 skew-y-[45deg] rounded-t-md border-4 border-black ${currentTheme.shadow}`} style={{ height: `${height * 5}px` }} />
   
-      {/* Face Frontal Principal */}
+      {/* Facade */}
       <div
         className={`flex flex-col rounded-t-md border-4 border-black relative z-10 ${currentTheme.bg}`}
         style={{ height: `${height * 5}px`, width: `${width * 4}px` }}

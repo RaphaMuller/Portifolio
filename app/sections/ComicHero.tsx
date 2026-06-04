@@ -1,20 +1,23 @@
+"use client";
+
 import { ActionBadge } from "@/app/components/ui/ActionBadge/ActionBadge";
 import { SpeechBubble } from "@/app/components/ui/SpeechBubble";
 import Image from "next/image";
-import { motionPresets } from "../constants/motionPresets";
-import BuildingSkyline from "../components/ui/ComicSkyline/buildingSkyline";
+import { motionPresets } from "@/app/constants/motionPresets";
+import BuildingSkyline from "@/app/components/ui/ComicSkyline/buildingSkyline";
 import { motion } from "framer-motion";
 
 export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="comic-section comic-section-hero hero-dots-white bg-comic-lightblue bg-comic-dots"
+      className="comic-section bg-comic-lightblue bg-comic-dots"
     >
+      {/* Stamps */}
       <ActionBadge
         theme="red"
         {...motionPresets.stamp}
-        className="absolute top-24 right-12 rotate-16 text-xl sm:text-5xl md:right-20 lg:top-32 lg:right-24"
+        className="absolute top-24 right-12 rotate-16 text-h2 md:right-20 lg:top-32 lg:right-24"
       >
         ZAP!
       </ActionBadge>
@@ -22,11 +25,12 @@ export default function HeroSection() {
       <ActionBadge
         theme="yellow"
         {...motionPresets.stamp}
-        className="absolute top-24 left-12 -rotate-16 text-xl sm:text-5xl md:left-20 lg:top-32 lg:left-24"
+        className="absolute top-24 left-12 -rotate-16 text-h2 md:left-20 lg:top-32 lg:left-24"
       >
         POW!
       </ActionBadge>
 
+      {/* ProfileBody */}
       <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-8 px-4 py-12 md:flex-row">
         <ActionBadge noPadding {...motionPresets.slideInLeft}>
           <Image
@@ -45,16 +49,17 @@ export default function HeroSection() {
           </SpeechBubble>
 
           <ActionBadge theme="yellow" {...motionPresets.slideInRight}>
-            <h1 className="text-2xl leading-none sm:text-4xl md:text-6xl">
+            <h1 className=" leading-none md:text-h1 text-h2 ">
               RAPHAEL MULLER
             </h1>
-            <p className="mt-1 text-base sm:text-xl md:text-2xl">
-              DESENVOLVEDOR FULL STACK
-            </p>
+            <h3 className="mt-1 md:text-h3 text-h4 leading-none">
+              DESENVOLVEDOR FULL-STACK
+            </h3>
           </ActionBadge>
 
+          {/* Actions */}
           <motion.div className="flex flex-wrap gap-3" {...motionPresets.slideInRight}>
-            <ActionBadge theme="red" interactive className="md:text-xl">
+            <ActionBadge theme="red" interactive className="text-h4">
               <button
                 onClick={() =>
                   document
@@ -66,7 +71,7 @@ export default function HeroSection() {
               </button>
             </ActionBadge>
 
-            <ActionBadge theme="white" interactive className="md:text-xl">
+            <ActionBadge theme="white" interactive className="text-h4">
               <button
                 onClick={() =>
                   document
@@ -81,6 +86,7 @@ export default function HeroSection() {
         </div>
       </div>
 
+      {/* Skyline */}
       <BuildingSkyline position="absolute" theme="default" />
     </section>
   );

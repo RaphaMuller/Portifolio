@@ -1,7 +1,6 @@
-import { ActionBadge } from "../components/ui/ActionBadge/ActionBadge";
-import ComicCarrousel from "../components/ui/ComicCarrousel/ComicCarrousel";
-import BuildingSkyline from "../components/ui/ComicSkyline/buildingSkyline";
-import { motionPresets } from "../constants/motionPresets";
+import { ActionBadge } from "@/app/components/ui/ActionBadge/ActionBadge";
+import ComicCarrousel from "@/app/components/ui/ComicCarrousel/ComicCarrousel";
+import { motionPresets } from "@/app/constants/motionPresets";
 
 export default function ComicSkills() {
   return (
@@ -10,6 +9,7 @@ export default function ComicSkills() {
       id="skills"
     >
       <div className="relative z-10 flex w-full max-w-7xl flex-col">
+        {/* ChapterBadge */}
         <ActionBadge
           theme="batmanArmor"
           {...motionPresets.slideInRight}
@@ -18,6 +18,7 @@ export default function ComicSkills() {
           CAPÍTULO 2: O ARSENAL TECNOLÓGICO
         </ActionBadge>
 
+        {/* Carousel */}
         <ComicCarrousel />
       </div>
     </section>

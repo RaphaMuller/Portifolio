@@ -1,16 +1,18 @@
+"use client";
+
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { beltItems } from "@/app/constants/itemsCarrosel";
+import { beltItems } from "@/app/constants/itemsCarousel";
 import { ActionBadge } from "../ActionBadge/ActionBadge";
 
-export default function BeltPouch({ item }: { item: (typeof beltItems)[0] }) {
-  const [flipped, setflipped] = useState(false);
+export default function BeltPouch({ item }: { item: (typeof beltItems)[number] }) {
+  const [flipped, setFlipped] = useState(false);
 
   return (
     <div className="px-1 sm:px-2 py-4 flex justify-center">
       <motion.div
         className="relative cursor-pointer w-full max-w-[300px] [perspective:1000px]"
-        onClick={() => setflipped(!flipped)}
+        onClick={() => setFlipped(!flipped)}
         whileHover={{ y: -6 }}
         transition={{ type: "spring", stiffness: 300 }}
       >
@@ -19,7 +21,7 @@ export default function BeltPouch({ item }: { item: (typeof beltItems)[0] }) {
           transition={{ duration: 0.6, ease: "easeInOut" }}
           className="relative aspect-[300/400] w-full flex flex-col [transform-style:preserve-3d]"
         >
-          {/* FRONT SIDE */}
+          {/* PouchFront */}
           <ActionBadge
             theme="yellow"
             noPadding
@@ -84,7 +86,7 @@ export default function BeltPouch({ item }: { item: (typeof beltItems)[0] }) {
             </div> 
           </ActionBadge>
 
-          {/* BACK SIDE */}
+          {/* PouchBack */}
           <ActionBadge
             theme="yellow"
             noPadding
@@ -113,7 +115,7 @@ export default function BeltPouch({ item }: { item: (typeof beltItems)[0] }) {
 
             </div>
             
-            {/* Bottom rivets back */}
+            {/* Rivets */}
             <div className="flex justify-between px-3 pb-2">
               <div className="h-2 w-2 rounded-full border border-black bg-[#222] sm:h-3 sm:w-3" />
               <div className="h-2 w-2 rounded-full border border-black bg-[#222] sm:h-3 sm:w-3" />

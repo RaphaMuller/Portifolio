@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "framer-motion";
 
 interface SpeechBubbleProps {
@@ -24,6 +26,7 @@ export const SpeechBubble = ({
       transition={{ type: "spring", stiffness: 200, delay }}
       className="relative mb-2 border-4 border-black bg-white p-6 shadow-[6px_6px_0_0_#000]"
     >
+      {/* TailBottom */}
       {tailPosition === "bottom" && (
         <>
           <div className="absolute -bottom-5 left-10 h-0 w-0 border-t-[20px] border-r-[12px] border-l-[12px] border-t-black border-r-transparent border-l-transparent" />
@@ -31,6 +34,7 @@ export const SpeechBubble = ({
         </>
       )}
 
+      {/* TailTop */}
       {tailPosition === "top" && (
         <>
           <div className="absolute -top-4 left-5 h-0 w-0 border-b-[16px] border-l-[10px] border-r-[10px] border-b-black border-l-transparent border-r-transparent" />

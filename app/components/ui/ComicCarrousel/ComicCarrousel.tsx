@@ -10,7 +10,7 @@ import { ActionBadge } from "../ActionBadge/ActionBadge";
 import BeltPouch from "./BeltPouch";
 import NextArrow from "./NextArrow";
 import PrevArrow from "./PrevArrow";
-import { beltItems } from "@/app/constants/itemsCarrosel";
+import { beltItems } from "@/app/constants/itemsCarousel";
 import { motionPresets } from "@/app/constants/motionPresets";
 
 export default function ComicCarrousel() {
@@ -47,7 +47,7 @@ export default function ComicCarrousel() {
       noPadding
       {...motionPresets.slideInLeft}
     >
-      {/* Section title */}
+      {/* Header */}
       <div className="flex justify-center py-4 sm:py-6">
         <ActionBadge
           theme="yellow"
@@ -57,23 +57,23 @@ export default function ComicCarrousel() {
         </ActionBadge>
       </div>
 
-      {/* === BELT STRUCTURE === */}
+      {/* Structure */}
       <div className="relative">
         <div className="h-6 border-y-4 border-black relative bg-comic-gradient-belt shadow-[0_2px_0_rgba(0,0,0,0.5)]">
-          {/* Stitching line */}
+          {/* Stitching */}
           <div className="relative top-1/2 left-0 right-0 h-px -translate-y-1/2 bg-comic-stitching" />
         </div>
 
         <div className="absolute top-[9px] left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
           <ActionBadge
             theme="yellow"
-            className="px-4 text-xl sm:text-2xl font-bangers tracking-bangers-tight [background:linear-gradient(135deg,#FFD700,#C8960C)]"
+            className="px-4 text-xl sm:text-2xl font-bangers tracking-bangers-tight bg-gradient-to-br from-[#FFD700] to-[#C8960C]"
           >
             🦇
           </ActionBadge>
         </div>
 
-        {/* Carousel area */}
+        {/* Carousel */}
         <div className="border-x-4 border-black px-2 sm:px-4 md:px-12 lg:px-16 py-2 bg-comic-section-gradient">
           <Slider {...settings}>
             {beltItems.map((item) => (
@@ -83,13 +83,13 @@ export default function ComicCarrousel() {
           <div className="h-10" />
         </div>
 
-        {/* Belt strap — bottom */}
+        {/* Strap */}
         <div className="h-6 border-y-4 border-black relative bg-comic-gradient-belt shadow-[0_-2px_0_rgba(0,0,0,0.5)]">
           <div className="relative left-0 right-0 h-px top-1/2 -translate-y-1/2 bg-comic-stitching" />
         </div>
       </div>
 
-      {/* Bottom caption */}
+      {/* Caption */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
