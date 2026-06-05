@@ -13,9 +13,9 @@ export default function ComicProjects() {
         <ActionBadge
           theme="blue"
           {...motionPresets.slideInRight}
-          className="text-md py-2 text-center self-center sm:px-6 sm:text-2xl md:text-4xl md:self-start lg:text-5xl mb-8"
+          className="text-title md:text-h2 lg:text-h1 py-2 text-center self-center sm:px-6 md:self-start mb-8"
         >
-          CAPÍTULO 3: AS MISSÕES
+            <h1>CAPÍTULO 3: AS MISSÕES</h1>  
         </ActionBadge>
 
         {/* ProjectsGrid */}

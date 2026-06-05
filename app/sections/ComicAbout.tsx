@@ -16,9 +16,9 @@ export default function AboutSection() {
         <ActionBadge
           theme="dark"
           {...motionPresets.slideInRight}
-          className="text-h2 md:text-h1 py-2 text-center self-center sm:px-6 md:self-start mb-8"
+          className="text-title md:text-h2 lg:text-h1 py-2 text-center self-center sm:px-6 md:self-start mb-8"
         >
-          <h2 className="text-h4 md:text-h2 lg:text-h1">CAPÍTULO 1: ORIGEM</h2>
+          <h1>CAPÍTULO 1: ORIGEM</h1>
         </ActionBadge>
 
         {/* ContentGrid */}

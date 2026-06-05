@@ -31,9 +31,9 @@ export function ComicContact() {
         <ActionBadge
           theme="contactTitle"
           {...motionPresets.slideInRight}
-          className="text-lg py-2 text-center self-center sm:px-6 sm:text-2xl md:text-4xl md:self-start lg:text-5xl mb-8"
+          className="text-title md:text-h2 lg:text-h1 py-2 text-center self-center sm:px-6 md:self-start mb-8"
         >
-          CAPÍTULO 4: MISSÃO CONTATO
+          <h1>CAPÍTULO 4: MISSÃO CONTATO</h1>
         </ActionBadge>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start w-full">
@@ -41,7 +41,7 @@ export function ComicContact() {
           <div className="flex flex-col gap-5">
             {/* SpeechBubble */}
             <SpeechBubble tailPosition="bottom" animateOnScroll delay={0.1}>
-              <h3 className="text-2xl text-comic-red mb-3 font-bangers tracking-wide">
+              <h3 className="text-h4 text-comic-red mb-2 font-bangers tracking-wide">
                 PRECISA DE UM HERÓI?
               </h3>
               <p className="text-sm leading-relaxed font-comic">
@@ -89,7 +89,7 @@ export function ComicContact() {
                     className="flex items-center gap-3 p-3 w-full h-full font-comic font-bold"
                   >
                     <item.icon size={20} />
-                    <span className="text-sm">{item.label}</span>
+                    <span className="text-stat-label">{item.label}</span>
                   </a>
                 </ActionBadge>
               ))}

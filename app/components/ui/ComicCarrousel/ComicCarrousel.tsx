@@ -36,7 +36,7 @@ export default function ComicCarrousel() {
       </div>
     ),
     customPaging: () => (
-      <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-[#FFD700]/40 border border-[#FFD700] hover:bg-[#FFD700] transition-colors cursor-pointer" />
+      <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-[var(--color-gold)]/40 border border-[var(--color-gold)] hover:bg-[var(--color-gold)] transition-colors cursor-pointer" />
     ),
   };
 
@@ -51,9 +51,9 @@ export default function ComicCarrousel() {
       <div className="flex justify-center py-4 sm:py-6">
         <ActionBadge
           theme="yellow"
-          className="flex justify-center mb-2 text-xl sm:text-3xl md:text-4xl whitespace-nowrap font-bangers tracking-bangers-wide px-4"
+          className="flex justify-center mb-2 text-tilte md:text-h4 lg:text-h3"
         >
-          <span>🦇 CINTO DE UTILIDADES</span>
+          <h2>🦇 CINTO DE UTILIDADES</h2>
         </ActionBadge>
       </div>
 
@@ -67,7 +67,7 @@ export default function ComicCarrousel() {
         <div className="absolute top-[9px] left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
           <ActionBadge
             theme="yellow"
-            className="px-4 text-xl sm:text-2xl font-bangers tracking-bangers-tight bg-gradient-to-br from-[#FFD700] to-[#C8960C]"
+            className="px-4 text-xl sm:text-2xl font-bangers tracking-bangers-tight bg-gradient-to-br from-[var(--color-gold)] to-[var(--color-bronze)]"
           >
             🦇
           </ActionBadge>
@@ -98,7 +98,7 @@ export default function ComicCarrousel() {
         className="flex justify-center items-center py-2"
       >
         <span
-          className="text-[#FFD700]/60 text-[10px] sm:text-xs text-center px-4"
+          className="text-[var(--color-gold)]/60 text-stat-label sm:text-xs text-center px-4"
         >
           &ldquo;Eu sou o programador que Gotham merece... e que os bugs temem.&ldquo;
         </span>
@@ -106,7 +106,7 @@ export default function ComicCarrousel() {
 
       <style>{`
         .slick-dots li.slick-active div {
-          background-color: #FFD700 !important;
+          background-color: var(--color-gold) !important;
         }
       `}</style>
     </ActionBadge>

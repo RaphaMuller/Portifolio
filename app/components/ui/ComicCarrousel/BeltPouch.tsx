@@ -83,7 +83,7 @@ export default function BeltPouch({ item }: { item: (typeof beltItems)[number] }
             <div className="flex justify-between px-3 pb-2">
               <div className="h-2 w-2 rounded-full border border-[#777] bg-[#555] sm:h-3 sm:w-3" />
               <div className="h-2 w-2 rounded-full border border-[#777] bg-[#555] sm:h-3 sm:w-3" />
-            </div> 
+            </div>
           </ActionBadge>
 
           {/* PouchBack */}
@@ -100,21 +100,21 @@ export default function BeltPouch({ item }: { item: (typeof beltItems)[number] }
             {/* Body */}
             <div className="flex flex-1 flex-col items-center justify-center gap-2 px-3 py-3 text-center sm:gap-3 sm:px-4 sm:py-4">
               <item.Icon size={48} color={item.iconColor} className="sm:size-[56px]" />
-              <p 
+              <p
                 className="text-lg text-white sm:text-2xl font-bangers tracking-bangers-tight"
               >
                 {item.tech}
               </p>
 
               <div className="border-2 border-[#FFD700]/50 bg-black/60 p-2 sm:p-3 w-full">
-                <p className="text-[10px] sm:text-xs text-gray-300 " 
-               >
-                 {item.tip}
+                <p className="text-[10px] sm:text-xs text-gray-300 "
+                >
+                  {item.tip}
                 </p>
               </div>
 
             </div>
-            
+
             {/* Rivets */}
             <div className="flex justify-between px-3 pb-2">
               <div className="h-2 w-2 rounded-full border border-black bg-[#222] sm:h-3 sm:w-3" />

@@ -13,9 +13,9 @@ export default function ComicSkills() {
         <ActionBadge
           theme="batmanArmor"
           {...motionPresets.slideInRight}
-          className="text-md mb-8 py-2 text-center self-center sm:px-6 sm:text-2xl md:text-4xl md:self-start lg:text-5xl"
+          className="text-title md:text-h2 lg:text-h1 py-2 text-center self-center sm:px-6 mb-8"
         >
-          CAPÍTULO 2: O ARSENAL TECNOLÓGICO
+          <h1 >CAPÍTULO 2: O ARSENAL TECNOLÓGICO</h1>
         </ActionBadge>
 
         {/* Carousel */}

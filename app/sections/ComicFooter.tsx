@@ -10,7 +10,7 @@ export function ComicFooter() {
         <p className="mb-2 font-bangers text-2xl tracking-bangers-tight text-comic-yellow">
           FIM!
         </p>
-        <p className="text-sm text-gray-400">
+        <p className="text-description text-gray-400">
           © 2026 Raphael Muller · Desenvolvido com ☕ e muito código
         </p>
         <p className="mt-2 text-xs text-gray-600">
