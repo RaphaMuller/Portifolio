@@ -9,15 +9,18 @@ interface SpeechBubbleProps {
   animateOnScroll?: boolean;
 }
 
-export const SpeechBubble = ({ 
-  children, 
+export const SpeechBubble = ({
+  children,
   delay = 0.3,
   tailPosition = "bottom",
   animateOnScroll = false,
 }: SpeechBubbleProps) => {
-
-  const animationProps = animateOnScroll 
-    ? { initial: { scale: 0.8, opacity: 0 }, whileInView: { scale: 1, opacity: 1 }, viewport: { once: true } }
+  const animationProps = animateOnScroll
+    ? {
+        initial: { scale: 0.8, opacity: 0 },
+        whileInView: { scale: 1, opacity: 1 },
+        viewport: { once: true },
+      }
     : { initial: { scale: 0, opacity: 0 }, animate: { scale: 1, opacity: 1 } };
 
   return (
@@ -37,8 +40,8 @@ export const SpeechBubble = ({
       {/* TailTop */}
       {tailPosition === "top" && (
         <>
-          <div className="absolute -top-4 left-5 h-0 w-0 border-b-[16px] border-l-[10px] border-r-[10px] border-b-black border-l-transparent border-r-transparent" />
-          <div className="absolute -top-2 left-6 h-0 w-0 border-b-[12px] border-l-[8px] border-r-[8px] border-b-white border-l-transparent border-r-transparent" />
+          <div className="absolute -top-4 left-5 h-0 w-0 border-r-[10px] border-b-[16px] border-l-[10px] border-r-transparent border-b-black border-l-transparent" />
+          <div className="absolute -top-2 left-6 h-0 w-0 border-r-[8px] border-b-[12px] border-l-[8px] border-r-transparent border-b-white border-l-transparent" />
         </>
       )}
 
@@ -46,4 +49,3 @@ export const SpeechBubble = ({
     </motion.div>
   );
 };
-

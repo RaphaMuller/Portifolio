@@ -7,5 +7,5 @@ export const heroStats = [
 export const aboutData = {
   title: "Sobre Mim",
   description:
-    "Desenvolvedor apaixonado por tecnologia e criatividade com mais de 2 anos de experiência construindo aplicações web incríveis. De dia, crio interfaces memoráveis. À noite, depuro bugs com super-poderes!"
+    "Desenvolvedor apaixonado por tecnologia e criatividade com mais de 2 anos de experiência construindo aplicações web incríveis. De dia, crio interfaces memoráveis. À noite, depuro bugs com super-poderes!",
 } as const;

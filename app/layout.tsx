@@ -25,7 +25,8 @@ const comicNeue = Comic_Neue({
 
 export const metadata: Metadata = {
   title: "Portfólio | Desenvolvedor",
-  description: "Portfólio de desenvolvimento em formato de história em quadrinhos",
+  description:
+    "Portfólio de desenvolvimento em formato de história em quadrinhos",
 };
 
 export default function RootLayout({

@@ -4,8 +4,7 @@ import { ActionBadge } from "../ActionBadge/ActionBadge";
 export default function NextArrow({ onClick }: { onClick?: () => void }) {
   return (
     <ActionBadge
-      className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-5 z-20 hidden lg:flex items-center justify-center w-12 h-12 text-2xl cursor-pointer
-      hover:scale-110 hover:-rotate-6 active:scale-95 transition-all duration-200 ease-out"
+      className="absolute top-1/2 right-0 z-20 hidden h-12 w-12 translate-x-5 -translate-y-1/2 cursor-pointer items-center justify-center text-2xl transition-all duration-200 ease-out hover:scale-110 hover:-rotate-6 active:scale-95 lg:flex"
       theme="yellow"
       onClick={onClick}
     >

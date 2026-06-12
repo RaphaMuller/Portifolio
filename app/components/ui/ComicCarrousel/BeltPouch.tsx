@@ -5,13 +5,17 @@ import { motion } from "framer-motion";
 import { beltItems } from "@/app/constants/itemsCarousel";
 import { ActionBadge } from "../ActionBadge/ActionBadge";
 
-export default function BeltPouch({ item }: { item: (typeof beltItems)[number] }) {
+export default function BeltPouch({
+  item,
+}: {
+  item: (typeof beltItems)[number];
+}) {
   const [flipped, setFlipped] = useState(false);
 
   return (
-    <div className="px-1 sm:px-2 py-4 flex justify-center">
+    <div className="flex justify-center px-1 py-4 sm:px-2">
       <motion.div
-        className="relative cursor-pointer w-full max-w-[300px] [perspective:1000px]"
+        className="relative w-full max-w-[300px] cursor-pointer [perspective:1000px]"
         onClick={() => setFlipped(!flipped)}
         whileHover={{ y: -6 }}
         transition={{ type: "spring", stiffness: 300 }}
@@ -19,18 +23,16 @@ export default function BeltPouch({ item }: { item: (typeof beltItems)[number] }
         <motion.div
           animate={{ rotateY: flipped ? 180 : 0 }}
           transition={{ duration: 0.6, ease: "easeInOut" }}
-          className="relative aspect-[300/400] w-full flex flex-col [transform-style:preserve-3d]"
+          className="relative flex aspect-[300/400] w-full flex-col [transform-style:preserve-3d]"
         >
           {/* PouchFront */}
           <ActionBadge
             theme="yellow"
             noPadding
-            className="absolute inset-0 flex flex-col overflow-hidden bg-transparent [backface-visibility:hidden] bg-comic-gradient-pouch-front shadow-[4px_4px_0_0_#000] ring-1 ring-[#FFD700]/15"
+            className="absolute inset-0 flex flex-col overflow-hidden bg-transparent bg-comic-gradient-pouch-front shadow-[4px_4px_0_0_#000] ring-1 ring-gold/15 [backface-visibility:hidden]"
           >
             {/* Flap */}
-            <div
-              className="flex items-center justify-between border-b-4 border-black px-3 py-2 bg-gradient-to-r from-[#C8960C] via-[#FFD700] to-[#C8960C]"
-            >
+            <div className="flex items-center justify-between border-b-4 border-black bg-gradient-to-r from-bronze via-gold to-bronze px-3 py-2">
               <span className="text-sm font-bold">{item.category}</span>
               <span className="text-base leading-none">🦇</span>
             </div>
@@ -40,18 +42,14 @@ export default function BeltPouch({ item }: { item: (typeof beltItems)[number] }
               <div className="mb-2 text-3xl sm:text-4xl">
                 {item.gadgetEmoji}
               </div>
-              <p
-                className="mb-1 text-sm text-[#FFD700] sm:text-base font-bangers tracking-bangers-wide"
-              >
+              <p className="mb-1 font-bangers text-sm tracking-bangers-wide text-gold sm:text-base">
                 {item.gadget}
               </p>
-              <p
-                className="text-xs leading-tight text-gray-400 font-comic"
-              >
+              <p className="font-comic text-xs leading-tight text-gray-400">
                 {item.gadgetDesc}
               </p>
 
-              <div className="my-3 border-t border-dashed border-[#FFD700]/40" />
+              <div className="my-3 border-t border-dashed border-gold/40" />
 
               <div className="mb-2 flex justify-center">
                 <item.Icon
@@ -60,9 +58,7 @@ export default function BeltPouch({ item }: { item: (typeof beltItems)[number] }
                   className="sm:size-10"
                 />
               </div>
-              <p
-                className="text-base text-white sm:text-lg font-bangers tracking-bangers-tight"
-              >
+              <p className="font-bangers text-base tracking-bangers-tight text-white sm:text-lg">
                 {item.tech}
               </p>
 
@@ -70,8 +66,7 @@ export default function BeltPouch({ item }: { item: (typeof beltItems)[number] }
                 {Array.from({ length: 5 }).map((_, i) => (
                   <span
                     key={i}
-                    className="text-sm leading-none"
-                    style={{ color: i < item.level ? "#FFD700" : "#444" }}
+                    className={`text-sm leading-none ${i < item.level ? "text-gold" : "text-neutral-700"}`}
                   >
                     🦇
                   </span>
@@ -81,8 +76,8 @@ export default function BeltPouch({ item }: { item: (typeof beltItems)[number] }
 
             {/* Bottom rivets */}
             <div className="flex justify-between px-3 pb-2">
-              <div className="h-2 w-2 rounded-full border border-[#777] bg-[#555] sm:h-3 sm:w-3" />
-              <div className="h-2 w-2 rounded-full border border-[#777] bg-[#555] sm:h-3 sm:w-3" />
+              <div className="h-2 w-2 rounded-full border border-neutral-500 bg-neutral-600 sm:h-3 sm:w-3" />
+              <div className="h-2 w-2 rounded-full border border-neutral-500 bg-neutral-600 sm:h-3 sm:w-3" />
             </div>
           </ActionBadge>
 
@@ -90,35 +85,33 @@ export default function BeltPouch({ item }: { item: (typeof beltItems)[number] }
           <ActionBadge
             theme="yellow"
             noPadding
-            className="absolute inset-0 flex flex-col overflow-hidden bg-transparent [backface-visibility:hidden] [transform:rotateY(180deg)] bg-comic-gradient-pouch-back shadow-[4px_4px_0_0_#000]"
+            className="absolute inset-0 flex [transform:rotateY(180deg)] flex-col overflow-hidden bg-transparent bg-comic-gradient-pouch-back shadow-[4px_4px_0_0_#000] [backface-visibility:hidden]"
           >
             {/* Header */}
-            <div className="flex items-center justify-between border-b-4 border-black px-3 py-2 bg-gradient-to-r from-[#ffffff] via-[#585656] ">
+            <div className="flex items-center justify-between border-b-4 border-black bg-gradient-to-r from-white via-neutral-600 px-3 py-2">
               <span className="text-sm font-bold">🦇 FICHA TÉCNICA</span>
             </div>
 
             {/* Body */}
             <div className="flex flex-1 flex-col items-center justify-center gap-2 px-3 py-3 text-center sm:gap-3 sm:px-4 sm:py-4">
-              <item.Icon size={48} color={item.iconColor} className="sm:size-[56px]" />
-              <p
-                className="text-lg text-white sm:text-2xl font-bangers tracking-bangers-tight"
-              >
+              <item.Icon
+                size={48}
+                color={item.iconColor}
+                className="sm:size-[56px]"
+              />
+              <p className="font-bangers text-lg tracking-bangers-tight text-white sm:text-2xl">
                 {item.tech}
               </p>
 
-              <div className="border-2 border-[#FFD700]/50 bg-black/60 p-2 sm:p-3 w-full">
-                <p className="text-[10px] sm:text-xs text-gray-300 "
-                >
-                  {item.tip}
-                </p>
+              <div className="w-full border-2 border-gold/50 bg-black/60 p-2 sm:p-3">
+                <p className="text-xs text-gray-300">{item.tip}</p>
               </div>
-
             </div>
 
             {/* Rivets */}
             <div className="flex justify-between px-3 pb-2">
-              <div className="h-2 w-2 rounded-full border border-black bg-[#222] sm:h-3 sm:w-3" />
-              <div className="h-2 w-2 rounded-full border border-black bg-[#222] sm:h-3 sm:w-3" />
+              <div className="h-2 w-2 rounded-full border border-black bg-neutral-900 sm:h-3 sm:w-3" />
+              <div className="h-2 w-2 rounded-full border border-black bg-neutral-900 sm:h-3 sm:w-3" />
             </div>
           </ActionBadge>
         </motion.div>

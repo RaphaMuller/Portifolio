@@ -1,28 +1,30 @@
-import { BuildingConfig, WindowType } from './building';
+import { BuildingConfig, WindowType } from "./building";
 
 export function generateSkyline(): BuildingConfig[] {
   const count = 18;
-  
+
   const heights = [36, 42, 48, 54];
   const widths = [20, 24, 28, 32];
-  const windowTypes: WindowType[] = ['grid', 'horizontal', 'tall'];
+  const windowTypes: WindowType[] = ["grid", "horizontal", "tall"];
 
   return Array.from({ length: count }, (_, index) => {
     const height = heights[Math.floor(Math.random() * heights.length)];
     const width = widths[Math.floor(Math.random() * widths.length)];
-    const windowType = windowTypes[Math.floor(Math.random() * windowTypes.length)];
-    
-    const availableHeightPx = (height * 5) - 30; 
-    
+    const windowType =
+      windowTypes[Math.floor(Math.random() * windowTypes.length)];
+
+    const availableHeightPx = height * 5 - 30;
+
     let floors = 3;
-    if (windowType === 'tall') floors = Math.floor(availableHeightPx / 28); 
-    else if (windowType === 'grid') floors = Math.floor(availableHeightPx / 20); 
-    else if (windowType === 'horizontal') floors = Math.floor(availableHeightPx / 12); 
+    if (windowType === "tall") floors = Math.floor(availableHeightPx / 28);
+    else if (windowType === "grid") floors = Math.floor(availableHeightPx / 20);
+    else if (windowType === "horizontal")
+      floors = Math.floor(availableHeightPx / 12);
 
     floors = Math.max(floors, 3);
 
     let windowsPerFloor = 3;
-    if (windowType === 'horizontal') {
+    if (windowType === "horizontal") {
       windowsPerFloor = 2;
     } else {
       windowsPerFloor = width > 24 ? 4 : 3;
@@ -43,7 +45,7 @@ export function generateSkyline(): BuildingConfig[] {
       floors,
       windowsPerFloor,
       windowType,
-      litWindows
+      litWindows,
     };
   });
 }

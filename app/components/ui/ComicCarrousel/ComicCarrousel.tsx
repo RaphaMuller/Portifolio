@@ -32,17 +32,17 @@ export default function ComicCarrousel() {
     ],
     appendDots: (dots: React.ReactNode) => (
       <div>
-        <ul className="flex justify-center gap-2 mt-2">{dots}</ul>
+        <ul className="mt-2 flex justify-center gap-2">{dots}</ul>
       </div>
     ),
     customPaging: () => (
-      <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-[var(--color-gold)]/40 border border-[var(--color-gold)] hover:bg-[var(--color-gold)] transition-colors cursor-pointer" />
+      <div className="h-2 w-2 cursor-pointer rounded-full border border-gold bg-gold/40 transition-colors hover:bg-gold sm:h-3 sm:w-3" />
     ),
   };
 
   return (
     <ActionBadge
-      className="w-full max-w-7xl rounded-4xl bg-comic-shadow "
+      className="w-full max-w-7xl rounded-4xl bg-comic-shadow"
       theme="batmanArmor"
       noPadding
       {...motionPresets.slideInLeft}
@@ -51,7 +51,7 @@ export default function ComicCarrousel() {
       <div className="flex justify-center py-4 sm:py-6">
         <ActionBadge
           theme="yellow"
-          className="flex justify-center mb-2 text-tilte md:text-h4 lg:text-h3"
+          className="mb-2 flex justify-center text-title md:text-h4 lg:text-h3"
         >
           <h2>🦇 CINTO DE UTILIDADES</h2>
         </ActionBadge>
@@ -59,22 +59,22 @@ export default function ComicCarrousel() {
 
       {/* Structure */}
       <div className="relative">
-        <div className="h-6 border-y-4 border-black relative bg-comic-gradient-belt shadow-[0_2px_0_rgba(0,0,0,0.5)]">
+        <div className="relative h-6 border-y-4 border-black bg-comic-gradient-belt shadow-[0_2px_0_rgba(0,0,0,0.5)]">
           {/* Stitching */}
-          <div className="relative top-1/2 left-0 right-0 h-px -translate-y-1/2 bg-comic-stitching" />
+          <div className="relative top-1/2 right-0 left-0 h-px -translate-y-1/2 bg-comic-stitching" />
         </div>
 
-        <div className="absolute top-[9px] left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
+        <div className="absolute top-[9px] left-1/2 z-20 -translate-x-1/2 -translate-y-1/2">
           <ActionBadge
             theme="yellow"
-            className="px-4 text-xl sm:text-2xl font-bangers tracking-bangers-tight bg-gradient-to-br from-[var(--color-gold)] to-[var(--color-bronze)]"
+            className="bg-gradient-to-br from-gold to-bronze px-4 font-bangers text-xl tracking-bangers-tight sm:text-2xl"
           >
             🦇
           </ActionBadge>
         </div>
 
         {/* Carousel */}
-        <div className="border-x-4 border-black px-2 sm:px-4 md:px-12 lg:px-16 py-2 bg-comic-section-gradient">
+        <div className="border-x-4 border-black bg-comic-section-gradient px-2 py-2 sm:px-4 md:px-12 lg:px-16">
           <Slider {...settings}>
             {beltItems.map((item) => (
               <BeltPouch key={item.tech} item={item} />
@@ -84,8 +84,8 @@ export default function ComicCarrousel() {
         </div>
 
         {/* Strap */}
-        <div className="h-6 border-y-4 border-black relative bg-comic-gradient-belt shadow-[0_-2px_0_rgba(0,0,0,0.5)]">
-          <div className="relative left-0 right-0 h-px top-1/2 -translate-y-1/2 bg-comic-stitching" />
+        <div className="relative h-6 border-y-4 border-black bg-comic-gradient-belt shadow-[0_-2px_0_rgba(0,0,0,0.5)]">
+          <div className="relative top-1/2 right-0 left-0 h-px -translate-y-1/2 bg-comic-stitching" />
         </div>
       </div>
 
@@ -95,12 +95,11 @@ export default function ComicCarrousel() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.5 }}
-        className="flex justify-center items-center py-2"
+        className="flex items-center justify-center py-2"
       >
-        <span
-          className="text-[var(--color-gold)]/60 text-stat-label sm:text-xs text-center px-4"
-        >
-          &ldquo;Eu sou o programador que Gotham merece... e que os bugs temem.&ldquo;
+        <span className="px-4 text-center text-stat-label text-gold/60">
+          &ldquo;Eu sou o programador que Gotham merece... e que os bugs
+          temem.&ldquo;
         </span>
       </motion.div>
 

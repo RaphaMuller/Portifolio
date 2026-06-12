@@ -4,24 +4,20 @@ import { ComicProjectsGrid } from "@/app/components/ui/ComicProjects/comic-proje
 
 export default function ComicProjects() {
   return (
-    <section
-      id="projects"
-      className="comic-section flex-col bg-comic-skills"
-    >
-      <div className="flex flex-col max-w-7xl relative w-full px-4">
+    <section id="projects" className="comic-section flex-col bg-comic-skills">
+      <div className="relative flex w-full max-w-7xl flex-col px-4">
         {/* ChapterBadge */}
         <ActionBadge
           theme="blue"
           {...motionPresets.slideInRight}
-          className="text-title md:text-h2 lg:text-h1 py-2 text-center self-center sm:px-6 md:self-start mb-8"
+          className="mb-8 self-center py-2 text-center text-title sm:px-6 md:self-start md:text-h2 lg:text-h1"
         >
-            <h1>CAPÍTULO 3: AS MISSÕES</h1>  
+          <h1>CAPÍTULO 3: AS MISSÕES</h1>
         </ActionBadge>
 
         {/* ProjectsGrid */}
-        <ComicProjectsGrid/>
+        <ComicProjectsGrid />
       </div>
-  
     </section>
   );
 }

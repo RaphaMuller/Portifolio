@@ -19,12 +19,9 @@ export const ActionBadge = ({
   className,
   ...props
 }: ActionBadgeProps) => {
-
   return (
     <motion.div
-      className={`font-bangers tracking-bangers-wide  ${Themes[theme]} 
-      ${noPadding ? "p-0" : "px-4 py-2"} 
-      ${interactive ? interactiveClasses : ""} ${className ?? ""}`}
+      className={`font-bangers tracking-bangers-wide ${Themes[theme]} ${noPadding ? "p-0" : "px-4 py-2"} ${interactive ? interactiveClasses : ""} ${className ?? ""}`}
       {...props}
     >
       {children}

@@ -1,11 +1,15 @@
-import { 
-  SiJavascript, SiTypescript, SiTailwindcss, 
-  SiPostgresql, SiNextdotjs, SiKubernetes, 
+import {
+  SiJavascript,
+  SiTypescript,
+  SiTailwindcss,
+  SiPostgresql,
+  SiNextdotjs,
+  SiKubernetes,
   SiReact,
   SiNodedotjs,
   SiPython,
   SiGit,
-  SiDocker
+  SiDocker,
 } from "react-icons/si";
 
 export const beltItems = [
@@ -14,7 +18,7 @@ export const beltItems = [
     gadgetEmoji: "🪃",
     gadgetDesc: "Retorna sempre ao dono",
     tech: "JavaScript",
-    Icon: SiJavascript, 
+    Icon: SiJavascript,
     iconColor: "#F7DF1E",
     level: 5,
     category: "Linguagem",

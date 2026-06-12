@@ -11,7 +11,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="comic-section bg-comic-lightblue bg-comic-dots"
+      className="comic-section bg-comic-dots bg-comic-lightblue border-b-8 border-black"
     >
       {/* Stamps */}
       <ActionBadge
@@ -34,7 +34,7 @@ export default function HeroSection() {
       <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-8 px-4 py-12 md:flex-row">
         <ActionBadge noPadding {...motionPresets.slideInLeft}>
           <Image
-            src="/Eu.jpeg"
+            src="/Profile.jpeg"
             alt="Selfie"
             width={3840}
             height={2160}
@@ -49,16 +49,17 @@ export default function HeroSection() {
           </SpeechBubble>
 
           <ActionBadge theme="yellow" {...motionPresets.slideInRight}>
-            <h1 className=" leading-none md:text-h1 text-h2 ">
-              RAPHAEL MULLER
-            </h1>
-            <h3 className="mt-1 md:text-h3 text-h4 leading-none">
+            <h1 className="text-h2 leading-none md:text-h1">RAPHAEL MULLER</h1>
+            <h3 className="mt-1 text-h4 leading-none md:text-h3">
               DESENVOLVEDOR FULL-STACK
             </h3>
           </ActionBadge>
 
           {/* Actions */}
-          <motion.div className="flex flex-wrap gap-3" {...motionPresets.slideInRight}>
+          <motion.div
+            className="flex flex-wrap gap-3"
+            {...motionPresets.slideInRight}
+          >
             <ActionBadge theme="red" interactive className="text-h4">
               <button
                 onClick={() =>

@@ -3,9 +3,7 @@
 export function ComicFooter() {
   // Footer
   return (
-    <footer
-      className="border-t-4 border-comic-yellow bg-black py-8 text-white w-full"
-    >
+    <footer className="w-full border-t-4 border-comic-yellow bg-black py-8 text-white">
       <div className="mx-auto max-w-7xl px-4 text-center">
         <p className="mb-2 font-bangers text-2xl tracking-bangers-tight text-comic-yellow">
           FIM!
@@ -22,7 +20,9 @@ export function ComicFooter() {
               <button
                 key={href}
                 onClick={() =>
-                  document.querySelector(href)?.scrollIntoView({ behavior: "smooth" })
+                  document
+                    .querySelector(href)
+                    ?.scrollIntoView({ behavior: "smooth" })
                 }
                 className="h-2 w-2 rounded-full bg-comic-yellow transition-colors hover:bg-comic-red"
               />
