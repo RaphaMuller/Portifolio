@@ -74,7 +74,7 @@ export default function ComicCarrousel() {
         </div>
 
         {/* Carousel */}
-        <div className="border-x-4 border-black bg-comic-section-gradient px-2 py-2 sm:px-4 md:px-12 lg:px-16">
+        <div className="overflow-hidden border-x-4 border-black bg-comic-section-gradient px-2 py-2 sm:px-4 md:px-12 lg:px-16">
           <Slider {...settings}>
             {beltItems.map((item) => (
               <BeltPouch key={item.tech} item={item} />
