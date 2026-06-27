@@ -1,10 +1,9 @@
 "use client";
 
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 
 import { ActionBadge } from "../ActionBadge/ActionBadge";
 import BeltPouch from "./BeltPouch";
@@ -14,31 +13,32 @@ import { beltItems } from "@/app/constants/itemsCarousel";
 import { motionPresets } from "@/app/constants/motionPresets";
 
 export default function ComicCarrousel() {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    prevArrow: <PrevArrow />,
-    nextArrow: <NextArrow />,
-    dotsClass: "slick-dots !bottom-[-28px]",
-    responsive: [
-      { breakpoint: 1025, settings: { slidesToShow: 3 } },
-      { breakpoint: 768, settings: { slidesToShow: 2 } },
-      { breakpoint: 480, settings: { slidesToShow: 1 } },
-    ],
-    appendDots: (dots: React.ReactNode) => (
-      <div>
-        <ul className="mt-2 flex justify-center gap-2">{dots}</ul>
-      </div>
-    ),
-    customPaging: () => (
-      <div className="h-2 w-2 cursor-pointer rounded-full border border-gold bg-gold/40 transition-colors hover:bg-gold sm:h-3 sm:w-3" />
-    ),
-  };
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, align: "start" },
+    [Autoplay({ delay: 3000, stopOnInteraction: false })]
+  );
+  
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
+
+  const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
+  const scrollTo = useCallback((index: number) => emblaApi && emblaApi.scrollTo(index), [emblaApi]);
+
+  const onInit = useCallback((emblaApi: any) => {
+    setScrollSnaps(emblaApi.scrollSnapList());
+  }, []);
+
+  const onSelect = useCallback((emblaApi: any) => {
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, []);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onInit(emblaApi);
+    onSelect(emblaApi);
+    emblaApi.on("reInit", onInit).on("reInit", onSelect).on("select", onSelect);
+  }, [emblaApi, onInit, onSelect]);
 
   return (
     <ActionBadge
@@ -74,13 +74,36 @@ export default function ComicCarrousel() {
         </div>
 
         {/* Carousel */}
-        <div className="overflow-hidden border-x-4 border-black bg-comic-section-gradient px-2 py-2 sm:px-4 md:px-12 lg:px-16">
-          <Slider {...settings}>
-            {beltItems.map((item) => (
-              <BeltPouch key={item.tech} item={item} />
+        <div className="relative border-x-4 border-black bg-comic-section-gradient px-2 py-2 sm:px-4 md:px-12 lg:px-16">
+          <PrevArrow onClick={scrollPrev} />
+          <NextArrow onClick={scrollNext} />
+          
+          <div className="overflow-hidden" ref={emblaRef}>
+            <div className="flex touch-pan-y">
+              {beltItems.map((item) => (
+                <div 
+                  key={item.tech} 
+                  className="min-w-0 flex-[0_0_100%] sm:flex-[0_0_50%] md:flex-[0_0_33.33%] lg:flex-[0_0_25%]"
+                >
+                  <BeltPouch item={item} />
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          {/* Dots */}
+          <div className="mt-4 mb-2 flex justify-center gap-2">
+            {scrollSnaps.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => scrollTo(index)}
+                className={`h-2 w-2 cursor-pointer rounded-full border border-gold transition-colors sm:h-3 sm:w-3 ${
+                  index === selectedIndex ? "bg-gold" : "bg-gold/40 hover:bg-gold/80"
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
             ))}
-          </Slider>
-          <div className="h-10" />
+          </div>
         </div>
 
         {/* Strap */}
@@ -102,12 +125,6 @@ export default function ComicCarrousel() {
           temem.&ldquo;
         </span>
       </motion.div>
-
-      <style>{`
-        .slick-dots li.slick-active div {
-          background-color: var(--color-gold) !important;
-        }
-      `}</style>
     </ActionBadge>
   );
 }
