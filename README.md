@@ -1,36 +1,110 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfólio Pessoal — Raphael Muller
 
-## Getting Started
+Uma landing page de apresentação pessoal desenvolvida com **Next.js**, com o objetivo de centralizar minhas informações de perfil, habilidades técnicas e formas de contato de maneira simples e visualmente atrativa.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Motivação
+
+Este projeto nasceu do desejo de ter uma presença online autêntica que refletisse não apenas minhas habilidades técnicas, mas também a minha personalidade. As histórias em quadrinhos sempre foram uma fonte de inspiração para mim — a narrativa visual, os personagens marcantes e o estilo artístico único me acompanham até hoje. Por isso, toda a interface foi construída com uma **temática de HQs e estilo Batman**, transformando cada seção em um "capítulo" de uma história.
+
+---
+
+## Objetivo
+
+O propósito desta aplicação é ser uma **landing page estática e performática**, sem complexidade desnecessária. Ela serve como cartão de visitas digital, apresentando:
+
+- Minha identidade e trajetória como desenvolvedor.
+- Minhas principais tecnologias e habilidades (o "Cinto de Utilidades").
+- Projetos que desenvolvi.
+- Canais de contato direto.
+
+---
+
+## Tecnologias Utilizadas
+
+| Tecnologia | Função |
+|---|---|
+| [Next.js](https://nextjs.org/) | Framework principal (App Router, renderização estática) |
+| [TypeScript](https://www.typescriptlang.org/) | Tipagem estática para maior segurança no código |
+| [Tailwind CSS](https://tailwindcss.com/) | Estilização utilitária e responsiva |
+| [Framer Motion](https://www.framer.com/motion/) | Animações e transições de entrada |
+| [React Slick](https://react-slick.neostack.com/) | Carrossel de habilidades |
+| [React Icons](https://react-icons.github.io/react-icons/) / [Iconify](https://iconify.design/) | Ícones das tecnologias |
+| [Formspree](https://formspree.io/) | Envio de formulário de contato sem backend próprio |
+| [Vercel](https://vercel.com/) | Hospedagem e deploy contínuo |
+
+---
+
+## Estrutura do Projeto
+
+```
+app/
+├── components/        # Componentes reutilizáveis da interface
+│   └── ui/            # Componentes visuais (ActionBadge, Carrossel, Skyline, etc.)
+├── constants/         # Dados estáticos e imutáveis (projetos, skills, links, etc.)
+├── sections/          # Seções da landing page (Hero, About, Skills, Projects, Contact)
+│   └── hooks/         # Hooks customizados com lógica de formulário
+├── globals.css        # Estilos globais e tokens do design system
+├── layout.tsx         # Layout raiz da aplicação
+└── page.tsx           # Página principal
+public/                # Imagens e assets estáticos
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Seções da Landing Page
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Hero** — Apresentação inicial com nome, título e navegação rápida.
+2. **Capítulo 1: Origem** — Breve bio, foto do workspace e estatísticas.
+3. **Capítulo 2: O Arsenal Tecnológico** — Carrossel interativo com as tecnologias dominadas.
+4. **Capítulo 3: Missões Concluídas** — Cards dos projetos desenvolvidos.
+5. **Contato** — Formulário de contato e links para redes sociais.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Como Executar Localmente
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Pré-requisitos:** Node.js 18+ e npm.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+# 1. Clone o repositório
+git clone https://github.com/RaphaMuller/Portifolio.git
+cd Portifolio
 
-## Deploy on Vercel
+# 2. Instale as dependências
+npm install
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# 3. Configure as variáveis de ambiente
+# Crie um arquivo .env.local na raiz com:
+NEXT_PUBLIC_FORMSPREE_URL=https://formspree.io/f/SEU_ID_AQUI
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# 4. Inicie o servidor de desenvolvimento
+npm run dev
+```
+
+Acesse `http://localhost:3000` no seu navegador.
+
+---
+
+## Variáveis de Ambiente
+
+| Variável | Descrição |
+|---|---|
+| `NEXT_PUBLIC_FORMSPREE_URL` | URL do endpoint do Formspree para o formulário de contato |
+
+> **Nota:** O arquivo `.env.local` não é versionado (está no `.gitignore`). Em produção, configure esta variável diretamente no painel da Vercel em **Settings → Environment Variables**.
+
+---
+
+## Deploy
+
+O projeto está hospedado na **Vercel** com deploy contínuo configurado. Qualquer push para a branch `main` aciona automaticamente um novo build e deploy.
+
+URL de produção: [portifolio-sable-tau.vercel.app](https://portifolio-sable-tau.vercel.app)
+
+---
+
+## Licença
+
+Este projeto é de uso pessoal. O código pode ser consultado livremente como referência, mas não é destinado à redistribuição ou uso comercial.

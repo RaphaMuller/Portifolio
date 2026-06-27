@@ -13,9 +13,9 @@ export default function BeltPouch({
   const [flipped, setFlipped] = useState(false);
 
   return (
-    <div className="flex justify-center px-1 py-4 sm:px-2">
+    <div className="flex justify-center px-1 py-3 sm:py-4 sm:px-2">
       <motion.div
-        className="relative w-full max-w-[300px] cursor-pointer [perspective:1000px]"
+        className="relative w-full max-w-[280px] cursor-pointer [perspective:1000px]"
         onClick={() => setFlipped(!flipped)}
         whileHover={{ y: -6 }}
         transition={{ type: "spring", stiffness: 300 }}
@@ -23,7 +23,7 @@ export default function BeltPouch({
         <motion.div
           animate={{ rotateY: flipped ? 180 : 0 }}
           transition={{ duration: 0.6, ease: "easeInOut" }}
-          className="relative flex aspect-[300/400] w-full flex-col [transform-style:preserve-3d]"
+          className="relative flex aspect-square w-full flex-col [transform-style:preserve-3d] sm:aspect-[3/4]"
         >
           {/* PouchFront */}
           <ActionBadge
@@ -32,9 +32,11 @@ export default function BeltPouch({
             className="absolute inset-0 flex flex-col overflow-hidden bg-transparent bg-comic-gradient-pouch-front shadow-[4px_4px_0_0_#000] ring-1 ring-gold/15 [backface-visibility:hidden]"
           >
             {/* Flap */}
-            <div className="flex items-center justify-between border-b-4 border-black bg-gradient-to-r from-bronze via-gold to-bronze px-3 py-2">
-              <span className="text-sm font-bold">{item.category}</span>
-              <span className="text-base leading-none">🦇</span>
+            <div className="flex min-w-0 items-center justify-between border-b-4 border-black bg-gradient-to-r from-bronze via-gold to-bronze px-2 py-1.5 sm:px-3 sm:py-2">
+              <span className="truncate text-xs font-bold sm:text-sm">
+                {item.category}
+              </span>
+              <span className="ml-1 shrink-0 text-base leading-none">🦇</span>
             </div>
 
             {/* Body */}
