@@ -23,7 +23,7 @@ export default function BeltPouch({
         <motion.div
           animate={{ rotateY: flipped ? 180 : 0 }}
           transition={{ duration: 0.6, ease: "easeInOut" }}
-          className="relative flex aspect-[300/400] w-full flex-col [transform-style:preserve-3d]"
+          className="relative flex h-[380px] sm:h-[400px] lg:h-[420px] w-full flex-col [transform-style:preserve-3d]"
         >
           {/* PouchFront */}
           <ActionBadge
