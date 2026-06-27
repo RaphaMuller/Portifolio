@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const FORMSPREE_URL = "https://formspree.io/f/mlgynrba";
+const FORMSPREE_URL = process.env.NEXT_PUBLIC_FORMSPREE_URL || "https://formspree.io/f/mlgynrba";
 
 export function useContactForm() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
