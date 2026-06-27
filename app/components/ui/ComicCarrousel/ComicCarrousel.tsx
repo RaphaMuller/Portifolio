@@ -24,19 +24,19 @@ export default function ComicCarrousel() {
     autoplaySpeed: 3000,
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
-    dotsClass: "slick-dots !bottom-[-32px]",
+    dotsClass: "slick-dots !bottom-[-28px]",
     responsive: [
-      { breakpoint: 1025, settings: { slidesToShow: 3, slidesToScroll: 1 } },
-      { breakpoint: 768, settings: { slidesToShow: 2, slidesToScroll: 1 } },
-      { breakpoint: 560, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "40px" } },
+      { breakpoint: 1025, settings: { slidesToShow: 3 } },
+      { breakpoint: 768, settings: { slidesToShow: 2 } },
+      { breakpoint: 480, settings: { slidesToShow: 1 } },
     ],
     appendDots: (dots: React.ReactNode) => (
       <div>
-        <ul className="mt-2 flex flex-wrap justify-center gap-1 sm:gap-2">{dots}</ul>
+        <ul className="mt-2 flex justify-center gap-2">{dots}</ul>
       </div>
     ),
     customPaging: () => (
-      <div className="h-1.5 w-1.5 cursor-pointer rounded-full border border-gold bg-gold/40 transition-colors hover:bg-gold sm:h-2 sm:w-2" />
+      <div className="h-2 w-2 cursor-pointer rounded-full border border-gold bg-gold/40 transition-colors hover:bg-gold sm:h-3 sm:w-3" />
     ),
   };
 
@@ -74,13 +74,13 @@ export default function ComicCarrousel() {
         </div>
 
         {/* Carousel */}
-        <div className="overflow-hidden border-x-4 border-black bg-comic-section-gradient px-2 py-2 sm:px-4 md:px-12 lg:px-16">
+        <div className="border-x-4 border-black bg-comic-section-gradient px-2 py-2 sm:px-4 md:px-12 lg:px-16">
           <Slider {...settings}>
             {beltItems.map((item) => (
               <BeltPouch key={item.tech} item={item} />
             ))}
           </Slider>
-          <div className="h-12" />
+          <div className="h-10" />
         </div>
 
         {/* Strap */}
