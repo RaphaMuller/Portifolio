@@ -1,6 +1,5 @@
-import { Project } from "@/app/components/ui/ComicProjects/project";
 
-export const projects: Project[] = [
+export const projects = [
   {
     id: 1,
     title: "SUPER SHOP",

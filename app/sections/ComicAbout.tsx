@@ -30,7 +30,7 @@ export default function AboutSection() {
               alt="Workspace de desenvolvimento"
               width={1920}
               height={1080}
-              className="h-full w-full object-cover"
+              className="h-auto max-h-[30vh] w-full object-cover md:max-h-[50vh]"
             />
           </ActionBadge>
 

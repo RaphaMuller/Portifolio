@@ -1,25 +1,16 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { SiGit } from "react-icons/si";
-import { FaLinkedin } from "react-icons/fa";
-import { Mail, Send } from "lucide-react";
+import { Send } from "lucide-react";
 import { ActionBadge } from "@/app/components/ui/ActionBadge/ActionBadge";
 import { SpeechBubble } from "@/app/components/ui/SpeechBubble";
 import BuildingSkyline from "@/app/components/ui/ComicSkyline/buildingSkyline";
 import { motionPresets } from "@/app/constants/motionPresets";
+import { useContactForm } from "@/app/sections/hooks/useContactForm";
+import { contactLinks } from "@/app/constants/contactLinks";
 
 export function ComicContact() {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [sent, setSent] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSent(true);
-    setTimeout(() => setSent(false), 4000);
-    setForm({ name: "", email: "", message: "" });
-  };
+  const { form, setForm, sent, loading, error, handleSubmit } = useContactForm();
 
   return (
     <section
@@ -27,7 +18,6 @@ export function ComicContact() {
       className="comic-section flex-col bg-comic-contact-gradient px-4"
     >
       <div className="relative z-10 flex w-full max-w-7xl flex-col px-4">
-        {/* ChapterBadge */}
         <ActionBadge
           theme="contactTitle"
           {...motionPresets.slideInRight}
@@ -37,9 +27,8 @@ export function ComicContact() {
         </ActionBadge>
 
         <div className="grid w-full grid-cols-1 items-start gap-8 md:grid-cols-2">
-          {/* InfoPanel */}
+          {/* ── Coluna esquerda: info + links ── */}
           <div className="flex flex-col gap-5">
-            {/* SpeechBubble */}
             <SpeechBubble tailPosition="bottom" animateOnScroll delay={0.1}>
               <h3 className="mb-2 text-h4 font-bangers tracking-wide text-comic-red">
                 PRECISA DE UM HERÓI?
@@ -50,31 +39,11 @@ export function ComicContact() {
               </p>
             </SpeechBubble>
 
-            {/* SocialLinks */}
             <motion.div
               className="flex flex-col gap-3"
               {...motionPresets.slideInLeft}
             >
-              {[
-                {
-                  icon: Mail,
-                  label: "raphaelmuller61@gmail.com",
-                  href: "mailto:raphaelmuller61@gmail.com",
-                  theme: "white" as const,
-                },
-                {
-                  icon: SiGit,
-                  label: "github.com/RaphaelMuller",
-                  href: "https://github.com/RaphaMuller",
-                  theme: "white" as const,
-                },
-                {
-                  icon: FaLinkedin,
-                  label: "linkedin.com/in/RaphaelMuller",
-                  href: "https://www.linkedin.com/in/raphael-muller-9b5477227/",
-                  theme: "lightBlue" as const,
-                },
-              ].map((item) => (
+              {contactLinks.map((item) => (
                 <ActionBadge
                   key={item.label}
                   theme={item.theme}
@@ -96,7 +65,7 @@ export function ComicContact() {
             </motion.div>
           </div>
 
-          {/* ContactForm */}
+          {/* ── Coluna direita: formulário ── */}
           <motion.div
             {...motionPresets.slideInRight}
             className="bg-comic-dots relative z-10 border-4 border-black bg-white/60 p-6 shadow-[8px_8px_0_0_#000]"
@@ -174,18 +143,24 @@ export function ComicContact() {
                 >
                   <button
                     type="submit"
-                    className="text-md flex w-full cursor-pointer items-center justify-center gap-2 py-2 font-bangers tracking-wider sm:py-3 sm:text-xl"
+                    disabled={loading}
+                    className="text-md flex w-full cursor-pointer items-center justify-center gap-2 py-2 font-bangers tracking-wider sm:py-3 sm:text-xl disabled:opacity-50"
                   >
-                    <Send size={18} /> LANÇAR MENSAGEM!
+                    <Send size={18} /> {loading ? "ENVIANDO..." : "LANÇAR MENSAGEM!"}
                   </button>
                 </ActionBadge>
+
+                {error && (
+                  <p className="mt-2 text-center font-comic text-sm text-red-600 font-bold">
+                    💥 Ocorreu um erro! Verifique a URL do Formspree.
+                  </p>
+                )}
               </form>
             )}
           </motion.div>
         </div>
       </div>
 
-      {/* Skyline */}
       <BuildingSkyline position="absolute" theme="dark" />
     </section>
   );
