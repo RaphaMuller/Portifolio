@@ -1,5 +1,5 @@
 "use client";
-import { ActionBadge } from "../ActionBadge/ActionBadge";
+import { ActionBadge } from "@/app/components/ui/global/ActionBadge/ActionBadge";
 
 export default function PrevArrow({ onClick }: { onClick?: () => void }) {
   return (

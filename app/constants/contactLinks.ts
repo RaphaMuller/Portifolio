@@ -1,7 +1,7 @@
 import { SiGit } from "react-icons/si";
 import { FaLinkedin } from "react-icons/fa";
 import { Mail } from "lucide-react";
-import type { ThemePreset } from "@/app/components/ui/ActionBadge/actionBadgeTheme";
+import type { ThemePreset } from "@/app/components/ui/global/ActionBadge/actionBadgeTheme";
 
 export interface ContactLink {
   icon: React.ElementType;

@@ -1,7 +1,7 @@
 "use client";
 
-import { BuildingConfig, BuildingTheme } from "./building";
-import { themeClasses } from "../../../constants/themesSkylines";
+import type { BuildingConfig, BuildingTheme } from "@/app/types/building";
+import { themeClasses } from "@/app/constants/themesSkylines";
 
 interface ComicBuildingProps {
   config: BuildingConfig;
@@ -38,7 +38,7 @@ export function ComicBuilding({ config, theme }: ComicBuildingProps) {
 
       {/* Shadow */}
       <div
-        className={`absolute -top-2 -left-4 w-4 skew-y-[45deg] rounded-t-md border-4 border-black ${currentTheme.shadow}`}
+        className={`absolute -top-1 -left-4 w-6 skew-y-[45deg] rounded-t-lg border-2 border-black ${currentTheme.shadow}`}
         style={{ height: `${height * 5}px` }}
       />
 

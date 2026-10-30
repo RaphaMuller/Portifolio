@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
 
 interface SpeechBubbleProps {
@@ -7,14 +8,22 @@ interface SpeechBubbleProps {
   delay?: number;
   tailPosition?: "top" | "bottom";
   animateOnScroll?: boolean;
+  className?: string;
 }
 
-export const SpeechBubble = ({
+/**
+ * @example
+ * <SpeechBubble tailPosition="bottom" animateOnScroll>
+ *   <p>Olá, herói!</p>
+ * </SpeechBubble>
+ */
+export function SpeechBubble({
   children,
   delay = 0.3,
   tailPosition = "bottom",
   animateOnScroll = false,
-}: SpeechBubbleProps) => {
+  className = "",
+}: SpeechBubbleProps) {
   const animationProps = animateOnScroll
     ? {
         initial: { scale: 0.8, opacity: 0 },
@@ -27,7 +36,7 @@ export const SpeechBubble = ({
     <motion.div
       {...animationProps}
       transition={{ type: "spring", stiffness: 200, delay }}
-      className="relative mb-2 border-4 border-black bg-white p-6 shadow-[6px_6px_0_0_#000]"
+      className={`relative mb-2 border-4 border-black bg-white p-4 sm:p-6 shadow-comic ${className}`}
     >
       {/* TailBottom */}
       {tailPosition === "bottom" && (
@@ -48,4 +57,4 @@ export const SpeechBubble = ({
       <div className="leading-tight font-medium text-black">{children}</div>
     </motion.div>
   );
-};
+}
