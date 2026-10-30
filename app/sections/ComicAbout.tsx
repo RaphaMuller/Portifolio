@@ -1,83 +1,105 @@
 "use client";
-import Image from "next/image";
-import { ActionBadge } from "@/app/components/ui/ActionBadge/ActionBadge";
-import { SpeechBubble } from "@/app/components/ui/SpeechBubble";
-import { heroStats, aboutData } from "@/app/constants/aboutData";
-import { motionPresets } from "../constants/motionPresets";
 
-export default function AboutSection() {
+import Image from "next/image";
+import { Sparkles } from "lucide-react";
+import { ComicSectionContainer } from "@/app/components/ui/global/ComicSection/ComicSectionContainer";
+import { ActionBadge } from "@/app/components/ui/global/ActionBadge/ActionBadge";
+import { ComicPanel } from "@/app/components/ui/global/ComicPanel/ComicPanel";
+import { SpeechBubble } from "@/app/components/ui/global/SpeechBubble/SpeechBubble";
+import { HeroPowerMeter } from "@/app/components/ui/about/HeroPowerMeter";
+import { aboutData } from "@/app/constants/aboutData";
+import { motionPresets } from "@/app/constants/motionPresets";
+
+export default function ComicAbout() {
   return (
-    <section id="about" className="comic-section bg-comic-dots bg-comic-yellow">
-      <div className="flex max-w-7xl flex-col px-4">
+    <ComicSectionContainer
+      id="about"
+      variant="yellow"
+      ariaLabel="Capítulo 1: Origem"
+      className="items-center justify-center"
+    >
+      <div className="relative z-10 flex w-full max-w-6xl flex-col">
         {/* ChapterBadge */}
         <ActionBadge
           theme="dark"
           {...motionPresets.slideInRight}
-          className="mb-8 self-center py-2 text-center text-title sm:px-6 md:self-start md:text-h2 lg:text-h1"
+          className="mb-8 self-center py-2 text-center text-h2 sm:px-6 md:self-start lg:text-h1"
         >
-          <h1>CAPÍTULO 1: ORIGEM</h1>
+          <h1>{aboutData.caption}</h1>
         </ActionBadge>
 
-        {/* ContentGrid */}
-        <div className="grid grid-cols-1 items-center gap-4 md:grid-cols-2 md:gap-6">
-          {/* ImagePanel */}
-          <ActionBadge noPadding theme="yellow" {...motionPresets.slideInLeft}>
-            <h2 className="bg-comic-blue py-1 px-2 text-white text-center ">
-              No quartel-general do desenvolvimento...
-            </h2>
-            <Image
-              src="/Setup_v2.png"
-              alt="Workspace de desenvolvimento"
-              width={1920}
-              height={1080}
-              className="h-auto max-h-[30vh] w-full object-cover md:max-h-[50vh]"
-            />
-          </ActionBadge>
-
-          {/* BioCards */}
-          <div className="flex flex-col gap-4">
-            {/* IdentityCard */}
-            <ActionBadge theme="white" {...motionPresets.slideInRight}>
-              <div className="mb-2 px-2 py-1">
-                <h3 className="mb-1 border-b-2 text-title text-comic-red md:text-h4">
-                  IDENTIDADE SECRETA
-                </h3>
-                <p className="text-description">{aboutData.description}</p>
+        {/* Layout: flex-col em mobile e tablet (< 1024px), grid 60/40 no desktop (lg: >= 1024px) */}
+        <div className="flex flex-col gap-6 lg:grid lg:grid-cols-5 lg:gap-6 lg:items-start">
+          {/* ── Bloco Esquerda (Desktop: 60% / 3 cols) ── */}
+          <div className="flex flex-col gap-6 lg:col-span-3">
+            {/* Quadro 1: Setup QG */}
+            <ComicPanel
+              caption={aboutData.hqTitle}
+              captionTheme="blue"
+              {...motionPresets.slideInLeft}
+            >
+              <div className="relative overflow-hidden border-2 border-black bg-black">
+                <Image
+                  src="/Setup_v2.png"
+                  alt="Workspace de desenvolvimento do herói"
+                  width={1920}
+                  height={1080}
+                  className="aspect-video w-full object-cover max-h-80 md:max-h-96"
+                  priority
+                />
+                <div className="absolute right-2 bottom-2 sm:right-3 sm:bottom-3">
+                  <span className="inline-flex items-center gap-1.5 border-2 border-black bg-comic-yellow px-2 py-0.5 text-stat-label text-black shadow-comic-sm">
+                    <Sparkles size={14} className="text-comic-red" />
+                    {aboutData.hqBadge}
+                  </span>
+                </div>
               </div>
-            </ActionBadge>
-
-            {/* StatsCard */}
-            <ActionBadge theme="blue" {...motionPresets.slideInRight}>
-              <div className="mb-4 flex justify-center">
-                <ActionBadge theme="yellow">
-                  <h3 className="text-title md:text-h3">
-                    ESTATÍSTICAS DO HERÓI
-                  </h3>
-                </ActionBadge>
-              </div>
-              <div className="grid grid-cols-3 gap-4">
-                {heroStats.map((stat) => (
-                  <ActionBadge key={stat.label} theme="yellow" noPadding>
-                    <div className="flex flex-col items-center justify-center px-1 py-2">
-                      <p className="text-h4 md:text-h3">{stat.value}</p>
-                      <p className="text-stat-label">{stat.label}</p>
-                    </div>
-                  </ActionBadge>
-                ))}
-              </div>
-            </ActionBadge>
-
-            {/* QuoteBubble */}
-            <SpeechBubble tailPosition="top" animateOnScroll delay={0.3}>
-              <p className="text-caption">
-                &ldquo;Com grandes poderes vêm grandes responsabilidades... e
-                muito café!&rdquo;
+              <p className="mt-2 text-caption text-zinc-700">
+                {aboutData.hqCaption}
               </p>
-              <p className="text-caption">— Raphael Muller</p>
+            </ComicPanel>
+
+            {/* Quadro 2: SpeechBubble */}
+            <SpeechBubble tailPosition="top" animateOnScroll delay={0.2}>
+              <p className="text-description md:text-body leading-snug text-zinc-900">
+                &ldquo;{aboutData.quote}&rdquo;
+              </p>
+              <p className="mt-2 text-right text-stat-label text-comic-red">
+                — {aboutData.author}
+              </p>
             </SpeechBubble>
+          </div>
+
+          {/* ── Bloco Direita (Desktop: 40% / 2 cols) ── */}
+          <div className="flex flex-col gap-6 lg:col-span-2">
+            {/* Quadro 3: Arquivo Confidencial / Lore */}
+            <ComicPanel
+              caption="ARQUIVO CONFIDENCIAL"
+              captionTheme="red"
+              className="flex flex-col justify-between"
+              {...motionPresets.slideInRight}
+            >
+              <div>
+                <h2 className="mb-2 text-h4 lg:text-h3 text-comic-red">
+                  {aboutData.loreTitle}
+                </h2>
+                <p className="font-mouse text-base md:text-lg lg:text-base xl:text-lg leading-relaxed tracking-wide text-zinc-900">
+                  {aboutData.loreText}
+                </p>
+              </div>
+            </ComicPanel>
+
+            {/* Quadro 4: Medidor de Poder */}
+            <ComicPanel
+              caption={aboutData.meterTitle}
+              captionTheme="dark"
+              {...motionPresets.slideInRight}
+            >
+              <HeroPowerMeter />
+            </ComicPanel>
           </div>
         </div>
       </div>
-    </section>
+    </ComicSectionContainer>
   );
 }

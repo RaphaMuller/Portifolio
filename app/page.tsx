@@ -1,6 +1,6 @@
 import ComicHero from "@/app/sections/ComicHero";
 import ComicAbout from "@/app/sections/ComicAbout";
-import Navbar from "@/app/components/navbar";
+import Navbar from "@/app/components/Navbar";
 import ComicSkills from "@/app/sections/ComicSkills";
 import ComicProjects from "@/app/sections/ComicProjects";
 import { ComicFooter } from "@/app/sections/ComicFooter";

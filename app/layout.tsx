@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Bangers, Comic_Neue, Bebas_Neue } from "next/font/google";
+import { Bangers, Comic_Neue, Bebas_Neue, Mouse_Memoirs } from "next/font/google";
 import "./globals.css";
 
 const bangers = Bangers({
@@ -23,6 +23,13 @@ const comicNeue = Comic_Neue({
   display: "swap",
 });
 
+const mouseMemoirs = Mouse_Memoirs({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-mouse-memoirs",
+  display: "swap",
+});
+
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
@@ -42,7 +49,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${bangers.variable} ${comicNeue.variable} ${bebasNeue.variable} h-full antialiased`}
+      className={`${bangers.variable} ${comicNeue.variable} ${bebasNeue.variable} ${mouseMemoirs.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col font-comic">{children}</body>
     </html>

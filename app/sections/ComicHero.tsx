@@ -1,94 +1,96 @@
 "use client";
 
-import { ActionBadge } from "@/app/components/ui/ActionBadge/ActionBadge";
-import { SpeechBubble } from "@/app/components/ui/SpeechBubble";
-import Image from "next/image";
-import { motionPresets } from "@/app/constants/motionPresets";
-import BuildingSkyline from "@/app/components/ui/ComicSkyline/buildingSkyline";
-import { motion } from "framer-motion";
+import { ComicSectionContainer } from "@/app/components/ui/global/ComicSection/ComicSectionContainer";
+import { ComicAvatar } from "@/app/components/ui/hero/ComicAvatar/ComicAvatar";
+import { ComicHeroIdentity } from "@/app/components/ui/hero/ComicHeroIntro/ComicHeroIdentity";
+import { ComicHeroSpeech } from "@/app/components/ui/hero/ComicHeroIntro/ComicHeroSpeech";
+import BuildingSkyline from "@/app/components/ui/hero/ComicSkyline/BuildingSkyline";
+import { ComicRoad } from "@/app/components/ui/hero/ComicRoad/ComicRoad";
+import { ComicPalmTree } from "@/app/components/ui/hero/ComicFoliage/ComicPalmTree";
 
-export default function HeroSection() {
+export default function ComicHero() {
   return (
-    <section
+    <ComicSectionContainer
       id="hero"
-      className="comic-section bg-comic-dots bg-comic-lightblue border-b-8 border-black"
+      variant="dots"
+      noPaddingX
+      ariaLabel="Apresentação Principal"
+      className="relative flex min-h-[100dvh] flex-col justify-between overflow-hidden pt-16 sm:pt-20 pb-0"
     >
-      {/* Stamps */}
-      <ActionBadge
-        theme="red"
-        {...motionPresets.stamp}
-        className="absolute top-24 right-12 rotate-16 text-h2 md:right-20 lg:top-32 lg:right-24"
-      >
-        ZAP!
-      </ActionBadge>
-
-      <ActionBadge
-        theme="yellow"
-        {...motionPresets.stamp}
-        className="absolute top-24 left-12 -rotate-16 text-h2 md:left-20 lg:top-32 lg:left-24"
-      >
-        POW!
-      </ActionBadge>
-
-      {/* ProfileBody */}
-      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-8 px-4 py-12 md:flex-row">
-        <ActionBadge noPadding {...motionPresets.slideInLeft}>
-          <Image
-            src="/Profile.jpeg"
-            alt="Selfie"
-            width={3840}
-            height={2160}
-            className="h-48 w-48 object-cover md:h-64 md:w-64"
+      {/* Camada Superior: Conteúdo Centralizado no Céu (seguro acima da linha de prédios) */}
+      <div className="relative z-30 mx-auto my-auto flex w-full max-w-6xl flex-1 flex-col items-center justify-center gap-4 sm:gap-6 lg:flex-row lg:items-center lg:justify-center lg:gap-10 xl:gap-16 px-4 pt-4 pb-40 sm:pb-44 md:pb-48 lg:pb-40 xl:pb-44">
+        {/* Coluna da Esquerda: Foto (t=1.25s) + Nome (t=1.45s) + Cargo (t=1.70s) */}
+        <div className="flex flex-col items-center gap-2 sm:gap-3 select-none">
+          <ComicAvatar
+            realImageSrc="/Profile.jpeg"
+            cartoonImageSrc="/Profile-cartoon.jpg"
+            autoSwitchDelay={2600}
           />
-        </ActionBadge>
+          <ComicHeroIdentity
+            name="RAPHAEL MULLER"
+            role="FULL-STACK DEVELOPER"
+          />
+        </div>
 
-        <div className="flex flex-1 flex-col gap-4">
-          <SpeechBubble>
-            Olá, mundo! Sou um desenvolvedor criativo pronto para salvar o dia
-            com código!
-          </SpeechBubble>
-
-          <ActionBadge theme="yellow" {...motionPresets.slideInRight}>
-            <h1 className="text-h2 leading-none md:text-h1">RAPHAEL MULLER</h1>
-            <h3 className="mt-1 text-h4 leading-none md:text-h3">
-              DESENVOLVEDOR FULL-STACK
-            </h3>
-          </ActionBadge>
-
-          {/* Actions */}
-          <motion.div
-            className="flex flex-wrap gap-3"
-            {...motionPresets.slideInRight}
-          >
-            <ActionBadge theme="red" interactive className="text-h4">
-              <button
-                onClick={() =>
-                  document
-                    .querySelector("#projects")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-              >
-                VER PROJETOS!
-              </button>
-            </ActionBadge>
-
-            <ActionBadge theme="white" interactive className="text-h4">
-              <button
-                onClick={() =>
-                  document
-                    .querySelector("#contact")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-              >
-                CONTATO
-              </button>
-            </ActionBadge>
-          </motion.div>
+        {/* Coluna da Direita: Balãozinho saindo da foto (t=1.95s) + Botões (t=2.25s) */}
+        <div className="flex flex-col items-center gap-3 sm:gap-4 select-none lg:items-start">
+          <ComicHeroSpeech />
         </div>
       </div>
 
-      {/* Skyline */}
-      <BuildingSkyline position="absolute" theme="default" />
-    </section>
+      {/* Camada da Base: Prédios Contíguos 100%, Vegetação Comic e Estrada */}
+      <div className="relative z-10 w-full select-none">
+        {/* 3. Prédios ancorados cobrindo 100% da tela como silhueta contida */}
+        <div className="absolute bottom-12 left-0 right-0 z-10 flex w-full justify-center">
+          <BuildingSkyline
+            count="full"
+            align="center"
+            theme="default"
+            className="shrink-0 origin-bottom"
+          />
+        </div>
+
+        {/* 4. Camada Cênica: Coqueiros brotando da calçada (t = 0.85s) sob o meio-fio */}
+        <div className="pointer-events-none absolute bottom-[52px] left-0 z-[15] h-0 w-full overflow-visible">
+          {/* 1. Coqueiro Oeste (visível em todos os tamanhos) */}
+          <div className="absolute bottom-0 left-[4%] sm:left-[5%]">
+            <ComicPalmTree height={65} swayDelay={0} entranceDelay={0.85} />
+          </div>
+
+          {/* 2. Coqueiro Oeste médio (oculto em mobile pequeno) */}
+          <div className="absolute bottom-0 left-[18%] sm:left-[20%] hidden md:block">
+            <ComicPalmTree height={85} flipped swayDelay={1.2} entranceDelay={0.92} />
+          </div>
+
+          {/* 3. Coqueiro Centro-Oeste (oculto em mobile pequeno) */}
+          <div className="absolute bottom-0 left-[33%] sm:left-[35%] hidden sm:block">
+            <ComicPalmTree height={75} swayDelay={2.1} entranceDelay={0.98} />
+          </div>
+
+          {/* 4. Coqueiro Central (visível em todos os tamanhos) */}
+          <div className="absolute bottom-0 left-[48%] sm:left-[50%]">
+            <ComicPalmTree height={85} flipped swayDelay={0.7} entranceDelay={1.04} />
+          </div>
+
+          {/* 5. Coqueiro Centro-Leste (oculto em mobile pequeno) */}
+          <div className="absolute bottom-0 left-[64%] sm:left-[66%] hidden sm:block">
+            <ComicPalmTree height={75} swayDelay={1.8} entranceDelay={1.1} />
+          </div>
+
+          {/* 6. Coqueiro Leste médio (oculto em mobile pequeno) */}
+          <div className="absolute bottom-0 left-[80%] sm:left-[82%] hidden md:block">
+            <ComicPalmTree height={90} flipped swayDelay={2.5} entranceDelay={1.16} />
+          </div>
+
+          {/* 7. Coqueiro Leste extremo (visível em todos os tamanhos) */}
+          <div className="absolute right-3 bottom-0 sm:right-6">
+            <ComicPalmTree height={65} swayDelay={0.4} entranceDelay={1.22} />
+          </div>
+        </div>
+
+        {/* 2. Estrada Comic desenrolando (t = 0.30s) com meio-fio e micro-carros (t = 1.10s) */}
+        <ComicRoad className="relative z-20 w-full" showCurb stripeColor="yellow" height="h-12" />
+      </div>
+    </ComicSectionContainer>
   );
 }

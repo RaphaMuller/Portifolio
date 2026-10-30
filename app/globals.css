@@ -26,6 +26,7 @@
   --font-bangers: var(--font-bangers), cursive;
   --font-comic: var(--font-comic-neue), cursive;
   --font-bebas: var(--font-bebas-neue), sans-serif;
+  --font-mouse: var(--font-mouse-memoirs), cursive;
   --tracking-comic: 0.08em;
   --tracking-bangers-tight: 0.06em;
   --tracking-bangers-wide: 0.08em;
@@ -168,6 +169,71 @@
   line-height: 1;
   font-size: clamp(0.7rem, 2vw, 0.9rem);
 }
+
+@utility shadow-comic-sm {
+  box-shadow: 2px 2px 0 0 #000;
+}
+
+@utility shadow-comic {
+  box-shadow: 6px 6px 0 0 #000;
+}
+
+@utility shadow-comic-lg {
+  box-shadow: 8px 8px 0 0 #000;
+}
+
+@utility aspect-manga {
+  aspect-ratio: 900 / 952;
+}
+
+@utility manga-panel-hero {
+  position: absolute;
+  top: 3.5%;
+  left: 3.5%;
+  width: 93%;
+  height: 38%;
+}
+
+@utility manga-panel-dossier {
+  position: absolute;
+  top: 43.5%;
+  left: 3.5%;
+  width: 93%;
+  height: 21.5%;
+}
+
+@utility manga-panel-execution {
+  position: absolute;
+  top: 66.5%;
+  left: 3.5%;
+  width: 34%;
+  height: 29%;
+}
+
+@utility manga-panel-arsenal {
+  position: absolute;
+  top: 66.5%;
+  left: 45%;
+  width: 51.5%;
+  height: 29%;
+}
+
+@utility perspective-1000 {
+  perspective: 1000px;
+}
+
+@utility transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+@utility backface-hidden {
+  backface-visibility: hidden;
+}
+
+@utility rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
 
 @layer utilities {
   .bg-comic-dots {
