@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Bangers, Comic_Neue, Bebas_Neue, Mouse_Memoirs } from "next/font/google";
+import { Audiowide, Bangers, Comic_Neue, Bebas_Neue, Mouse_Memoirs } from "next/font/google";
 import "./globals.css";
 
 const bangers = Bangers({
@@ -30,6 +30,13 @@ const mouseMemoirs = Mouse_Memoirs({
   display: "swap",
 });
 
+const audiowide = Audiowide({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-audiowide-next",
+  display: "swap",
+});
+
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
@@ -39,6 +46,11 @@ export const metadata: Metadata = {
   title: "Portfólio | Desenvolvedor",
   description:
     "Portfólio de desenvolvimento em formato de história em quadrinhos",
+  icons: {
+    icon: "/logo-r.jpg",
+    shortcut: "/logo-r.jpg",
+    apple: "/logo-r.jpg",
+  },
 };
 
 export default function RootLayout({
@@ -49,7 +61,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${bangers.variable} ${comicNeue.variable} ${bebasNeue.variable} ${mouseMemoirs.variable} h-full antialiased`}
+      className={`${bangers.variable} ${comicNeue.variable} ${bebasNeue.variable} ${mouseMemoirs.variable} ${audiowide.variable} h-full antialiased scroll-smooth`}
     >
       <body className="flex min-h-full flex-col font-comic">{children}</body>
     </html>

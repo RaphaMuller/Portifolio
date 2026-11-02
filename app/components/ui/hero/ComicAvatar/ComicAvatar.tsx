@@ -71,8 +71,8 @@ export function ComicAvatar({
           {isCartoon ? "TOON!" : "REAL!"}
         </motion.div>
 
-        {/* Container da Imagem Circular com Borda de Quadrinho */}
-        <div className="relative h-full w-full overflow-hidden rounded-full border-3 sm:border-4 border-black bg-white shadow-[5px_5px_0_0_#000] sm:shadow-[7px_7px_0_0_#000] transition-transform duration-300 group-hover:scale-105 active:scale-95">
+        {/* Container da Imagem Circular com Borda Lunar Branca e Contorno Comic */}
+        <div className="relative h-full w-full overflow-hidden rounded-full border-4 sm:border-[5px] border-white ring-4 ring-black bg-white shadow-[0_0_25px_rgba(255,255,255,0.45),_5px_5px_0_0_#000] sm:shadow-[0_0_30px_rgba(255,255,255,0.5),_7px_7px_0_0_#000] transition-transform duration-300 group-hover:scale-105 active:scale-95">
           <AnimatePresence mode="wait">
             {isCartoon ? (
               <motion.div

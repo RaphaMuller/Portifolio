@@ -6,27 +6,54 @@ import { heroStats } from "@/app/constants/aboutData";
 
 interface HeroPowerMeterProps {
   className?: string;
+  compact?: boolean;
+  direction?: "row" | "column";
 }
 
 /**
  * @example
- * <HeroPowerMeter />
+ * <HeroPowerMeter compact direction="column" />
  */
-export function HeroPowerMeter({ className = "" }: HeroPowerMeterProps) {
+export function HeroPowerMeter({
+  className = "",
+  compact = false,
+  direction = "row",
+}: HeroPowerMeterProps) {
+  const containerLayout =
+    direction === "column"
+      ? "flex flex-col items-center justify-center gap-2 w-full"
+      : "grid grid-cols-2 gap-2 sm:gap-2.5 w-full";
+
   return (
-    <div className={`grid grid-cols-2 gap-2 sm:gap-3 ${className}`}>
+    <div className={`${containerLayout} ${className}`}>
       {heroStats.map((stat) => (
         <ActionBadge
           key={stat.label}
           theme="yellow"
           noPadding
-          className="w-full"
+          className="w-full flex-1 flex items-center justify-center"
         >
-          <div className="flex flex-col items-center justify-center p-2 text-center sm:p-3">
-            <span className="text-h3 leading-none text-black md:text-h2">
+          <div
+            className={`flex w-full flex-col items-center justify-center text-center ${
+              compact ? "py-2 sm:py-2.5 px-2" : "p-2 sm:p-3"
+            }`}
+          >
+            <span
+              className={`leading-none text-black ${
+                compact
+                  ? "text-xl sm:text-2xl font-bangers"
+                  : "text-h3 md:text-h2"
+              }`}
+            >
               {stat.value}
             </span>
-            <span className="mt-1 text-stat-label text-zinc-900">
+            <span
+              className={`text-zinc-900 ${
+                compact
+                  ? "text-[10px] sm:text-xs font-bangers tracking-bangers-wide"
+                  : "mt-1 text-stat-label"
+              }`}
+            >
               {stat.label}
             </span>
           </div>

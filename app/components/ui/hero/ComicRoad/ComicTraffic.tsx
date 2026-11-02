@@ -2,6 +2,8 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { ComicCarBurst } from "@/app/components/ui/hero/ComicRoad/ComicCarBurst";
+import { heroCopy } from "@/app/constants/heroCopy";
 
 interface PixelCarProps {
   color: string;
@@ -30,7 +32,7 @@ function PixelCar({
         repeat: Infinity,
         ease: "linear",
       }}
-      className="pointer-events-none absolute z-10 flex select-none flex-col items-center"
+      className="group pointer-events-auto absolute z-10 flex select-none flex-col items-center p-3"
     >
       {/* Carroçaria em Pixel com Contorno Comic */}
       <div
@@ -64,6 +66,8 @@ function PixelCar({
         <div className="h-0.5 w-1.5 bg-black" />
         <div className="h-0.5 w-1.5 bg-black" />
       </div>
+
+      <ComicCarBurst label={heroCopy.carBurst} />
     </motion.div>
   );
 }

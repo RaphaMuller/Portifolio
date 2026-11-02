@@ -4,6 +4,8 @@ import { ComicSectionContainer } from "@/app/components/ui/global/ComicSection/C
 import { ComicAvatar } from "@/app/components/ui/hero/ComicAvatar/ComicAvatar";
 import { ComicHeroIdentity } from "@/app/components/ui/hero/ComicHeroIntro/ComicHeroIdentity";
 import { ComicHeroSpeech } from "@/app/components/ui/hero/ComicHeroIntro/ComicHeroSpeech";
+import { ComicHeroCaption } from "@/app/components/ui/hero/ComicHeroIntro/ComicHeroCaption";
+import { heroCopy } from "@/app/constants/heroCopy";
 import BuildingSkyline from "@/app/components/ui/hero/ComicSkyline/BuildingSkyline";
 import { ComicRoad } from "@/app/components/ui/hero/ComicRoad/ComicRoad";
 import { ComicPalmTree } from "@/app/components/ui/hero/ComicFoliage/ComicPalmTree";
@@ -12,30 +14,28 @@ export default function ComicHero() {
   return (
     <ComicSectionContainer
       id="hero"
-      variant="dots"
+      variant="night"
+      mode="fit"
       noPaddingX
       ariaLabel="Apresentação Principal"
-      className="relative flex min-h-[100dvh] flex-col justify-between overflow-hidden pt-16 sm:pt-20 pb-0"
+      className="pb-0"
     >
-      {/* Camada Superior: Conteúdo Centralizado no Céu (seguro acima da linha de prédios) */}
-      <div className="relative z-30 mx-auto my-auto flex w-full max-w-6xl flex-1 flex-col items-center justify-center gap-4 sm:gap-6 lg:flex-row lg:items-center lg:justify-center lg:gap-10 xl:gap-16 px-4 pt-4 pb-40 sm:pb-44 md:pb-48 lg:pb-40 xl:pb-44">
-        {/* Coluna da Esquerda: Foto (t=1.25s) + Nome (t=1.45s) + Cargo (t=1.70s) */}
-        <div className="flex flex-col items-center gap-2 sm:gap-3 select-none">
+      {/* Camada Superior: página narrada (recordatórios + capa + avatar com fala) */}
+      <div className="relative z-30 mx-auto my-auto flex w-full max-w-6xl flex-1 flex-col items-center justify-center gap-4 px-4 pt-4 pb-40 sm:gap-6 sm:pb-44 md:pb-28 lg:pb-40 xl:pb-44">
+        <ComicHeroCaption text={heroCopy.captionOpen} startDelay={1.3} align="start" />
+
+        <ComicHeroIdentity name="RAPHAEL MULLER" role="FULL-STACK DEVELOPER" />
+
+        <div className="flex flex-col items-center gap-4 select-none md:flex-row md:gap-8 lg:gap-10">
           <ComicAvatar
             realImageSrc="/Profile.jpeg"
             cartoonImageSrc="/Profile-cartoon.jpg"
             autoSwitchDelay={2600}
           />
-          <ComicHeroIdentity
-            name="RAPHAEL MULLER"
-            role="FULL-STACK DEVELOPER"
-          />
-        </div>
-
-        {/* Coluna da Direita: Balãozinho saindo da foto (t=1.95s) + Botões (t=2.25s) */}
-        <div className="flex flex-col items-center gap-3 sm:gap-4 select-none lg:items-start">
           <ComicHeroSpeech />
         </div>
+
+        <ComicHeroCaption text={heroCopy.captionClose} startDelay={2.9} align="end" />
       </div>
 
       {/* Camada da Base: Prédios Contíguos 100%, Vegetação Comic e Estrada */}

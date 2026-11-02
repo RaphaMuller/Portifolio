@@ -1,31 +1,40 @@
 import { HTMLMotionProps } from "framer-motion";
 
+const smoothEase = [0.22, 1, 0.36, 1] as const;
+
 export const motionPresets = {
   slideInRight: {
-    initial: { x: 20, y: 30, opacity: 0 },
+    initial: { x: 24, y: 20, opacity: 0 },
     whileInView: { x: 0, y: 0, opacity: 1 },
-    viewport: { once: true, margin: "-50px" },
-    transition: { duration: 0.7, ease: "easeOut" },
+    viewport: { amount: 0.25 },
+    transition: { duration: 0.55, ease: smoothEase },
   },
 
   slideInLeft: {
-    initial: { x: -20, y: 30, opacity: 0 },
+    initial: { x: -24, y: 20, opacity: 0 },
     whileInView: { x: 0, y: 0, opacity: 1 },
-    viewport: { once: true, margin: "-50px" },
-    transition: { duration: 0.7, ease: "easeOut" },
+    viewport: { amount: 0.25 },
+    transition: { duration: 0.55, ease: smoothEase },
   },
 
   stamp: {
-    initial: { scale: 0.9, y: 30, opacity: 0 },
+    initial: { scale: 1.3, y: 15, opacity: 0 },
     whileInView: { scale: 1, y: 0, opacity: 1 },
-    viewport: { once: true, margin: "-50px" },
-    transition: { duration: 0.6, ease: "easeOut" },
+    viewport: { amount: 0.25 },
+    transition: { type: "spring", stiffness: 280, damping: 18 },
   },
 
   projectCard: {
-    initial: { opacity: 0, y: 40 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition: { duration: 0.6, ease: "easeOut" },
+    initial: { opacity: 0, y: 30, scale: 0.98 },
+    whileInView: { opacity: 1, y: 0, scale: 1 },
+    viewport: { amount: 0.25 },
+    transition: { duration: 0.5, ease: smoothEase },
+  },
+
+  blockAssemble: {
+    initial: { opacity: 0, y: 24, scale: 0.98 },
+    whileInView: { opacity: 1, y: 0, scale: 1 },
+    viewport: { amount: 0.25 },
+    transition: { duration: 0.5, ease: smoothEase },
   },
 } as const satisfies Record<string, HTMLMotionProps<"div">>;

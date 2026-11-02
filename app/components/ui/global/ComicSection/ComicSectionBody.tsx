@@ -4,30 +4,26 @@ import React from "react";
 
 interface ComicSectionBodyProps {
   children: React.ReactNode;
-  layout?: "grid" | "flex" | "stack";
   className?: string;
 }
 
 /**
+ * Nível 2: Faixa Panorâmica (max-w-7xl).
+ * Fornece a moldura larga de 1280px para criar o efeito cascata com o header.
  * @example
- * <ComicSectionBody layout="grid">
- *   <div>Coluna 1</div>
- *   <div>Coluna 2</div>
+ * <ComicSectionBody>
+ *   <ComicSectionHeader title="MEUS PROJETOS" />
+ *   <main className="max-w-6xl mx-auto flex-1 min-h-0">{children}</main>
  * </ComicSectionBody>
  */
 export function ComicSectionBody({
   children,
-  layout = "grid",
   className = "",
 }: ComicSectionBodyProps) {
-  const layoutClasses = {
-    grid: "grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12",
-    flex: "flex flex-col items-center justify-between gap-8 md:flex-row",
-    stack: "flex flex-col items-center gap-6",
-  }[layout];
-
   return (
-    <div className={`relative z-10 mx-auto w-full max-w-6xl ${layoutClasses} ${className}`}>
+    <div
+      className={`relative z-10 mx-auto flex h-full w-full max-w-7xl flex-1 min-h-0 flex-col px-4 sm:px-6 lg:px-8 ${className}`}
+    >
       {children}
     </div>
   );
