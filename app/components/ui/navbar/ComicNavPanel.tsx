@@ -58,7 +58,7 @@ export function ComicNavPanel(props: ComicNavPanelProps) {
       {typeof props.children === "string" ? (
         <span className={`${labelClasses} pointer-events-none select-none`}>{props.children}</span>
       ) : (
-        <span className="pointer-events-none select-none">{props.children}</span>
+        <span className="flex items-center justify-center pointer-events-none select-none">{props.children}</span>
       )}
     </a>
   );

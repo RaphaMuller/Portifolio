@@ -88,6 +88,7 @@ export function ComicAvatar({
                   alt="Raphael Muller em versão Cartoon estilo anos 30"
                   fill
                   priority
+                  quality={95}
                   sizes="(max-width: 640px) 140px, (max-width: 1024px) 190px, 230px"
                   className="object-cover"
                 />
@@ -106,6 +107,7 @@ export function ComicAvatar({
                   alt="Foto de perfil real de Raphael Muller"
                   fill
                   priority
+                  quality={95}
                   sizes="(max-width: 640px) 140px, (max-width: 1024px) 190px, 230px"
                   className="object-cover"
                 />

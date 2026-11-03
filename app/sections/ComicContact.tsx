@@ -31,16 +31,16 @@ export function ComicContact() {
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ amount: 0.25 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="mx-auto flex flex-1 min-h-0 w-full max-w-6xl flex-col justify-between"
+          className="mx-auto flex flex-1 min-h-0 w-full max-w-6xl flex-col justify-between overflow-y-auto md:overflow-visible no-scrollbar"
         >
-          <div className="grid w-full flex-1 min-h-0 grid-cols-1 items-center gap-4 sm:gap-6 md:grid-cols-2">
+          <div className="grid w-full flex-1 min-h-0 grid-cols-1 items-center gap-2.5 sm:gap-4 md:grid-cols-2 md:gap-6">
             {/* Coluna esquerda: info + links */}
-            <div className="flex flex-col gap-3 sm:gap-4">
+            <div className="flex flex-col gap-2 sm:gap-3 md:gap-4">
               <SpeechBubble tailPosition="bottom" animateOnScroll delay={0.1}>
-                <h3 className="mb-1 text-h4 font-bangers tracking-wide text-comic-red">
+                <h3 className="mb-0.5 sm:mb-1 text-sm sm:text-base md:text-h4 font-bangers tracking-wide text-comic-red">
                   PRECISA DE UM HERÓI?
                 </h3>
-                <p className="font-comic text-xs sm:text-sm leading-relaxed">
+                <p className="font-comic text-[11px] sm:text-xs md:text-sm leading-tight sm:leading-relaxed">
                   Estou disponível para projetos freelance, colaborações e novas
                   oportunidades. Vamos criar algo incrível juntos!
                 </p>
@@ -62,10 +62,10 @@ export function ComicContact() {
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex h-full w-full items-center gap-3 p-2.5 sm:p-3 font-comic font-bold"
+                      className="flex h-full w-full items-center gap-2.5 sm:gap-3 p-2 sm:p-2.5 md:p-3 font-comic font-bold"
                     >
-                      <item.icon size={18} />
-                      <span className="text-stat-label">{item.label}</span>
+                      <item.icon className="size-4 sm:size-[18px] shrink-0" />
+                      <span className="text-stat-label truncate">{item.label}</span>
                     </a>
                   </ActionBadge>
                 ))}
@@ -77,15 +77,15 @@ export function ComicContact() {
           </div>
 
           {/* Recordatório Final (Créditos / Footer Integrado com Alto Contraste Comic) */}
-          <footer className="relative z-20 mt-auto w-full select-none pt-2 pb-1">
-            <div className="mx-auto flex flex-wrap items-center justify-between gap-2 border-2 border-black bg-zinc-950/90 px-3.5 py-1.5 shadow-[3px_3px_0_#000] backdrop-blur-xs">
-              <span className="font-bangers text-sm sm:text-base text-comic-yellow tracking-wide">
+          <footer className="relative z-20 mt-auto w-full select-none pt-1 sm:pt-2 pb-0.5 sm:pb-1">
+            <div className="mx-auto flex items-center justify-between gap-2 border-2 border-black bg-zinc-950/90 px-2.5 py-1 sm:px-3.5 sm:py-1.5 shadow-[2px_2px_0_#000] sm:shadow-[3px_3px_0_#000] backdrop-blur-xs">
+              <span className="font-bangers text-xs sm:text-sm md:text-base text-comic-yellow tracking-wide shrink-0">
                 FIM // CAPÍTULO 4
               </span>
-              <span className="font-mono text-xs text-white">
+              <span className="font-mono text-[10px] sm:text-xs text-white truncate">
                 © 2026 Raphael Muller · ☕ + Código
               </span>
-              <span className="hidden font-mono text-[11px] italic text-zinc-300 sm:inline">
+              <span className="hidden font-mono text-[11px] italic text-zinc-300 md:inline shrink-0">
                 &ldquo;Nenhum bug foi prejudicado.&rdquo;
               </span>
             </div>
@@ -93,7 +93,7 @@ export function ComicContact() {
         </motion.main>
       </ComicSectionBody>
 
-      <BuildingSkyline position="absolute" theme="dark" />
+      <BuildingSkyline position="absolute" theme="dark" className="pointer-events-none z-0" />
     </ComicSectionContainer>
   );
 }

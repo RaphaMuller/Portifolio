@@ -38,7 +38,7 @@ const THEME_STYLES: Record<
   projects: {
     badgeTheme: "blue",
     shadowClass: "shadow-[4px_4px_0_0_var(--color-comic-yellow)]",
-    textClass: "text-black",
+    textClass: "text-white",
   },
   // Contact (Missão Contato): Vermelho e Branco Alerta (contraste sobre topo azul claro acinzentado)
   contact: {

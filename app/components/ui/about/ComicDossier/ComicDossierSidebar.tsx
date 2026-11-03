@@ -33,6 +33,7 @@ export function ComicDossierSidebar({ className = "" }: ComicDossierSidebarProps
             src="/Setup_v2.png"
             alt="Workspace de desenvolvimento do herói"
             fill
+            quality={95}
             sizes="(max-width: 1024px) 100vw, 420px"
             className="object-cover"
             priority

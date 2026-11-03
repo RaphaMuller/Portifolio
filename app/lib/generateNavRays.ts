@@ -1,3 +1,17 @@
+export interface RayGeneratorOptions {
+  centerX?: number;
+  centerY?: number;
+  count?: number;
+  outerRadius?: number;
+}
+
+interface PolarPoint {
+  radius: number;
+  angle: number;
+  centerX: number;
+  centerY: number;
+}
+
 // Deterministic PRNG (mulberry32) so server and client render identical rays.
 function createRng(seed: number) {
   let state = seed;
@@ -9,32 +23,40 @@ function createRng(seed: number) {
   };
 }
 
-const RAY_COUNT = 36;
+const DEFAULT_RAY_COUNT = 36;
 const SKIP_CHANCE = 0.3;
 
-function toPoint(radius: number, angle: number) {
-  const x = 50 + Math.cos(angle) * radius * 50;
-  const y = 50 + Math.sin(angle) * radius * 50;
+function toPoint({ radius, angle, centerX, centerY }: PolarPoint): string {
+  const x = centerX + Math.cos(angle) * radius * 50;
+  const y = centerY + Math.sin(angle) * radius * 50;
   return `${x.toFixed(2)},${y.toFixed(2)}`;
 }
 
 /**
- * Generates speed-line polygons (viewBox 0 0 100 100) for a comic panel.
  * @example
- * generateNavRays(3).map((points) => <polygon key={points} points={points} />)
+ * generateNavRays(3, { centerX: 70, centerY: 50 }).map((pts) => <polygon key={pts} points={pts} />)
  */
-export function generateNavRays(seed: number): string[] {
+export function generateNavRays(
+  seed: number,
+  options: RayGeneratorOptions = {},
+): string[] {
+  const centerX = options.centerX ?? 50;
+  const centerY = options.centerY ?? 50;
+  const count = options.count ?? DEFAULT_RAY_COUNT;
+  const outerRadius = options.outerRadius ?? 1.6;
+
   const random = createRng(11 + seed * 97);
   const rays: string[] = [];
 
-  for (let index = 0; index < RAY_COUNT; index++) {
+  for (let index = 0; index < count; index++) {
     if (random() < SKIP_CHANCE) continue;
-    const angle = (index / RAY_COUNT) * Math.PI * 2 + (random() - 0.5) * 0.16;
+    const angle = (index / count) * Math.PI * 2 + (random() - 0.5) * 0.16;
     const width = 0.012 + random() * 0.05;
-    const tip = 0.42 + random() * 0.16;
-    rays.push(
-      `${toPoint(tip, angle)} ${toPoint(1.6, angle - width)} ${toPoint(1.6, angle + width)}`,
-    );
+    const tip = 0.48 + random() * 0.18;
+    const tipPoint = toPoint({ radius: tip, angle, centerX, centerY });
+    const leftEdge = toPoint({ radius: outerRadius, angle: angle - width, centerX, centerY });
+    const rightEdge = toPoint({ radius: outerRadius, angle: angle + width, centerX, centerY });
+    rays.push(`${tipPoint} ${leftEdge} ${rightEdge}`);
   }
 
   return rays;

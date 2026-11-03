@@ -34,7 +34,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className="fixed top-0 right-0 left-0 z-50 border-y-4 border-black bg-black shadow-comic select-none">
+    <header className="fixed top-0 right-0 left-0 z-50 border-y-4 border-black bg-black pt-[env(safe-area-inset-top)] shadow-comic select-none">
       <div className="flex h-14 items-stretch">
         <ComicNavPanel kind="blank" edge="start" className={NAV_BLOCK_WIDTH} />
 
@@ -46,16 +46,16 @@ export default function Navbar() {
           onNavigate={handleNav}
           className={NAV_BLOCK_WIDTH}
         >
-          <span className="relative h-9 w-9 overflow-hidden rounded-2xl border-2 border-black sm:h-10 sm:w-10">
+          <div className="relative h-9 w-9 overflow-hidden rounded-md border-2 border-black shadow-comic-sm transition-all duration-300 group-hover:scale-105 group-hover:shadow-comic sm:h-10 sm:w-10">
             <Image
               src="/logo-r.jpg"
-              alt=""
+              alt="Logo Raphael Muller"
               fill
               sizes="(max-width: 640px) 36px, 40px"
-              className="object-cover"
+              className="object-cover opacity-60 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0"
               priority
             />
-          </span>
+          </div>
         </ComicNavPanel>
 
         <ComicNavFiller />

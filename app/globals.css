@@ -5,6 +5,8 @@
   --foreground: #ededed;
   --hq-slant: 1rem;
   --hq-gutter: 0.375rem;
+  --gibi-slant: 1rem;
+  --gibi-gutter: 0.75rem;
 }
 
 @theme {
@@ -12,12 +14,13 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-comic-red: rgba(255, 100, 100, 1);
+  --color-comic-red-soft: rgba(255, 176, 176, 1);
   --color-comic-yellow: rgba(255, 245, 116, 1);
   --color-comic-blue: rgba(155, 165, 255, 1);
   --color-comic-shadow: rgba(94, 81, 88, 1);
   --color-bat-gold: #f2c94c;
   --color-comic-green: rgba(40, 178, 56, 1);
-  --color-comic-projects-bg: #1a1a2e;
+  --color-comic-projects-bg: #9c7da1;
   --color-comic-project-overlay: rgba(0, 0, 0, 0.25);
   --color-comic-bege: rgba(254, 244, 231, 1);
   --color-comic-lightblue: rgba(155, 165, 255, 1);
@@ -34,61 +37,40 @@
   --tracking-bangers-wide: 0.08em;
 
   /* Gradientes e Imagens de Fundo */
-  --background-image-comic-gradient-belt: linear-gradient(
-    90deg,
-    #8b6914 0%,
-    #c8960c 20%,
-    #ffd700 50%,
-    #c8960c 80%,
-    #8b6914 100%
-  );
-  --background-image-comic-gradient-pouch-front: linear-gradient(
-    160deg,
-    #1c1c1c 0%,
-    #2e2e2e 50%,
-    #1a1a1a 100%
-  );
-  --background-image-comic-gradient-pouch-back: linear-gradient(
-    160deg,
-    #0d0d1a 0%,
-    #1a1a2e 100%
-  );
-  --background-image-comic-section-gradient: linear-gradient(
-    180deg,
-    #1a1400 0%,
-    #0d0d1a 30%,
-    #0d0d1a 70%,
-    #1a1400 100%
-  );
-  --background-image-comic-stitching: repeating-linear-gradient(
-    90deg,
-    #8b6914 0px,
-    #8b6914 8px,
-    transparent 8px,
-    transparent 14px
-  );
-  --background-image-comic-projects-dots: radial-gradient(
-    circle,
-    rgba(255, 228, 77, 0.15) 1px,
-    transparent 1px
-  );
-  --background-image-comic-skills: linear-gradient(
-    0deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(70, 92, 171, 1) 80%,
-    rgba(25, 75, 255, 1) 100%
-  );
-  --background-image-comic-night-sky: linear-gradient(
-    180deg,
-    #0b0b26 0%,
-    #050510 60%,
-    #000000 100%
-  );
-  --background-image-comic-contact-gradient: linear-gradient(
-    180deg,
-    rgba(200, 222, 230, 1) 0%,
-    rgba(0, 0, 0, 1) 100%
-  );
+  --background-image-comic-gradient-belt: linear-gradient(90deg,
+      #8b6914 0%,
+      #c8960c 20%,
+      #ffd700 50%,
+      #c8960c 80%,
+      #8b6914 100%);
+  --background-image-comic-gradient-pouch-front: linear-gradient(160deg,
+      #1c1c1c 0%,
+      #2e2e2e 50%,
+      #1a1a1a 100%);
+  --background-image-comic-gradient-pouch-back: linear-gradient(160deg,
+      #0d0d1a 0%,
+      #1a1a2e 100%);
+  --background-image-comic-section-gradient: linear-gradient(180deg,
+      #1a1400 0%,
+      #0d0d1a 30%,
+      #0d0d1a 70%,
+      #1a1400 100%);
+  --background-image-comic-stitching: repeating-linear-gradient(90deg,
+      #8b6914 0px,
+      #8b6914 8px,
+      transparent 8px,
+      transparent 14px);
+  --background-image-comic-projects-dots: radial-gradient(circle,
+      rgba(255, 228, 77, 0.15) 1px,
+      transparent 1px);
+  --background-image-comic-projects-gradient: linear-gradient(90deg, #243748, #4B749F);
+  --background-image-comic-night-sky: linear-gradient(180deg,
+      #0b0b26 0%,
+      #050510 60%,
+      #000000 100%);
+  --background-image-comic-contact-gradient: linear-gradient(180deg,
+      rgba(200, 222, 230, 1) 0%,
+      rgba(0, 0, 0, 1) 100%);
 
   /*Background Dots Colors*/
   --comic-dot-color: rgba(1, 1, 1, 0.3);
@@ -164,6 +146,7 @@
   line-height: 1.2;
   font-size: clamp(0.9rem, 3vw, 1rem);
 }
+
 @utility text-stat-label {
   font-family: var(--font-bangers);
   font-weight: 400;
@@ -264,17 +247,16 @@
   --hq-sl: var(--hq-slant);
   --hq-sr: var(--hq-slant);
   margin-left: calc(var(--hq-gutter) - var(--hq-slant));
-  clip-path: polygon(
-    var(--hq-sl) 0,
-    100% 0,
-    calc(100% - var(--hq-sr)) 100%,
-    0 100%
-  );
+  clip-path: polygon(var(--hq-sl) 0,
+      100% 0,
+      calc(100% - var(--hq-sr)) 100%,
+      0 100%);
 
   &[data-edge="start"] {
     --hq-sl: 0px;
     margin-left: 0;
   }
+
   &[data-edge="end"] {
     --hq-sr: 0px;
   }
@@ -285,22 +267,35 @@
   height: 100%;
   grid-template-rows: 100%;
   grid-template-columns: repeat(auto-fill, minmax(min(5rem, 100%), 1fr));
+
   @media (min-width: 640px) {
     grid-template-columns: repeat(auto-fill, minmax(min(6rem, 100%), 1fr));
   }
+
   @media (min-width: 1024px) {
     grid-template-columns: repeat(auto-fill, minmax(min(7rem, 100%), 1fr));
   }
+
   @media (min-width: 1280px) {
     grid-template-columns: repeat(auto-fill, minmax(min(8rem, 100%), 1fr));
   }
+
   grid-auto-rows: 100%;
   overflow-x: visible;
   overflow-y: clip;
 
-  & > * {
+  &>* {
     height: 100%;
     width: calc(100% + var(--hq-slant) - var(--hq-gutter));
+  }
+}
+
+@utility no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
   }
 }
 
@@ -308,6 +303,32 @@
   -webkit-text-stroke: 0.17em var(--color-black);
   paint-order: stroke fill;
 }
+
+@utility gibi-cell-outline {
+  filter:
+    drop-shadow(3px 0 0 #000) drop-shadow(-3px 0 0 #000) drop-shadow(0 3px 0 #000) drop-shadow(0 -3px 0 #000);
+}
+
+@utility gibi-clip-opening {
+  @media (min-width: 1024px) {
+    padding-bottom: calc(var(--gibi-slant) + 0.75rem);
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--gibi-slant)), 0 100%);
+  }
+}
+
+@utility gibi-overlap-top {
+  @media (min-width: 1024px) {
+    margin-top: calc(var(--gibi-gutter) - var(--gibi-slant));
+  }
+}
+
+@utility gibi-clip-slanted-top {
+  @media (min-width: 1024px) {
+    padding-top: calc(var(--gibi-slant) + 0.75rem);
+    clip-path: polygon(0 var(--gibi-slant), 100% 0, 100% 100%, 0 100%);
+  }
+}
+
 
 
 @layer utilities {
@@ -344,6 +365,6 @@ body {
   color: var(--foreground);
   font-family: var(--font-comic-neue), sans-serif;
   -webkit-font-smoothing: antialiased;
-  min-height: 100vh;
+  min-height: 100dvh;
   background-attachment: fixed;
 }

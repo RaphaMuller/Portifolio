@@ -14,7 +14,8 @@ interface ComicSectionContainerProps {
     | "dark"
     | "yellow"
     | "skills"
-    | "contact";
+    | "contact"
+    | "projects";
   mode?: "fit" | "scroll";
   borderBottom?: boolean;
   noPaddingX?: boolean;
@@ -45,17 +46,18 @@ export function ComicSectionContainer({
     plain: "bg-white",
     lightblue: "bg-comic-lightblue",
     bege: "bg-comic-bege bg-comic-dots",
-    dark: "bg-comic-projects-bg bg-comic-dots text-white",
+    dark: "bg-comic-projects-bg bg-comic-projects-gradient text-white",
     yellow: "bg-comic-yellow bg-comic-dots",
     skills: "bg-comic-section-gradient",
     contact: "bg-comic-contact-gradient",
+    projects: "bg-comic-projects-bg bg-comic-projects-gradient text-white",
   }[variant];
 
   // Modo Fit: Trava 100dvh exato, snap magnético e desconta safe-zone da navbar.
   // Modo Scroll: Expansão vertical livre com respiro py-24.
   const modeClasses =
     mode === "fit"
-      ? "h-[100dvh] max-h-[100dvh] overflow-hidden scroll-mt-0 pt-20 sm:pt-22 pb-3 sm:pb-4 justify-between"
+      ? "h-[100dvh] max-h-[100dvh] overflow-hidden scroll-mt-0 pt-[calc(4.5rem+env(safe-area-inset-top))] sm:pt-22 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:pb-4 justify-between"
       : "min-h-screen py-24 justify-center scroll-mt-16";
 
   const paddingXClass = noPaddingX ? "px-0" : "";

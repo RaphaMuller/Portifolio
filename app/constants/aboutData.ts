@@ -1,6 +1,6 @@
 export const heroStats = [
   { value: "2+", label: "Anos de XP" },
-  { value: "10+", label: "Projetos" },
+  { value: "2+", label: "Projetos" },
 ] as const;
 
 export interface DossierTab {

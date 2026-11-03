@@ -44,7 +44,7 @@ export function ComicRoad({
 
       {/* Pista de Asfalto com Faixa Central Tracejada e Tráfego */}
       <div
-        className={`relative flex w-full items-center overflow-hidden border-b-4 border-black bg-zinc-950 ${height}`}
+        className={`relative flex w-full items-center overflow-hidden bg-zinc-950 ${height}`}
       >
         {/* Linha Central Tracejada de Rodovia */}
         <div

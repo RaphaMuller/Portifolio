@@ -21,7 +21,7 @@ export default function ComicHero() {
       className="pb-0"
     >
       {/* Camada Superior: página narrada (recordatórios + capa + avatar com fala) */}
-      <div className="relative z-30 mx-auto my-auto flex w-full max-w-6xl flex-1 flex-col items-center justify-center gap-4 px-4 pt-4 pb-40 sm:gap-6 sm:pb-44 md:pb-28 lg:pb-40 xl:pb-44">
+      <div className="relative z-30 mx-auto my-auto flex w-full max-w-6xl flex-1 flex-col items-center justify-center gap-3 px-4 pt-2 pb-28 sm:gap-6 sm:pb-36 md:pb-28 lg:pb-40 xl:pb-44">
         <ComicHeroCaption text={heroCopy.captionOpen} startDelay={1.3} align="start" />
 
         <ComicHeroIdentity name="RAPHAEL MULLER" role="FULL-STACK DEVELOPER" />
