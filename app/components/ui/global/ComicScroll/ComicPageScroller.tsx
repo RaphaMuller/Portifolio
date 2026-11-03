@@ -5,20 +5,22 @@ import { useEffect, useRef } from "react";
 const SECTION_IDS = ["hero", "about", "skills", "projects", "contact"];
 const COOLDOWN_MS = 750;
 const WHEEL_THRESHOLD = 25;
-const TOUCH_THRESHOLD = 45;
+
+const DESKTOP_BREAKPOINT = 1024;
 
 /**
  * Controlador de Rolagem Suave entre Seções.
- * Unifica o scroll de mouse, teclado e touch para ter exatamente a mesma fluidez
- * da navegação por clique nos botões da navbar (scrollIntoView smooth).
+ * Ativo em desktop (>= 1024px) para transição de quadros de HQ.
+ * Desativado em telas menores (< 1024px) para rolagem tátil 100% nativa.
  * @example
  * <ComicPageScroller />
  */
 export function ComicPageScroller() {
   const isNavigating = useRef(false);
-  const touchStartY = useRef(0);
 
   useEffect(() => {
+    const isDesktop = () => window.innerWidth >= DESKTOP_BREAKPOINT;
+
     const getCurrentIndex = (): number => {
       const scrollY = window.scrollY;
       const viewportHeight = window.innerHeight;
@@ -58,6 +60,7 @@ export function ComicPageScroller() {
     };
 
     const handleWheel = (event: WheelEvent) => {
+      if (!isDesktop()) return;
       if (Math.abs(event.deltaY) < WHEEL_THRESHOLD) return;
 
       event.preventDefault();
@@ -71,32 +74,8 @@ export function ComicPageScroller() {
       }
     };
 
-    const handleTouchStart = (event: TouchEvent) => {
-      touchStartY.current = event.touches[0].clientY;
-    };
-
-    const handleTouchMove = (event: TouchEvent) => {
-      if (isNavigating.current) {
-        event.preventDefault();
-      }
-    };
-
-    const handleTouchEnd = (event: TouchEvent) => {
-      if (isNavigating.current) return;
-
-      const touchEndY = event.changedTouches[0].clientY;
-      const deltaY = touchStartY.current - touchEndY;
-      if (Math.abs(deltaY) < TOUCH_THRESHOLD) return;
-
-      const currentIndex = getCurrentIndex();
-      if (deltaY > 0 && currentIndex < SECTION_IDS.length - 1) {
-        scrollToSection(currentIndex + 1);
-      } else if (deltaY < 0 && currentIndex > 0) {
-        scrollToSection(currentIndex - 1);
-      }
-    };
-
     const handleKeyDown = (event: KeyboardEvent) => {
+      if (!isDesktop()) return;
       if (isNavigating.current) return;
 
       const currentIndex = getCurrentIndex();
@@ -110,16 +89,10 @@ export function ComicPageScroller() {
     };
 
     window.addEventListener("wheel", handleWheel, { passive: false });
-    window.addEventListener("touchstart", handleTouchStart, { passive: true });
-    window.addEventListener("touchmove", handleTouchMove, { passive: false });
-    window.addEventListener("touchend", handleTouchEnd, { passive: true });
     window.addEventListener("keydown", handleKeyDown);
 
     return () => {
       window.removeEventListener("wheel", handleWheel);
-      window.removeEventListener("touchstart", handleTouchStart);
-      window.removeEventListener("touchmove", handleTouchMove);
-      window.removeEventListener("touchend", handleTouchEnd);
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, []);

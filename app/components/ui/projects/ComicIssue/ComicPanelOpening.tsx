@@ -40,7 +40,9 @@ export function ComicPanelOpening({
           alt={title}
           fill
           unoptimized
-          className="object-cover object-top transition-transform duration-500 hover:scale-[1.02]"
+          quality={100}
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          className="object-cover object-top transition-transform"
           priority
         />
 
