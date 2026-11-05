@@ -76,7 +76,7 @@ export default function ComicAbout() {
             <div className="grid min-h-0 flex-1 grid-cols-12">
               <ComicDossierSidebar className="col-span-5 lg:col-span-4 h-full" />
 
-              <div className="col-span-7 lg:col-span-8 flex min-h-0 flex-1 flex-col">
+              <div className="col-span-7 lg:col-span-8 flex min-h-0 flex-1 flex-col overflow-hidden">
                 <ComicDossierPage tab={activeTab} />
               </div>
             </div>

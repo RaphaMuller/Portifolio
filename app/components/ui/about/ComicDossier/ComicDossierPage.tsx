@@ -28,7 +28,7 @@ function renderBoldText(text: string) {
  */
 export function ComicDossierPage({ tab }: ComicDossierPageProps) {
   return (
-    <div className="relative flex min-h-full flex-1 flex-col overflow-hidden comic-paper-damp p-4 text-center sm:p-5">
+    <div className="relative flex min-h-0 flex-1 h-full flex-col overflow-hidden comic-paper-damp p-4 text-center sm:p-5">
       <AnimatePresence mode="wait">
         <motion.div
           key={tab.id}
@@ -36,7 +36,7 @@ export function ComicDossierPage({ tab }: ComicDossierPageProps) {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -20 }}
           transition={{ duration: 0.2, ease: "easeOut" }}
-          className="flex h-full min-h-0 flex-col justify-between gap-3.5 overflow-y-auto pr-1"
+          className="flex h-full min-h-0 flex-col justify-between gap-3.5 overflow-y-auto overscroll-contain pr-1 sm:pr-2"
         >
           {/* Quadro 1: Recordatório Clássico de HQ Centralizado */}
           <blockquote className="relative mt-3.5 border-3 border-black bg-comic-yellow px-4 py-3 shadow-comic-sm sm:mt-4">
