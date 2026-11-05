@@ -58,7 +58,7 @@ export function ComicProjectsHub({
   const isOverflowing = canScrollPrev || canScrollNext;
 
   return (
-    <div className="relative mx-auto flex h-full min-h-0 w-full flex-1 items-stretch justify-center px-4 sm:px-8">
+    <div className="relative mx-auto flex h-full min-h-[380px] sm:min-h-[440px] lg:min-h-0 w-full flex-1 items-stretch justify-center px-4 sm:px-8">
       {isOverflowing && (
         <>
           <ActionBadge
@@ -93,7 +93,7 @@ export function ComicProjectsHub({
           {projectsList.map((project, index) => (
             <li
               key={project.id}
-              className="flex h-full min-h-0 max-w-full flex-none items-center justify-center"
+              className="flex h-full min-h-[360px] sm:min-h-[420px] lg:min-h-0 max-w-full flex-none items-center justify-center"
             >
               <ComicSealedCard
                 project={project}

@@ -59,11 +59,11 @@ export function ComicSectionContainer({
   // Modo Scroll: Expansão vertical livre com respiro py-24.
   const pbClass = noPaddingBottom
     ? "pb-0"
-    : "pb-[max(2rem,env(safe-area-inset-bottom))] sm:pb-6";
+    : "pb-[max(1.5rem,env(safe-area-inset-bottom))] lg:pb-6";
 
   const modeClasses =
     mode === "fit"
-      ? `h-[100dvh] max-h-[100dvh] overflow-hidden scroll-mt-0 pt-[calc(6rem+env(safe-area-inset-top))] sm:pt-24 ${pbClass} justify-between`
+      ? `min-h-[100svh] h-auto max-h-none overflow-x-clip overflow-y-visible pt-[calc(4.5rem+env(safe-area-inset-top))] sm:pt-20 ${pbClass} justify-between lg:h-screen lg:max-h-screen lg:overflow-hidden lg:pt-24 lg:scroll-mt-0`
       : "min-h-screen py-24 justify-center scroll-mt-16";
 
   const paddingXClass = noPaddingX ? "px-0" : "";

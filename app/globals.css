@@ -399,5 +399,5 @@ body {
   color: var(--foreground);
   font-family: var(--font-comic-neue), sans-serif;
   -webkit-font-smoothing: antialiased;
-  min-height: 100dvh;
+  min-height: 100svh;
 }
