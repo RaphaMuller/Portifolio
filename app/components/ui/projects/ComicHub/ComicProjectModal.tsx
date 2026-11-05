@@ -71,7 +71,7 @@ export function ComicProjectModal({
       onClick={(event) => {
         if (event.target === dialogRef.current) onClose();
       }}
-      className="fixed inset-0 m-0 flex flex-col h-dvh max-h-dvh w-full max-w-none border-0 p-0 shadow-none overscroll-contain overflow-y-auto overflow-x-hidden bg-white text-black backdrop:bg-black/80 backdrop:backdrop-blur-xs lg:inset-y-8 lg:inset-x-auto lg:my-auto lg:h-auto lg:max-h-[calc(100svh-4rem)] lg:w-11/12 lg:max-w-6xl lg:border-4 lg:border-black lg:shadow-comic-lg"
+      className="fixed inset-0 m-0 flex flex-col h-dvh max-h-dvh w-full max-w-none border-0 p-0 shadow-none overscroll-contain overflow-y-auto overflow-x-hidden bg-white text-black backdrop:bg-black/80 backdrop:backdrop-blur-xs lg:inset-y-8 lg:inset-x-0 lg:m-auto lg:h-auto lg:max-h-[calc(100svh-4rem)] lg:w-11/12 lg:max-w-6xl lg:border-4 lg:border-black lg:shadow-comic-lg"
     >
       <ComicProjectModalHeader
         project={project}
