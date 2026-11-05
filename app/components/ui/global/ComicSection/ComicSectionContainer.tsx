@@ -19,6 +19,7 @@ interface ComicSectionContainerProps {
   mode?: "fit" | "scroll";
   borderBottom?: boolean;
   noPaddingX?: boolean;
+  noPaddingBottom?: boolean;
   className?: string;
   ariaLabel?: string;
 }
@@ -37,6 +38,7 @@ export function ComicSectionContainer({
   mode = "fit",
   borderBottom = true,
   noPaddingX = false,
+  noPaddingBottom = false,
   className = "",
   ariaLabel,
 }: ComicSectionContainerProps) {
@@ -55,20 +57,23 @@ export function ComicSectionContainer({
 
   // Modo Fit: Trava 100dvh exato, snap magnético e desconta safe-zone da navbar.
   // Modo Scroll: Expansão vertical livre com respiro py-24.
+  const pbClass = noPaddingBottom
+    ? "pb-0"
+    : "pb-[max(2rem,env(safe-area-inset-bottom))] sm:pb-6";
+
   const modeClasses =
     mode === "fit"
-      ? "h-[100dvh] max-h-[100dvh] overflow-hidden scroll-mt-0 pt-[calc(4.5rem+env(safe-area-inset-top))] sm:pt-22 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:pb-4 justify-between"
+      ? `h-[100dvh] max-h-[100dvh] overflow-hidden scroll-mt-0 pt-[calc(6rem+env(safe-area-inset-top))] sm:pt-24 ${pbClass} justify-between`
       : "min-h-screen py-24 justify-center scroll-mt-16";
 
   const paddingXClass = noPaddingX ? "px-0" : "";
+  const borderBottomClass = borderBottom ? "border-b-4 border-black" : "";
 
   return (
     <section
       id={id}
       aria-label={ariaLabel}
-      className={`relative flex w-full flex-col ${modeClasses} ${paddingXClass} ${
-        borderBottom ? "border-b-8 border-black" : ""
-      } ${variantClasses} ${className}`}
+      className={`relative flex w-full flex-col ${modeClasses} ${paddingXClass} ${borderBottomClass} ${variantClasses} ${className}`}
     >
       {children}
     </section>

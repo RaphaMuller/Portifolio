@@ -70,7 +70,7 @@ export function ComicSectionHeader({
       <div className="flex items-center gap-2 sm:gap-3">
         <ActionBadge
           theme={currentTheme.badgeTheme}
-          {...motionPresets.slideInRight}
+          {...motionPresets.headerSlide}
           className={`py-1 px-3 sm:px-5 ${currentTheme.shadowClass}`}
         >
           <h1

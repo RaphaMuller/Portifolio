@@ -2,11 +2,24 @@
 
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import type { DossierTab } from "@/app/constants/aboutData";
-import { ActionBadge } from "@/app/components/ui/global/ActionBadge/ActionBadge";
+import { aboutData, type DossierTab } from "@/app/constants/aboutData";
 
 interface ComicDossierPageProps {
   tab: DossierTab;
+}
+
+function renderBoldText(text: string) {
+  const parts = text.split(/(\*\*.*?\*\*)/g);
+  return parts.map((part, index) => {
+    if (part.startsWith("**") && part.endsWith("**")) {
+      return (
+        <strong key={index} className="font-bold text-black">
+          {part.slice(2, -2)}
+        </strong>
+      );
+    }
+    return part;
+  });
 }
 
 /**
@@ -15,81 +28,70 @@ interface ComicDossierPageProps {
  */
 export function ComicDossierPage({ tab }: ComicDossierPageProps) {
   return (
-    <div className="relative flex flex-1 min-h-0 flex-col overflow-hidden border-3 sm:border-4 border-black bg-white p-3.5 sm:p-5 shadow-[6px_6px_0_0_#000]">
-      {/* Cabeçalho de Memorando do Documento */}
-      <div className="mb-2.5 flex items-center justify-between border-b-2 border-dashed border-zinc-300 pb-2 select-none">
-        <div className="flex items-center gap-2">
-          <span className="inline-block border border-black bg-comic-yellow px-1.5 py-0.5 font-bangers text-[10px] sm:text-xs tracking-bangers-wide text-black">
-            {tab.code}
-          </span>
-          <span className="font-mono text-[10px] sm:text-xs text-zinc-500 uppercase tracking-widest">
-            REF: DOC-RM // ANEXO
-          </span>
-        </div>
-        <span className="hidden sm:inline-block font-mono text-[10px] text-zinc-400 uppercase tracking-wider">
-          CLASSIFICAÇÃO: NÍVEL 1
-        </span>
-      </div>
+    <div className="relative flex min-h-0 flex-1 flex-col overflow-hidden comic-paper-damp p-4 text-center sm:p-5">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={tab.id}
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -20 }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
+          className="flex h-full min-h-0 flex-col justify-between gap-3.5 overflow-y-auto pr-1"
+        >
+          {/* Quadro 1: Recordatório Clássico de HQ Centralizado */}
+          <blockquote className="relative mt-3.5 border-3 border-black bg-comic-yellow px-4 py-3 shadow-comic-sm sm:mt-4">
+            <span className="absolute -top-2 left-4 border-2 border-black bg-white px-2 py-0.5 font-bangers text-stat-label text-black uppercase sm:-top-2.5">
+              {tab.code}
+            </span>
+            <span
+              aria-hidden="true"
+              className="absolute -top-2 right-4 -rotate-3 border-2 border-black bg-white px-2 py-0.5 font-bangers text-stat-label text-black uppercase shadow-comic-sm sm:-top-2.5"
+            >
+              {tab.label}
+            </span>
+            <p className="mt-1 font-bangers text-h4 text-black uppercase">
+              &ldquo;{tab.highlight}&rdquo;
+            </p>
+          </blockquote>
 
-      {/* Conteúdo Deslizante da Página */}
-      <div className="relative flex-1 min-h-0 overflow-hidden">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={tab.id}
-            initial={{ opacity: 0, x: 25 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -25 }}
-            transition={{ duration: 0.22, ease: "easeOut" }}
-            className="flex h-full flex-col justify-between overflow-y-auto pr-1.5 sm:pr-2"
-          >
-            <div className="space-y-2.5 sm:space-y-3">
-              {/* Título de Relatório */}
-              <div>
-                <h2 className="font-bangers text-xl sm:text-2xl text-comic-red lg:text-3xl leading-none">
-                  {tab.title}
-                </h2>
-                <p className="mt-0.5 font-comic text-xs sm:text-sm font-bold text-zinc-600 uppercase tracking-wide">
-                  {tab.subtitle}
-                </p>
-              </div>
+          {/* Quadro 2: História Centralizada com Negrito Puro */}
+          <div className="flex flex-col items-center justify-center border-y-2 border-dashed border-black/25 py-3">
+            <h3 className="font-bangers text-h3 text-black uppercase">
+              — {tab.title} —
+            </h3>
+            <p className="mt-1.5 max-w-xl text-center font-comic text-body text-zinc-900">
+              {renderBoldText(tab.summary)}
+            </p>
+          </div>
 
-              {/* Parágrafos do Documento */}
-              <div className="space-y-2 font-comic text-xs sm:text-sm md:text-base leading-relaxed text-zinc-800">
-                {tab.paragraphs.map((p, idx) => (
-                  <p key={idx} className="border-l-2 border-zinc-200 pl-2">
-                    {p}
+          {/* Quadro 3: Grade 2x2 de Pilares de Operação */}
+          <div>
+            <span className="mb-2 block text-center font-bangers text-stat-label text-zinc-700 uppercase">
+              {aboutData.pillarsHeading}
+            </span>
+            <ul
+              aria-label={aboutData.pillarsHeading}
+              className="grid grid-cols-1 divide-y-3 divide-black border-3 border-black bg-white shadow-comic-sm sm:grid-cols-2 sm:divide-y-0"
+            >
+              {tab.pillars.map((pillar, idx) => (
+                <li
+                  key={pillar.label}
+                  className={`flex flex-col items-center justify-start gap-1 p-3 text-center ${
+                    idx % 2 === 0 ? "sm:border-r-3 sm:border-black" : ""
+                  } ${idx < 2 ? "sm:border-b-3 sm:border-black" : ""}`}
+                >
+                  <span className="border-2 border-black bg-comic-yellow px-2 py-0.5 font-bangers text-stat-label text-black uppercase shadow-comic-sm">
+                    {pillar.label}
+                  </span>
+                  <p className="font-comic text-caption text-zinc-800 not-italic">
+                    {pillar.detail}
                   </p>
-                ))}
-              </div>
-
-              {/* Tags de Tecnologias */}
-              {tab.tags && tab.tags.length > 0 && (
-                <div className="flex flex-wrap gap-1.5 pt-1">
-                  {tab.tags.map((tag) => (
-                    <ActionBadge key={tag} theme="yellow" noPadding>
-                      <span className="px-2 py-0.5 text-xs font-bangers tracking-bangers-wide">
-                        {tag}
-                      </span>
-                    </ActionBadge>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {/* Regra de Ouro / Highlight do Memorando */}
-            {tab.highlight && (
-              <div className="mt-3 border-l-4 border-comic-red bg-amber-50/80 p-2 sm:p-2.5 shadow-comic-sm">
-                <span className="font-bangers text-[10px] sm:text-xs text-comic-red tracking-wide uppercase">
-                  DIRETRIZ DE CAMPO:
-                </span>
-                <p className="font-mouse text-sm sm:text-base text-zinc-900 leading-tight">
-                  &ldquo;{tab.highlight}&rdquo;
-                </p>
-              </div>
-            )}
-          </motion.div>
-        </AnimatePresence>
-      </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 }

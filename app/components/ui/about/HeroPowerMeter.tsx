@@ -41,7 +41,7 @@ export function HeroPowerMeter({
             <span
               className={`leading-none text-black ${
                 compact
-                  ? "text-xl sm:text-2xl font-bangers"
+                  ? "text-h3 font-bangers"
                   : "text-h3 md:text-h2"
               }`}
             >
@@ -50,7 +50,7 @@ export function HeroPowerMeter({
             <span
               className={`text-zinc-900 ${
                 compact
-                  ? "text-[10px] sm:text-xs font-bangers tracking-bangers-wide"
+                  ? "text-stat-label font-bangers tracking-bangers-wide"
                   : "mt-1 text-stat-label"
               }`}
             >

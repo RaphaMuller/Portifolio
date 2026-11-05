@@ -240,6 +240,34 @@
   transform: rotateY(180deg);
 }
 
+@utility comic-plastic-sheen {
+  background-image: linear-gradient(
+    125deg,
+    rgba(255, 255, 255, 0.14) 0%,
+    rgba(255, 255, 255, 0.04) 28%,
+    rgba(255, 255, 255, 0.28) 46%,
+    rgba(255, 255, 255, 0.1) 56%,
+    rgba(255, 255, 255, 0.03) 78%,
+    rgba(255, 255, 255, 0.12) 100%
+  );
+}
+
+@utility comic-plastic-crease {
+  background-image:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.35) 0%, transparent 18%),
+    linear-gradient(315deg, rgba(255, 255, 255, 0.25) 0%, transparent 16%);
+}
+
+@utility comic-paper-damp {
+  background-color: var(--color-comic-bege);
+  background-image: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 0.35) 0%,
+    rgba(254, 244, 231, 0.85) 68%,
+    rgba(94, 81, 88, 0.18) 100%
+  );
+}
+
 /* -------------------------------------------------
    Navbar HQ – diagonal panels
    ------------------------------------------------- */
@@ -356,8 +384,14 @@
   }
 }
 
-html {
-  scroll-behavior: smooth;
+@media (min-width: 1024px) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-attachment: fixed;
+  }
 }
 
 body {
@@ -366,5 +400,4 @@ body {
   font-family: var(--font-comic-neue), sans-serif;
   -webkit-font-smoothing: antialiased;
   min-height: 100dvh;
-  background-attachment: fixed;
 }

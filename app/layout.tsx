@@ -62,7 +62,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${bangers.variable} ${comicNeue.variable} ${bebasNeue.variable} ${mouseMemoirs.variable} ${audiowide.variable} h-full antialiased scroll-smooth`}
+      className={`${bangers.variable} ${comicNeue.variable} ${bebasNeue.variable} ${mouseMemoirs.variable} ${audiowide.variable} h-full antialiased lg:scroll-smooth`}
     >
       <body className="flex min-h-full flex-col font-comic">{children}</body>
     </html>

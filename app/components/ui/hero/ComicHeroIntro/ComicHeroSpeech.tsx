@@ -25,7 +25,7 @@ export function ComicHeroSpeech({
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 2.5, type: "spring", stiffness: 130, damping: 14 }}
-        className="relative w-full max-w-[290px] sm:max-w-sm md:max-w-md lg:max-w-[360px] xl:max-w-[440px] origin-top md:origin-left border-2 sm:border-3 border-black bg-amber-50 p-3 sm:p-3.5 lg:p-3.5 xl:p-4.5 shadow-[4px_4px_0_#000] sm:shadow-[5px_5px_0_#000]"
+        className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl origin-top md:origin-left border-2 sm:border-3 border-black bg-amber-50 p-3 sm:p-4 lg:p-5 xl:p-6 shadow-comic-sm sm:shadow-comic"
       >
         {/* Rabicho do Balão (Desktop: Aponta para a Esquerda) */}
         <div
@@ -47,7 +47,7 @@ export function ComicHeroSpeech({
           className="block md:hidden absolute -top-2 left-1/2 -translate-x-1/2 h-0 w-0 border-r-[8px] border-b-[11px] border-l-[8px] border-r-transparent border-b-amber-50 border-l-transparent"
         />
 
-        <p className="font-mouse text-base sm:text-lg lg:text-lg xl:text-2xl leading-snug sm:leading-relaxed tracking-wide text-zinc-900 font-normal">
+        <p className="font-mouse text-base sm:text-lg lg:text-xl xl:text-2xl leading-snug sm:leading-relaxed tracking-wide text-zinc-900 font-normal">
           &ldquo;{bio}&rdquo;
         </p>
       </motion.div>

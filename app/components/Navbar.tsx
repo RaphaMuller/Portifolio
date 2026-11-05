@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { navLinks } from "@/app/constants/navLinks";
 import { ComicNavPanel } from "@/app/components/ui/navbar/ComicNavPanel";
 import { ComicNavFiller } from "@/app/components/ui/navbar/ComicNavFiller";
@@ -34,19 +35,23 @@ export default function Navbar() {
   };
 
   return (
-    <header className="fixed top-0 right-0 left-0 z-50 border-y-4 border-black bg-black pt-[env(safe-area-inset-top)] shadow-comic select-none">
+    <motion.header
+      initial={{ x: "100%", opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      transition={{ duration: 2.2, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+      className="fixed top-0 right-0 left-0 z-50 border-y-4 border-black bg-black pt-[env(safe-area-inset-top)] shadow-comic select-none"
+    >
       <div className="flex h-14 items-stretch">
-        <ComicNavPanel kind="blank" edge="start" className={NAV_BLOCK_WIDTH} />
-
         <ComicNavPanel
           kind="link"
           href="#hero"
+          edge="start"
           seed={10}
           ariaLabel="Voltar ao início"
           onNavigate={handleNav}
           className={NAV_BLOCK_WIDTH}
         >
-          <div className="relative h-9 w-9 overflow-hidden rounded-md border-2 border-black shadow-comic-sm transition-all duration-300 group-hover:scale-105 group-hover:shadow-comic sm:h-10 sm:w-10">
+          <div className="relative h-9 w-9 overflow-hidden rounded-md border-0 sm:border-2 border-black shadow-none sm:shadow-comic-sm transition-all duration-300 group-hover:scale-105 group-hover:shadow-comic sm:h-10 sm:w-10">
             <Image
               src="/logo-r.jpg"
               alt="Logo Raphael Muller"
@@ -66,6 +71,7 @@ export default function Navbar() {
               key={link.href}
               kind="link"
               href={link.href}
+              edge={index === navLinks.length - 1 ? "end" : undefined}
               seed={index}
               onNavigate={handleNav}
               className={NAV_BLOCK_WIDTH}
@@ -77,17 +83,16 @@ export default function Navbar() {
 
         <ComicNavPanel
           kind="toggle"
+          edge="end"
           isOpen={isOpen}
           seed={20}
           controls={MOBILE_MENU_ID}
           onToggle={() => setIsOpen((open) => !open)}
           className={`${NAV_BLOCK_WIDTH} md:hidden`}
         />
-
-        <ComicNavPanel kind="blank" edge="end" className={NAV_BLOCK_WIDTH} />
       </div>
 
       <ComicNavMobileMenu id={MOBILE_MENU_ID} isOpen={isOpen} onNavigate={handleNav} />
-    </header>
+    </motion.header>
   );
 }

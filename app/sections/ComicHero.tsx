@@ -17,8 +17,8 @@ export default function ComicHero() {
       variant="night"
       mode="fit"
       noPaddingX
+      noPaddingBottom
       ariaLabel="Apresentação Principal"
-      className="pb-0"
     >
       {/* Camada Superior: página narrada (recordatórios + capa + avatar com fala) */}
       <div className="relative z-30 mx-auto my-auto flex w-full max-w-6xl flex-1 flex-col items-center justify-center gap-3 px-4 pt-2 pb-28 sm:gap-6 sm:pb-36 md:pb-28 lg:pb-40 xl:pb-44">
@@ -51,7 +51,7 @@ export default function ComicHero() {
         </div>
 
         {/* 4. Camada Cênica: Coqueiros brotando da calçada (t = 0.85s) sob o meio-fio */}
-        <div className="pointer-events-none absolute bottom-[52px] left-0 z-[15] h-0 w-full overflow-visible">
+        <div className="pointer-events-none absolute bottom-12 left-0 z-[15] h-0 w-full overflow-visible">
           {/* 1. Coqueiro Oeste (visível em todos os tamanhos) */}
           <div className="absolute bottom-0 left-[4%] sm:left-[5%]">
             <ComicPalmTree height={65} swayDelay={0} entranceDelay={0.85} />
