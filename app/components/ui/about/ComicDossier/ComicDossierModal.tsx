@@ -55,10 +55,10 @@ export function ComicDossierModal({
       onClick={(event) => {
         if (event.target === dialogRef.current) onClose();
       }}
-      className="fixed inset-0 m-0 h-[100dvh] min-h-[100dvh] max-h-[100dvh] w-screen min-w-full max-w-none overscroll-contain overflow-y-auto border-0 bg-comic-bege p-0 text-black shadow-none backdrop:bg-black/80 backdrop:backdrop-blur-xs md:hidden"
+      className="fixed inset-0 m-0 h-dvh max-h-dvh w-full max-w-none border-0 p-0 shadow-none overscroll-contain overflow-y-auto bg-comic-bege text-black backdrop:bg-black/80 backdrop:backdrop-blur-xs md:hidden"
     >
       {/* Topo Masthead do Dossiê no Modal */}
-      <header className="relative flex flex-col gap-3 border-b-4 border-black bg-zinc-800 p-4 pr-14 text-white sm:p-5 sm:pr-16 select-none">
+      <header className="sticky top-0 z-40 relative flex flex-col gap-3 border-b-4 border-black bg-zinc-800 p-4 pr-14 text-white sm:p-5 sm:pr-16 select-none">
         <div className="flex items-center justify-between gap-3">
           <div className="flex items-center gap-2.5">
             <ActionBadge

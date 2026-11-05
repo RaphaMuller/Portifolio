@@ -27,7 +27,7 @@ export function ComicProjectModalHeader({
   onClose,
 }: ComicProjectModalHeaderProps) {
   return (
-    <header className="relative flex flex-wrap items-center justify-between gap-3 border-b-4 border-black bg-comic-projects-bg bg-comic-projects-gradient px-4 py-3.5 pr-14 text-white sm:px-6 sm:py-4 sm:pr-16 select-none">
+    <header className="sticky top-0 z-40 relative flex flex-wrap items-center justify-between gap-3 border-b-4 border-black bg-comic-projects-bg bg-comic-projects-gradient px-4 py-3.5 pr-14 text-white sm:px-6 sm:py-4 sm:pr-16 select-none">
       <div className="flex items-center gap-3 sm:gap-4 overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.div
