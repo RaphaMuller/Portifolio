@@ -10,7 +10,7 @@ export default function NextArrow({ onClick }: { onClick?: () => void }) {
       onClick={onClick}
       aria-label="Próximo slide"
     >
-      <ChevronRight className="size-6 stroke-[3] text-black" aria-hidden="true" />
+      <ChevronRight className="size-7 sm:size-8 stroke-[3] text-black" aria-hidden="true" />
     </ActionBadge>
   );
 }

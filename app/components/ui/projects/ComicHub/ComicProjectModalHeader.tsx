@@ -71,7 +71,7 @@ export function ComicProjectModalHeader({
               aria-label={projectsCopy.prevIssue}
               className="flex items-center gap-1 cursor-pointer border-3 border-black bg-white px-2.5 py-1 font-bangers text-stat-label text-black uppercase shadow-comic-sm transition-transform hover:-translate-y-0.5 hover:bg-comic-yellow active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-comic-yellow sm:px-3 sm:py-1.5"
             >
-              <ChevronLeft className="size-4 stroke-[3]" aria-hidden="true" /> {projectsCopy.prevIssueShort}
+              <ChevronLeft className="size-5 stroke-[3]" aria-hidden="true" /> {projectsCopy.prevIssueShort}
             </button>
 
             <button
@@ -80,7 +80,7 @@ export function ComicProjectModalHeader({
               aria-label={projectsCopy.nextIssue}
               className="flex items-center gap-1 cursor-pointer border-3 border-black bg-white px-2.5 py-1 font-bangers text-stat-label text-black uppercase shadow-comic-sm transition-transform hover:-translate-y-0.5 hover:bg-comic-yellow active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-comic-yellow sm:px-3 sm:py-1.5"
             >
-              {projectsCopy.nextIssueShort} <ChevronRight className="size-4 stroke-[3]" aria-hidden="true" />
+              {projectsCopy.nextIssueShort} <ChevronRight className="size-5 stroke-[3]" aria-hidden="true" />
             </button>
           </nav>
         )}

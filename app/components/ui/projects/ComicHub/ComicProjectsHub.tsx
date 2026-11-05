@@ -69,7 +69,7 @@ export function ComicProjectsHub({
             aria-label={projectsCopy.prevIssue}
             className="absolute top-1/2 left-0 z-30 flex h-11 w-11 sm:h-12 sm:w-12 -translate-y-1/2 cursor-pointer items-center justify-center select-none transition-transform hover:scale-110 active:scale-95"
           >
-            <ChevronLeft className="size-6 stroke-[3] text-black" aria-hidden="true" />
+            <ChevronLeft className="size-7 sm:size-8 stroke-[3] text-black" aria-hidden="true" />
           </ActionBadge>
 
           <ActionBadge
@@ -79,7 +79,7 @@ export function ComicProjectsHub({
             aria-label={projectsCopy.nextIssue}
             className="absolute top-1/2 right-0 z-30 flex h-11 w-11 sm:h-12 sm:w-12 -translate-y-1/2 cursor-pointer items-center justify-center select-none transition-transform hover:scale-110 active:scale-95"
           >
-            <ChevronRight className="size-6 stroke-[3] text-black" aria-hidden="true" />
+            <ChevronRight className="size-7 sm:size-8 stroke-[3] text-black" aria-hidden="true" />
           </ActionBadge>
         </>
       )}

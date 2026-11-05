@@ -49,9 +49,14 @@ export function ComicProjectModal({
     const dialog = dialogRef.current;
     if (!dialog) return;
 
-    if (project && !dialog.open) {
-      dialog.showModal();
-    } else if (!project && dialog.open) {
+    if (project) {
+      if (!dialog.open) dialog.showModal();
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    } else if (dialog.open) {
       dialog.close();
     }
   }, [project]);
@@ -66,7 +71,7 @@ export function ComicProjectModal({
       onClick={(event) => {
         if (event.target === dialogRef.current) onClose();
       }}
-      className="m-auto max-h-dvh w-11/12 max-w-4xl overflow-y-auto overflow-x-hidden border-4 border-black bg-white p-0 text-black shadow-comic-lg backdrop:bg-black/80 backdrop:backdrop-blur-xs"
+      className="fixed inset-0 m-0 h-[100dvh] max-h-[100dvh] w-full max-w-none overscroll-contain overflow-y-auto overflow-x-hidden border-0 bg-white p-0 text-black shadow-none backdrop:bg-black/80 backdrop:backdrop-blur-xs sm:m-auto sm:h-auto sm:max-h-[90dvh] sm:w-11/12 sm:max-w-5xl sm:border-4 sm:border-black sm:shadow-comic-lg"
     >
       <ComicProjectModalHeader
         project={project}

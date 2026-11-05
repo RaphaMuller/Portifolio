@@ -10,7 +10,7 @@ export default function PrevArrow({ onClick }: { onClick?: () => void }) {
       onClick={onClick}
       aria-label="Slide anterior"
     >
-      <ChevronLeft className="size-6 stroke-[3] text-black" aria-hidden="true" />
+      <ChevronLeft className="size-7 sm:size-8 stroke-[3] text-black" aria-hidden="true" />
     </ActionBadge>
   );
 }
