@@ -26,7 +26,7 @@ export function ComicSealedCard({
         type="button"
         onClick={() => onSelect(project)}
         aria-label={`${projectsCopy.openModalAriaLabelPrefix} ${project.title}`}
-        className="group/sealed relative flex aspect-2/3 max-h-full max-w-full w-auto h-auto min-h-0 cursor-pointer flex-col overflow-hidden rounded-sm border-2 border-white/35 bg-white/10 p-1.5 sm:p-2.5 text-left shadow-comic-lg backdrop-blur-xs transition-transform duration-300 ease-out hover:-translate-y-1.5 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-comic-yellow"
+        className="group/sealed relative flex aspect-2/3 h-full max-h-full w-auto max-w-full cursor-pointer flex-col overflow-hidden rounded-sm border-2 border-white/35 bg-white/10 p-1.5 sm:p-2.5 text-left shadow-comic-lg backdrop-blur-xs transition-transform duration-300 ease-out hover:-translate-y-1.5 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-comic-yellow"
       >
         {/* Aba Superior do Saco Plástico Lacrado (Polybag Header Seal) */}
         <div
