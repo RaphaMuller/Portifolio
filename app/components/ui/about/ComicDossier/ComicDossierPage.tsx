@@ -28,7 +28,7 @@ function renderBoldText(text: string) {
  */
 export function ComicDossierPage({ tab }: ComicDossierPageProps) {
   return (
-    <div className="relative flex min-h-0 flex-1 flex-col overflow-hidden comic-paper-damp p-4 text-center sm:p-5">
+    <div className="relative flex min-h-full flex-1 flex-col overflow-hidden comic-paper-damp p-4 text-center sm:p-5">
       <AnimatePresence mode="wait">
         <motion.div
           key={tab.id}
