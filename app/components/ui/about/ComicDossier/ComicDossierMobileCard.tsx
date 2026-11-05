@@ -18,9 +18,9 @@ export function ComicDossierMobileCard({
   onOpenDossier,
 }: ComicDossierMobileCardProps) {
   return (
-    <div className="flex h-full min-h-0 w-full flex-col justify-between gap-2.5 p-3.5 sm:p-4 text-center md:hidden">
+    <div className="flex h-full min-h-0 flex-1 w-full flex-col justify-between gap-2.5 p-3.5 sm:p-4 text-center md:hidden">
       {/* 1. Foto Ampliada do Setup (Ocupa o espaço livre dinamicamente) */}
-      <div className="relative min-h-28 sm:min-h-36 max-h-52 w-full flex-1 overflow-hidden border-3 border-black bg-black shadow-comic-sm">
+      <div className="relative min-h-28 sm:min-h-36 w-full flex-1 overflow-hidden border-3 border-black bg-black shadow-comic-sm">
         <Image
           src="/Setup_v2.png"
           alt="Workspace de desenvolvimento do herói"
@@ -37,7 +37,7 @@ export function ComicDossierMobileCard({
       </div>
 
       {/* 2. Badges de Stack Core no Topo (Ponte visual entre foto e texto) */}
-      <div className="flex flex-wrap items-center justify-center gap-1.5">
+      <div className="shrink-0 flex flex-wrap items-center justify-center gap-1.5">
         {aboutData.coreStack.map((tech) => (
           <span
             key={tech}
@@ -50,7 +50,7 @@ export function ComicDossierMobileCard({
       </div>
 
       {/* 3. Mini-Bio Editorial em Recordatório de Quadrinhos com Badge Ampliada */}
-      <div className="relative border-2 border-black bg-white px-3 py-2 text-left shadow-comic-sm">
+      <div className="shrink-0 relative border-2 border-black bg-white px-3 py-2 text-left shadow-comic-sm">
         <span className="absolute -top-2.5 left-2 border border-black bg-comic-yellow px-2 py-0.5 font-bangers text-xs tracking-wider text-black uppercase leading-none">
           DIRETRIZ DA MISSÃO
         </span>
@@ -60,7 +60,7 @@ export function ComicDossierMobileCard({
       </div>
 
       {/* 4. Estatísticas Confirmadas Empilhadas em Coluna */}
-      <div className="w-full">
+      <div className="shrink-0 w-full">
         <HeroPowerMeter compact direction="column" />
       </div>
 
@@ -69,7 +69,7 @@ export function ComicDossierMobileCard({
         type="button"
         onClick={onOpenDossier}
         aria-label={aboutData.openDossierAriaLabel}
-        className="cursor-pointer border-3 border-black bg-comic-yellow px-4 py-2 font-bangers text-h4 text-black uppercase shadow-comic transition-transform hover:-translate-y-0.5 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
+        className="shrink-0 cursor-pointer border-3 border-black bg-comic-yellow px-4 py-2 font-bangers text-h4 text-black uppercase shadow-comic transition-transform hover:-translate-y-0.5 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
       >
         {aboutData.openDossierLabel}
       </button>
