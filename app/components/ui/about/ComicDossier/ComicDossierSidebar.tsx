@@ -18,7 +18,7 @@ export function ComicDossierSidebar({ className = "" }: ComicDossierSidebarProps
   return (
     <aside
       aria-label="Evidências do Dossiê"
-      className={`flex flex-col items-center justify-between gap-4 border-b-4 border-black bg-comic-projects-bg bg-comic-projects-gradient p-4 text-center text-white lg:border-r-4 lg:border-b-0 sm:p-5 ${className}`}
+      className={`flex flex-col items-center justify-between gap-4 border-b-4 border-black bg-comic-projects-bg bg-comic-projects-gradient p-4 text-center text-white md:border-r-4 md:border-b-0 sm:p-5 ${className}`}
     >
       {/* Foto do Setup Ampliada em Moldura HQ */}
       <div className="relative min-h-48 w-full flex-1 overflow-hidden border-3 border-black bg-black shadow-comic-sm">

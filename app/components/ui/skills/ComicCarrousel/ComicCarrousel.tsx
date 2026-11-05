@@ -49,7 +49,7 @@ export default function ComicCarrousel() {
 
   return (
     <ActionBadge
-      className="w-full max-w-7xl rounded-4xl bg-comic-shadow"
+      className="w-full max-w-6xl rounded-4xl bg-comic-shadow"
       theme="batmanArmor"
       noPadding
       {...motionPresets.slideInLeft}

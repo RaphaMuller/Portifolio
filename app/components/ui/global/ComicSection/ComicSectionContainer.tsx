@@ -63,7 +63,7 @@ export function ComicSectionContainer({
 
   const modeClasses =
     mode === "fit"
-      ? `h-[100dvh] max-h-[100dvh] overflow-hidden scroll-mt-0 pt-[calc(6rem+env(safe-area-inset-top))] sm:pt-24 ${pbClass} justify-between`
+      ? `h-[100svh] max-h-[100svh] lg:h-screen lg:max-h-screen overflow-hidden scroll-mt-0 pt-[calc(6rem+env(safe-area-inset-top))] sm:pt-24 ${pbClass} justify-between`
       : "min-h-screen py-24 justify-center scroll-mt-16";
 
   const paddingXClass = noPaddingX ? "px-0" : "";

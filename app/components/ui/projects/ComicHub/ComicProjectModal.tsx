@@ -49,9 +49,14 @@ export function ComicProjectModal({
     const dialog = dialogRef.current;
     if (!dialog) return;
 
-    if (project && !dialog.open) {
-      dialog.showModal();
-    } else if (!project && dialog.open) {
+    if (project) {
+      if (!dialog.open) dialog.showModal();
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    } else if (dialog.open) {
       dialog.close();
     }
   }, [project]);
@@ -66,7 +71,7 @@ export function ComicProjectModal({
       onClick={(event) => {
         if (event.target === dialogRef.current) onClose();
       }}
-      className="m-auto max-h-dvh w-11/12 max-w-4xl overflow-y-auto overflow-x-hidden border-4 border-black bg-white p-0 text-black shadow-comic-lg backdrop:bg-black/80 backdrop:backdrop-blur-xs"
+      className="fixed inset-0 m-0 h-[100dvh] max-h-[100dvh] w-full max-w-none overflow-y-auto overflow-x-hidden border-0 bg-white p-0 text-black shadow-none backdrop:bg-black/80 backdrop:backdrop-blur-xs sm:m-auto sm:h-auto sm:max-h-[90dvh] sm:w-11/12 sm:max-w-5xl sm:border-4 sm:border-black sm:shadow-comic-lg"
     >
       <ComicProjectModalHeader
         project={project}
@@ -86,13 +91,13 @@ export function ComicProjectModal({
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
             transition={{ duration: 0.22, ease: "easeOut" }}
-            className="flex flex-col lg:grid lg:grid-cols-12"
+            className="flex flex-col lg:grid lg:grid-cols-12 min-h-full items-stretch"
           >
           <ComicProjectModalFlap project={project} />
 
           <article
             aria-labelledby={synopsisHeadingId}
-            className="flex flex-col justify-between gap-4 bg-white p-5 text-center sm:p-6 lg:col-span-8"
+            className="flex flex-col justify-between gap-4 bg-white p-5 text-center sm:p-6 lg:col-span-8 h-full"
           >
             {/* Quadro 1: Recordatório Clássico de HQ Centralizado */}
             <blockquote className="relative mt-2 border-3 border-black bg-comic-yellow px-4 py-3.5 shadow-comic-sm sm:mt-2.5">
