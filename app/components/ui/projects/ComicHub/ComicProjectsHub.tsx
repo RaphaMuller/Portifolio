@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import type { EmblaCarouselType } from "embla-carousel";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { ActionBadge } from "@/app/components/ui/global/ActionBadge/ActionBadge";
 import { ComicSealedCard } from "@/app/components/ui/projects/ComicHub/ComicSealedCard";
 import { projectsCopy } from "@/app/constants/projectsData";
@@ -66,9 +67,9 @@ export function ComicProjectsHub({
             noPadding
             onClick={scrollPrev}
             aria-label={projectsCopy.prevIssue}
-            className="absolute top-1/2 left-0 z-30 flex h-11 w-11 sm:h-12 sm:w-12 -translate-y-1/2 cursor-pointer items-center justify-center font-bangers text-h3 select-none transition-transform hover:scale-110 active:scale-95"
+            className="absolute top-1/2 left-0 z-30 flex h-11 w-11 sm:h-12 sm:w-12 -translate-y-1/2 cursor-pointer items-center justify-center select-none transition-transform hover:scale-110 active:scale-95"
           >
-            ◀
+            <ChevronLeft className="size-6 stroke-[3] text-black" aria-hidden="true" />
           </ActionBadge>
 
           <ActionBadge
@@ -76,9 +77,9 @@ export function ComicProjectsHub({
             noPadding
             onClick={scrollNext}
             aria-label={projectsCopy.nextIssue}
-            className="absolute top-1/2 right-0 z-30 flex h-11 w-11 sm:h-12 sm:w-12 -translate-y-1/2 cursor-pointer items-center justify-center font-bangers text-h3 select-none transition-transform hover:scale-110 active:scale-95"
+            className="absolute top-1/2 right-0 z-30 flex h-11 w-11 sm:h-12 sm:w-12 -translate-y-1/2 cursor-pointer items-center justify-center select-none transition-transform hover:scale-110 active:scale-95"
           >
-            ▶
+            <ChevronRight className="size-6 stroke-[3] text-black" aria-hidden="true" />
           </ActionBadge>
         </>
       )}
