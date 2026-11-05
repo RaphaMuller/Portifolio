@@ -49,13 +49,13 @@ export default function ComicCarrousel() {
 
   return (
     <ActionBadge
-      className="w-full max-w-7xl rounded-4xl bg-comic-shadow"
+      className="flex-1 h-full min-h-0 w-full max-w-7xl rounded-4xl bg-comic-shadow flex flex-col justify-between overflow-hidden"
       theme="batmanArmor"
       noPadding
       {...motionPresets.slideInLeft}
     >
       {/* Header */}
-      <div className="flex justify-center py-4 sm:py-6">
+      <div className="shrink-0 flex justify-center py-2 sm:py-3.5">
         <ActionBadge
           theme="yellow"
           className="mb-2 flex justify-center text-title md:text-h4 lg:text-h3"
@@ -65,8 +65,8 @@ export default function ComicCarrousel() {
       </div>
 
       {/* Structure */}
-      <div className="relative">
-        <div className="relative h-6 border-y-4 border-black bg-comic-gradient-belt shadow-sm">
+      <div className="relative flex-1 min-h-0 flex flex-col justify-between">
+        <div className="relative shrink-0 h-6 border-y-4 border-black bg-comic-gradient-belt shadow-sm">
           <div className="relative top-1/2 right-0 left-0 h-px -translate-y-1/2 bg-comic-stitching" />
         </div>
 
@@ -80,12 +80,12 @@ export default function ComicCarrousel() {
         </div>
 
         {/* Carousel */}
-        <div className="relative border-x-4 border-black bg-comic-section-gradient px-2 py-2 sm:px-4 lg:px-14 xl:px-16">
+        <div className="relative flex-1 min-h-0 flex flex-col justify-center border-x-4 border-black bg-comic-section-gradient px-2 py-1.5 sm:px-4 lg:px-14 xl:px-16">
           <PrevArrow onClick={scrollPrev} />
           <NextArrow onClick={scrollNext} />
 
-          <div className="overflow-hidden" ref={emblaRef}>
-            <div className="flex touch-pan-y">
+          <div className="overflow-hidden w-full flex-1 min-h-0 flex items-center" ref={emblaRef}>
+            <div className="flex touch-pan-y w-full items-center">
               {beltItems.map((item) => (
                 <div
                   key={item.tech}
@@ -98,7 +98,7 @@ export default function ComicCarrousel() {
           </div>
 
           {/* Dots */}
-          <div className="mt-4 mb-2 flex justify-center gap-2">
+          <div className="shrink-0 mt-2 mb-1 sm:mt-3 flex justify-center gap-2">
             {scrollSnaps.map((_, index) => (
               <button
                 key={index}
@@ -126,7 +126,7 @@ export default function ComicCarrousel() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.5 }}
-        className="flex items-center justify-center py-2"
+        className="shrink-0 flex items-center justify-center py-1 sm:py-2"
       >
         <span className="px-4 text-center text-stat-label text-gold/60">
           &ldquo;Eu sou o programador que Gotham merece... e que os bugs

@@ -18,9 +18,9 @@ export default function BeltPouch({ item, className = "" }: BeltPouchProps) {
   const [flipped, setFlipped] = useState(false);
 
   return (
-    <div className={`flex justify-center px-1 py-4 sm:px-2 ${className}`}>
+    <div className={`flex justify-center h-full px-1 py-2 sm:px-2 ${className}`}>
       <motion.div
-        className="relative w-full max-w-xs cursor-pointer perspective-1000"
+        className="relative w-full max-w-xs h-full cursor-pointer perspective-1000 flex flex-col justify-center"
         onClick={() => setFlipped(!flipped)}
         whileHover={{ y: -6 }}
         transition={{ type: "spring", stiffness: 300 }}
@@ -28,7 +28,7 @@ export default function BeltPouch({ item, className = "" }: BeltPouchProps) {
         <motion.div
           animate={{ rotateY: flipped ? 180 : 0 }}
           transition={{ duration: 0.6, ease: "easeInOut" }}
-          className="relative flex h-96 w-full flex-col transform-style-3d"
+          className="relative flex h-full min-h-72 max-h-96 w-full flex-col transform-style-3d"
         >
           {/* PouchFront */}
           <ActionBadge
