@@ -16,10 +16,10 @@ export function ComicProjectModalFlap({ project }: ComicProjectModalFlapProps) {
   return (
     <aside
       aria-label={projectsCopy.modalFlapAriaLabel}
-      className="flex flex-col items-center justify-between gap-4 border-b-4 border-black bg-comic-projects-bg bg-comic-projects-gradient p-4 text-center text-white lg:col-span-4 lg:border-r-4 lg:border-b-0 sm:p-5 h-full"
+      className="flex flex-col items-center justify-between gap-4 border-b-4 border-black bg-comic-projects-bg bg-comic-projects-gradient p-4 text-center text-white lg:col-span-4 lg:border-r-4 lg:border-b-0 sm:p-5"
     >
       {/* Miniatura da Capa (Visível em Desktop na Orelha do Livro) */}
-      <div className="relative hidden aspect-2/3 w-full max-w-44 xl:max-w-48 overflow-hidden border-3 border-black bg-zinc-900 shadow-comic lg:block">
+      <div className="relative hidden aspect-2/3 w-full max-w-56 overflow-hidden border-3 border-black bg-zinc-900 shadow-comic sm:max-w-60 lg:block">
         <Image
           src={project.image}
           alt={project.title}

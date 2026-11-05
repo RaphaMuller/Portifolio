@@ -21,7 +21,7 @@ export function ComicSealedCard({
   onSelect,
 }: ComicSealedCardProps) {
   return (
-    <article className="flex h-full w-full min-h-0 items-center justify-center p-1 sm:p-2">
+    <article className="flex h-full min-h-0 max-w-full items-center justify-center p-1 sm:p-2">
       <button
         type="button"
         onClick={() => onSelect(project)}

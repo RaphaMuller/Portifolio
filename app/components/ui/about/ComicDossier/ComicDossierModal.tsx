@@ -32,14 +32,9 @@ export function ComicDossierModal({
     const dialog = dialogRef.current;
     if (!dialog) return;
 
-    if (isOpen) {
-      if (!dialog.open) dialog.showModal();
-      const originalOverflow = document.body.style.overflow;
-      document.body.style.overflow = "hidden";
-      return () => {
-        document.body.style.overflow = originalOverflow;
-      };
-    } else if (dialog.open) {
+    if (isOpen && !dialog.open) {
+      dialog.showModal();
+    } else if (!isOpen && dialog.open) {
       dialog.close();
     }
   }, [isOpen]);
@@ -54,7 +49,7 @@ export function ComicDossierModal({
       onClick={(event) => {
         if (event.target === dialogRef.current) onClose();
       }}
-      className="fixed inset-0 m-0 h-[100dvh] max-h-[100dvh] w-full max-w-none overflow-y-auto border-0 bg-comic-bege p-0 text-black shadow-none backdrop:bg-black/80 backdrop:backdrop-blur-xs sm:m-auto sm:h-auto sm:max-h-[90dvh] sm:w-11/12 sm:max-w-2xl sm:border-4 sm:border-black sm:shadow-comic-lg md:hidden"
+      className="m-auto max-h-dvh w-11/12 max-w-2xl overflow-y-auto border-4 border-black bg-comic-bege p-0 text-black shadow-comic-lg backdrop:bg-black/80 backdrop:backdrop-blur-xs md:hidden"
     >
       {/* Topo Masthead do Dossiê no Modal */}
       <header className="flex flex-col gap-3 border-b-4 border-black bg-zinc-800 p-4 text-white sm:p-5 select-none">
@@ -87,9 +82,9 @@ export function ComicDossierModal({
             type="button"
             onClick={onClose}
             aria-label={aboutData.modalCloseAriaLabel}
-            className="flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-full border-3 border-black bg-comic-yellow font-bangers text-xl text-black shadow-comic-sm transition-transform hover:scale-110 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            className="shrink-0 cursor-pointer border-3 border-black bg-comic-yellow px-3 py-1 font-bangers text-stat-label text-black uppercase shadow-comic-sm transition-transform hover:-translate-y-0.5 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
           >
-            ✕
+            {aboutData.modalCloseLabel}
           </button>
         </div>
 
