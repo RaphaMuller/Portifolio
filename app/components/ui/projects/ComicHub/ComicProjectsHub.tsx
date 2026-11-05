@@ -59,7 +59,7 @@ export function ComicProjectsHub({
   const isOverflowing = canScrollPrev || canScrollNext;
 
   return (
-    <div className="relative mx-auto flex h-full min-h-0 w-full flex-1 items-stretch justify-center px-2 sm:px-4 lg:px-8">
+    <div className="relative mx-auto flex h-full min-h-0 w-full flex-1 items-stretch justify-center px-0 lg:px-8">
       {isOverflowing && (
         <>
           <ActionBadge
@@ -67,7 +67,7 @@ export function ComicProjectsHub({
             noPadding
             onClick={scrollPrev}
             aria-label={projectsCopy.prevIssue}
-            className="absolute top-1/2 left-0 z-30 flex h-11 w-11 sm:h-12 sm:w-12 -translate-y-1/2 cursor-pointer items-center justify-center select-none transition-transform hover:scale-110 active:scale-95"
+            className="absolute top-1/2 left-0 z-30 hidden lg:flex h-11 w-11 sm:h-12 sm:w-12 -translate-y-1/2 cursor-pointer items-center justify-center select-none transition-transform hover:scale-110 active:scale-95"
           >
             <ChevronLeft className="size-7 sm:size-8 stroke-[3] text-black" aria-hidden="true" />
           </ActionBadge>
@@ -77,7 +77,7 @@ export function ComicProjectsHub({
             noPadding
             onClick={scrollNext}
             aria-label={projectsCopy.nextIssue}
-            className="absolute top-1/2 right-0 z-30 flex h-11 w-11 sm:h-12 sm:w-12 -translate-y-1/2 cursor-pointer items-center justify-center select-none transition-transform hover:scale-110 active:scale-95"
+            className="absolute top-1/2 right-0 z-30 hidden lg:flex h-11 w-11 sm:h-12 sm:w-12 -translate-y-1/2 cursor-pointer items-center justify-center select-none transition-transform hover:scale-110 active:scale-95"
           >
             <ChevronRight className="size-7 sm:size-8 stroke-[3] text-black" aria-hidden="true" />
           </ActionBadge>
@@ -87,14 +87,14 @@ export function ComicProjectsHub({
       <div className="flex h-full min-h-0 w-full flex-1 overflow-hidden" ref={emblaRef}>
         <ul
           aria-label={projectsCopy.issueNavAriaLabel}
-          className={`flex h-full min-h-0 w-full touch-pan-y items-stretch gap-3 sm:gap-4 lg:gap-6 ${
+          className={`flex h-full min-h-0 w-full touch-pan-y items-stretch gap-2 sm:gap-4 lg:gap-6 ${
             !isOverflowing ? "justify-center" : "justify-start"
           }`}
         >
           {projectsList.map((project, index) => (
             <li
               key={project.id}
-              className="flex h-full min-h-0 flex-none items-center justify-center basis-full md:basis-2/3 lg:basis-1/2 xl:basis-2/5 px-1.5 sm:px-2.5"
+              className="flex h-full min-h-0 flex-none items-center justify-center basis-full md:basis-2/3 lg:basis-1/2 xl:basis-2/5 px-0 sm:px-1.5 lg:px-2.5"
             >
               <ComicSealedCard
                 project={project}
