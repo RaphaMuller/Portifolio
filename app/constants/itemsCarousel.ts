@@ -1,4 +1,3 @@
-import type { ComponentType } from "react";
 import {
   SiJavascript,
   SiTypescript,
@@ -14,20 +13,24 @@ import {
   SiFastapi,
   SiZod,
 } from "react-icons/si";
+import type { BeltItem } from "@/app/types/skill";
 
-export interface BeltItem {
-  gadget: string;
-  gadgetEmoji: string;
-  gadgetDesc: string;
-  tech: string;
-  Icon: ComponentType<{ size?: number | string; color?: string; className?: string }>;
-  iconColor: string;
-  level: number;
-  category: string;
-  tip: string;
-}
+export const skillsCopy = {
+  sectionAriaLabel: "Capítulo 2: O Arsenal",
+  chapter: "CAPÍTULO 2",
+  title: "O ARSENAL",
+  beltHeading: "🦇 CINTO DE UTILIDADES",
+  buckleSymbol: "🦇",
+  levelSymbol: "🦇",
+  specSheetHeading: "🦇 FICHA TÉCNICA",
+  quote: "Eu sou o programador que Gotham merece... e que os bugs temem.",
+  prevSlideAriaLabel: "Slide anterior",
+  nextSlideAriaLabel: "Próximo slide",
+  goToSlidePrefix: "Ir para o slide",
+} as const;
 
-export const beltItems: BeltItem[] = [
+// Official third-party brand colors preserved per fix_colors guideline.
+export const beltItems: readonly BeltItem[] = [
   {
     gadget: "BATARANG", gadgetEmoji: "🪃", gadgetDesc: "Retorna sempre ao dono",
     tech: "JavaScript", Icon: SiJavascript, iconColor: "#F7DF1E", level: 5,
@@ -93,4 +96,4 @@ export const beltItems: BeltItem[] = [
     tech: "Kubernetes", Icon: SiKubernetes, iconColor: "#326CE5", level: 3,
     category: "DevOps", tip: "Orquestra como Batman coordena a Liga da Justiça",
   },
-] as const;
+];

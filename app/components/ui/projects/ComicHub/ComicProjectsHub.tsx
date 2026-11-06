@@ -1,13 +1,11 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
-import useEmblaCarousel from "embla-carousel-react";
-import type { EmblaCarouselType } from "embla-carousel";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { ActionBadge } from "@/app/components/ui/global/ActionBadge/ActionBadge";
 import { ComicSealedCard } from "@/app/components/ui/projects/ComicHub/ComicSealedCard";
 import { projectsCopy } from "@/app/constants/projectsData";
-import { formatIssueNumber } from "@/app/sections/hooks/useComicProjects";
+import { formatIssueNumber } from "@/app/lib/formatIssueNumber";
+import { useComicCarousel } from "@/app/sections/hooks/useComicCarousel";
 import type { Project } from "@/app/types/project";
 
 interface ComicProjectsHubProps {
@@ -23,78 +21,61 @@ export function ComicProjectsHub({
   projectsList,
   onSelectProject,
 }: ComicProjectsHubProps) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-    align: "start",
+  const { emblaRef, isOverflowing, scrollPrev, scrollNext } = useComicCarousel({
     containScroll: "trimSnaps",
+    watchKey: projectsList,
   });
 
-  const [canScrollPrev, setCanScrollPrev] = useState(false);
-  const [canScrollNext, setCanScrollNext] = useState(false);
-
-  const syncCarouselState = useCallback((api: EmblaCarouselType) => {
-    setCanScrollPrev(api.canScrollPrev());
-    setCanScrollNext(api.canScrollNext());
-  }, []);
-
-  useEffect(() => {
-    if (!emblaApi) return;
-
-    emblaApi
-      .on("init", syncCarouselState)
-      .on("reInit", syncCarouselState)
-      .on("select", syncCarouselState);
-
-    queueMicrotask(() => syncCarouselState(emblaApi));
-
-    return () => {
-      emblaApi
-        .off("init", syncCarouselState)
-        .off("reInit", syncCarouselState)
-        .off("select", syncCarouselState);
-    };
-  }, [emblaApi, syncCarouselState, projectsList]);
-
-  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
-  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
-  const isOverflowing = canScrollPrev || canScrollNext;
-
   return (
-    <div className="relative mx-auto flex h-full min-h-0 w-full flex-1 items-stretch justify-center px-0 lg:px-8">
+    <div className="relative mx-auto flex min-h-0 w-full flex-1 flex-col px-0 lg:px-8">
       {isOverflowing && (
         <>
           <ActionBadge
+            as="button"
             theme="yellow"
             noPadding
             onClick={scrollPrev}
             aria-label={projectsCopy.prevIssue}
-            className="absolute top-1/2 left-0 z-30 hidden lg:flex h-11 w-11 sm:h-12 sm:w-12 -translate-y-1/2 cursor-pointer items-center justify-center select-none transition-transform hover:scale-110 active:scale-95"
+            className="absolute top-1/2 left-0 z-30 hidden size-11 -translate-y-1/2 cursor-pointer items-center justify-center select-none transition-transform hover:scale-110 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black sm:size-12 lg:flex"
           >
-            <ChevronLeft className="size-7 sm:size-8 stroke-[3] text-black" aria-hidden="true" />
+            <ChevronLeft
+              className="size-7 text-black sm:size-8"
+              strokeWidth={3}
+              aria-hidden="true"
+            />
           </ActionBadge>
 
           <ActionBadge
+            as="button"
             theme="yellow"
             noPadding
             onClick={scrollNext}
             aria-label={projectsCopy.nextIssue}
-            className="absolute top-1/2 right-0 z-30 hidden lg:flex h-11 w-11 sm:h-12 sm:w-12 -translate-y-1/2 cursor-pointer items-center justify-center select-none transition-transform hover:scale-110 active:scale-95"
+            className="absolute top-1/2 right-0 z-30 hidden size-11 -translate-y-1/2 cursor-pointer items-center justify-center select-none transition-transform hover:scale-110 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black sm:size-12 lg:flex"
           >
-            <ChevronRight className="size-7 sm:size-8 stroke-[3] text-black" aria-hidden="true" />
+            <ChevronRight
+              className="size-7 text-black sm:size-8"
+              strokeWidth={3}
+              aria-hidden="true"
+            />
           </ActionBadge>
         </>
       )}
 
-      <div className="flex h-full min-h-0 w-full flex-1 overflow-hidden" ref={emblaRef}>
+      <div
+        className="flex min-h-0 w-full flex-1 flex-col overflow-hidden"
+        ref={emblaRef}
+      >
         <ul
           aria-label={projectsCopy.issueNavAriaLabel}
-          className={`flex h-full min-h-0 w-full touch-pan-y items-stretch gap-2 sm:gap-4 lg:gap-6 ${
+          className={`flex min-h-0 w-full flex-1 touch-pan-y items-stretch gap-4 sm:gap-6 md:gap-8 lg:gap-10 xl:gap-14 ${
             !isOverflowing ? "justify-center" : "justify-start"
           }`}
         >
           {projectsList.map((project, index) => (
             <li
               key={project.id}
-              className="flex h-full min-h-0 flex-none items-center justify-center basis-full md:basis-2/3 lg:basis-1/2 xl:basis-2/5 px-0 sm:px-1.5 lg:px-2.5"
+              className="flex min-h-0 flex-none basis-full flex-col px-2 sm:px-3 md:basis-2/3 md:px-4 lg:basis-1/2 lg:px-6 xl:basis-2/5 xl:px-8"
             >
               <ComicSealedCard
                 project={project}

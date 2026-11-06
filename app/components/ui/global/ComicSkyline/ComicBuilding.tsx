@@ -8,6 +8,10 @@ interface ComicBuildingProps {
   theme: BuildingTheme;
 }
 
+/**
+ * @example
+ * <ComicBuilding config={buildings[0]} theme="default" />
+ */
 export function ComicBuilding({ config, theme }: ComicBuildingProps) {
   const { id, height, width, floors, windowsPerFloor, windowType, litWindows } =
     config;
@@ -20,34 +24,29 @@ export function ComicBuilding({ config, theme }: ComicBuildingProps) {
     return "h-6 w-3 border-2 border-black";
   };
 
-  const getContainerClasses = () => {
-    const basePadding = windowType === "horizontal" ? "px-2" : "px-1";
-    return `flex flex-col gap-1 py-3 ${basePadding} w-full h-full justify-center items-center`;
-  };
+  const basePadding = windowType === "horizontal" ? "px-2" : "px-1";
+  const containerClasses = `flex flex-col gap-1 py-3 ${basePadding} w-full h-full justify-center items-center`;
 
   return (
     <div
       className="group relative transition-transform duration-300"
       style={{ width: `${width * 4}px` }}
     >
-      {/* Roof */}
       <div
-        className={`absolute -top-3 right-2 h-4 skew-x-[45deg] border-4 border-black ${currentTheme.roof}`}
+        className={`absolute -top-3 right-2 h-4 skew-x-45 border-4 border-black ${currentTheme.roof}`}
         style={{ width: `${width * 4}px` }}
       />
 
-      {/* Shadow */}
       <div
-        className={`absolute -top-1 -left-4 w-6 skew-y-[45deg] rounded-t-lg border-2 border-black ${currentTheme.shadow}`}
+        className={`absolute -top-1 -left-4 w-6 skew-y-45 rounded-t-lg border-2 border-black ${currentTheme.shadow}`}
         style={{ height: `${height * 5}px` }}
       />
 
-      {/* Facade */}
       <div
         className={`relative z-10 flex flex-col rounded-t-md border-4 border-black ${currentTheme.bg}`}
         style={{ height: `${height * 5}px`, width: `${width * 4}px` }}
       >
-        <div className={getContainerClasses()}>
+        <div className={containerClasses}>
           {Array.from({ length: floors }).map((_, floorIdx) => (
             <div
               key={floorIdx}

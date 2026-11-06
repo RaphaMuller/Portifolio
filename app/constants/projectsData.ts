@@ -1,18 +1,12 @@
-import type { Project } from "@/app/types/project";
+import type { Project, ProjectCategory } from "@/app/types/project";
 
-export const ALL_PROJECTS_CATEGORY = "TODAS AS MISSÕES";
+export const ALL_PROJECTS_CATEGORY: ProjectCategory = "TODAS AS MISSÕES";
 
-export const projectCategories = [
+export const projectCategories: readonly ProjectCategory[] = [
   ALL_PROJECTS_CATEGORY,
   "FULLSTACK",
   "FRONTEND",
-] as const;
-
-export type ProjectCategory = (typeof projectCategories)[number];
-
-export const mobileIssueTabIds = ["problem", "arsenal", "challenge"] as const;
-
-export type MobileIssueTabId = (typeof mobileIssueTabIds)[number];
+];
 
 export const projectsCopy = {
   chapter: "CAPÍTULO 3",
@@ -20,34 +14,23 @@ export const projectsCopy = {
   sectionAriaLabel: "Capítulo 3: As Missões",
   filtersAriaLabel: "Filtrar missões por categoria",
   issueNavAriaLabel: "Navegação entre edições de projetos",
-  mobileTabsAriaLabel: "Quadros narrativos do projeto",
   techListAriaLabel: "Tecnologias utilizadas no projeto",
   decisionsListAriaLabel: "Decisões técnicas do projeto",
   issuePrefix: "GIBI",
-  issueOf: "DE",
   prevIssue: "EDIÇÃO ANTERIOR",
   prevIssueShort: "ANT.",
   nextIssue: "PRÓXIMA EDIÇÃO",
   nextIssueShort: "PRÓX.",
-  problemHeading: "O PROBLEMA",
-  solutionHeading: "A SOLUÇÃO",
-  challengeHeading: "O DESAFIO",
-  arsenalHeading: "TECNOLOGIAS",
+  arsenalHeading: "— TECNOLOGIAS —",
   codeLabel: "CÓDIGO",
   demoLabel: "DEMO",
   sealedBadgeLabel: "MINT // LACRADO",
   openModalAriaLabelPrefix: "Inspecionar edição lacrada do projeto",
-  modalCloseLabel: "FECHAR ✕",
   modalCloseAriaLabel: "Fechar modal do projeto",
   modalFlapAriaLabel: "Orelha da edição com capa e tecnologias",
   modalSynopsisLabel: "SINOPSE DA EDIÇÃO",
   modalStoryHeading: "— A HISTÓRIA DO PROJETO —",
   modalBehindScenesLabel: "— POR TRÁS DOS PANOS —",
-  mobileTabs: {
-    problem: "PROBLEMA",
-    arsenal: "ARSENAL",
-    challenge: "DESAFIO",
-  },
 } as const;
 
 export const projects: readonly Project[] = [
@@ -57,13 +40,6 @@ export const projects: readonly Project[] = [
     subtitle: "Jogo Diário de Dedução Esportiva",
     summary:
       "Inspirado na dinâmica do Wordle, o Footle desafia o usuário a adivinhar o jogador de futebol secreto do dia em até **10 tentativas**, cruzando dicas de **liga, clube, posição, idade e nacionalidade**. Todo o fluxo foi desenhado para que a validação ocorra **exclusivamente no servidor**, impedindo que o atleta do dia vaze na aba de rede do navegador.",
-    engineering:
-      "Para manter a disputa justa, toda a validação da partida foi blindada no servidor com **HMAC**, sincronizada em **fuso determinístico**, com banco **Supabase PostgreSQL com RLS** e contratos validados por **Zod**.",
-    description:
-      "Aplicação web inspirada em jogos de dedução esportiva (Wordle/Spotle) com validação anti-cheat via HMAC, fuso determinístico e banco Supabase PostgreSQL com RLS.",
-    problem:
-      "Jogos diários perdem a graça quando a resposta vaza no código do site.",
-    solution: "Descubra o jogador secreto do dia em até 10 chutes.",
     technicalDecisions: [
       {
         label: "Motor de Palpites no Servidor",
@@ -89,7 +65,7 @@ export const projects: readonly Project[] = [
     challenge:
       "Dez chutes. Um jogador misterioso. E nenhuma chance de descobrir a resposta inspecionando a página.",
     challengeSfx: "TIC-TAC!",
-    image: "/footle.png",
+    image: "/footle.jpg",
     tags: [
       "Next.js",
       "React 19",
@@ -100,7 +76,6 @@ export const projects: readonly Project[] = [
       "Zod",
     ],
     category: "FULLSTACK",
-    theme: "green",
     action: "GOLAÇO!",
     githubUrl: "https://github.com/RaphaMuller/footle",
     demoUrl: "https://footle-delta.vercel.app",
@@ -111,13 +86,6 @@ export const projects: readonly Project[] = [
     subtitle: "Experiência Interativa em Quadrinhos",
     summary:
       "Criado para unir **identidade autoral e engenharia de front-end**, este portfólio transforma a apresentação profissional em uma leitura guiada por capítulos inspirados no universo de Gotham. Cada seção combina **ilustrações procedurais em código**, navegação magnética entre quadros e **alta performance de carregamento**.",
-    engineering:
-      "Construído como uma landing page de alta performance com **Next.js e React 19**, unindo animações fluidas via **Framer Motion**, tokens semânticos no **Tailwind CSS v4** e envio direto via **Formspree**.",
-    description:
-      "Landing page de alta performance inspirada na narrativa de quadrinhos da DC/Batman, trazendo animações cômicas com Framer Motion, capítulos temáticos e arquitetura modular.",
-    problem:
-      "Portfólios comuns parecem currículos e não mostram identidade visual.",
-    solution: "Uma HQ interativa em capítulos que apresenta o dev.",
     technicalDecisions: [
       {
         label: "Skyline e Tráfego Determinístico",
@@ -143,7 +111,7 @@ export const projects: readonly Project[] = [
     challenge:
       "E se um portfólio deixasse de parecer um documento frio e virasse uma edição de colecionador?",
     challengeSfx: "BAM!",
-    image: "/portifolio.png",
+    image: "/portifolio.jpg",
     tags: [
       "Next.js",
       "React 19",
@@ -153,7 +121,6 @@ export const projects: readonly Project[] = [
       "Formspree",
     ],
     category: "FRONTEND",
-    theme: "yellow",
     action: "POW!",
     githubUrl: "https://github.com/RaphaMuller/Portifolio",
     demoUrl: "https://portifolio-sable-tau.vercel.app",

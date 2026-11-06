@@ -14,7 +14,7 @@ export function ComicProjectModalBackoffice({
 }: ComicProjectModalBackofficeProps) {
   return (
     <div>
-      <span className="mb-2.5 block text-center font-bangers text-stat-label text-zinc-600 uppercase">
+      <span className="mb-2.5 block text-center font-bangers text-stat-label text-comic-subtle uppercase">
         {projectsCopy.modalBehindScenesLabel}
       </span>
       <ul
@@ -28,10 +28,10 @@ export function ComicProjectModalBackoffice({
               idx % 2 === 0 ? "sm:border-r-3 sm:border-black" : ""
             } ${idx < 2 ? "sm:border-b-3 sm:border-black" : ""}`}
           >
-            <span className="border-2 border-black bg-comic-yellow px-2 py-0.5 font-bangers text-stat-label text-black uppercase shadow-comic-sm">
+            <span className="comic-stamp-pill bg-comic-yellow text-black">
               {item.label}
             </span>
-            <p className="font-comic text-caption text-zinc-800 not-italic">
+            <p className="text-pillar-detail text-comic-ink-soft">
               {item.detail}
             </p>
           </li>

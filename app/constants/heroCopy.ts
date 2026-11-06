@@ -1,7 +1,18 @@
 export const heroCopy = {
+  sectionAriaLabel: "Apresentação Principal",
+  name: "RAPHAEL MULLER",
+  role: "FULL-STACK DEVELOPER",
   captionOpen: "NA CIDADE QUE NUNCA DESLIGA O DEPLOY…",
   captionClose: "…UM DEV CONSTRÓI SOLUÇÕES, UMA LINHA POR VEZ.",
   issue: "Nº 01",
   bio: "Meu nome é Raphael. Nas próximas páginas, convido você a entrar na minha base de operações. Venha conhecer meus projetos e o processo criativo por trás de cada solução.",
+  ctaProjects: "VER PROJETOS",
+  ctaContact: "FALAR COMIGO",
+  avatarToggleTitle: "Clique para alternar entre versão real e cartoon",
+  avatarToggleAriaLabel: "Alternar foto de perfil entre versão real e cartoon",
+  avatarToonBadge: "TOON!",
+  avatarRealBadge: "REAL!",
+  avatarCartoonAlt: "Raphael Muller em versão Cartoon estilo anos 30",
+  avatarRealAlt: "Foto de perfil real de Raphael Muller",
   carBurst: "VRUUM!",
 } as const;

@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { ComicNavPanel } from "@/app/components/ui/navbar/ComicNavPanel";
-import { navLinks } from "@/app/constants/navLinks";
+import { navbarCopy, navLinks } from "@/app/constants/navLinks";
 
 interface ComicNavMobileMenuProps {
   id: string;
@@ -23,7 +23,7 @@ export function ComicNavMobileMenu({ id, isOpen, onNavigate }: ComicNavMobileMen
       {isOpen && (
         <motion.nav
           id={id}
-          aria-label="Navegação principal (mobile)"
+          aria-label={navbarCopy.mobileNavAriaLabel}
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: "auto" }}
           exit={{ opacity: 0, height: 0 }}

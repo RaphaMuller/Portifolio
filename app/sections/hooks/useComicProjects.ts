@@ -5,15 +5,12 @@ import {
   ALL_PROJECTS_CATEGORY,
   projects,
 } from "@/app/constants/projectsData";
-import type { ProjectCategory } from "@/app/constants/projectsData";
-import type { Project } from "@/app/types/project";
+import type { Project, ProjectCategory } from "@/app/types/project";
 
-const ISSUE_PAD_LENGTH = 2;
-
-export function formatIssueNumber(value: number): string {
-  return `#${String(value).padStart(ISSUE_PAD_LENGTH, "0")}`;
-}
-
+/**
+ * @example
+ * const { filteredProjects, selectedProject, handleOpenProject } = useComicProjects();
+ */
 export function useComicProjects() {
   const [activeCategory, setActiveCategory] = useState<ProjectCategory>(
     ALL_PROJECTS_CATEGORY,

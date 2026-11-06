@@ -1,10 +1,10 @@
 "use client";
 
-import React from "react";
+import type { ReactNode } from "react";
 import { motion } from "framer-motion";
 
 interface SpeechBubbleProps {
-  children: React.ReactNode;
+  children: ReactNode;
   delay?: number;
   tailPosition?: "top" | "bottom";
   animateOnScroll?: boolean;
@@ -13,9 +13,7 @@ interface SpeechBubbleProps {
 
 /**
  * @example
- * <SpeechBubble tailPosition="bottom" animateOnScroll>
- *   <p>Olá, herói!</p>
- * </SpeechBubble>
+ * <SpeechBubble tailPosition="bottom" animateOnScroll><p>Olá!</p></SpeechBubble>
  */
 export function SpeechBubble({
   children,
@@ -38,19 +36,17 @@ export function SpeechBubble({
       transition={{ type: "spring", stiffness: 200, delay }}
       className={`relative mb-2 border-4 border-black bg-white p-4 sm:p-6 shadow-comic ${className}`}
     >
-      {/* TailBottom */}
       {tailPosition === "bottom" && (
         <>
-          <div className="absolute -bottom-5 left-10 h-0 w-0 border-t-[20px] border-r-[12px] border-l-[12px] border-t-black border-r-transparent border-l-transparent" />
-          <div className="absolute -bottom-3 left-11 h-0 w-0 border-t-[16px] border-r-[10px] border-l-[10px] border-t-white border-r-transparent border-l-transparent" />
+          <div aria-hidden="true" className="speech-tail-bottom-border absolute -bottom-5 left-10" />
+          <div aria-hidden="true" className="speech-tail-bottom-fill absolute -bottom-3 left-11" />
         </>
       )}
 
-      {/* TailTop */}
       {tailPosition === "top" && (
         <>
-          <div className="absolute -top-4 left-5 h-0 w-0 border-r-[10px] border-b-[16px] border-l-[10px] border-r-transparent border-b-black border-l-transparent" />
-          <div className="absolute -top-2 left-6 h-0 w-0 border-r-[8px] border-b-[12px] border-l-[8px] border-r-transparent border-b-white border-l-transparent" />
+          <div aria-hidden="true" className="speech-tail-top-border absolute -top-4 left-5" />
+          <div aria-hidden="true" className="speech-tail-top-fill absolute -top-2 left-6" />
         </>
       )}
 

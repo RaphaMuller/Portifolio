@@ -54,6 +54,10 @@ export const metadata: Metadata = {
   },
 };
 
+/**
+ * @example
+ * <RootLayout><Home /></RootLayout>
+ */
 export default function RootLayout({
   children,
 }: Readonly<{

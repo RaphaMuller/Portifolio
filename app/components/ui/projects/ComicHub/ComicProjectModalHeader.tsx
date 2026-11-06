@@ -1,8 +1,8 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { ActionBadge } from "@/app/components/ui/global/ActionBadge/ActionBadge";
 import { projectsCopy } from "@/app/constants/projectsData";
-import { formatIssueNumber } from "@/app/sections/hooks/useComicProjects";
+import { formatIssueNumber } from "@/app/lib/formatIssueNumber";
 import type { Project } from "@/app/types/project";
 
 interface ComicProjectModalHeaderProps {
@@ -27,8 +27,8 @@ export function ComicProjectModalHeader({
   onClose,
 }: ComicProjectModalHeaderProps) {
   return (
-    <header className="sticky top-0 z-40 relative flex flex-wrap items-center justify-between gap-3 border-b-4 border-black bg-comic-projects-bg bg-comic-projects-gradient px-4 py-3.5 pr-14 text-white sm:px-6 sm:py-4 sm:pr-16 select-none">
-      <div className="flex items-center gap-3 sm:gap-4 overflow-hidden">
+    <header className="relative flex flex-wrap items-center justify-between gap-3 border-b-4 border-black bg-comic-projects-bg bg-comic-projects-gradient px-4 py-3.5 pr-14 text-white select-none sm:px-6 sm:py-4 sm:pr-16">
+      <div className="flex items-center gap-3 overflow-hidden sm:gap-4">
         <AnimatePresence mode="wait">
           <motion.div
             key={project.id}
@@ -38,7 +38,11 @@ export function ComicProjectModalHeader({
             transition={{ duration: 0.2, ease: "easeOut" }}
             className="flex items-center gap-3 sm:gap-4"
           >
-            <ActionBadge theme="white" noPadding className="-rotate-2 shadow-comic-sm">
+            <ActionBadge
+              theme="white"
+              noPadding
+              className="-rotate-2 shadow-comic-sm"
+            >
               <span className="block px-2.5 py-1 font-bangers text-h4 text-black uppercase">
                 {projectsCopy.issuePrefix} {formatIssueNumber(project.id)}
               </span>
@@ -69,31 +73,33 @@ export function ComicProjectModalHeader({
               type="button"
               onClick={onPrevProject}
               aria-label={projectsCopy.prevIssue}
-              className="flex items-center gap-1 cursor-pointer border-3 border-black bg-white px-2.5 py-1 font-bangers text-stat-label text-black uppercase shadow-comic-sm transition-transform hover:-translate-y-0.5 hover:bg-comic-yellow active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-comic-yellow sm:px-3 sm:py-1.5"
+              className="flex cursor-pointer items-center gap-1 border-3 border-black bg-white px-2.5 py-1 font-bangers text-stat-label text-black uppercase shadow-comic-sm transition-transform hover:-translate-y-0.5 hover:bg-comic-yellow active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-comic-yellow sm:px-3 sm:py-1.5"
             >
-              <ChevronLeft className="size-5 stroke-[3]" aria-hidden="true" /> {projectsCopy.prevIssueShort}
+              <ChevronLeft className="size-5" strokeWidth={3} aria-hidden="true" />{" "}
+              {projectsCopy.prevIssueShort}
             </button>
 
             <button
               type="button"
               onClick={onNextProject}
               aria-label={projectsCopy.nextIssue}
-              className="flex items-center gap-1 cursor-pointer border-3 border-black bg-white px-2.5 py-1 font-bangers text-stat-label text-black uppercase shadow-comic-sm transition-transform hover:-translate-y-0.5 hover:bg-comic-yellow active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-comic-yellow sm:px-3 sm:py-1.5"
+              className="flex cursor-pointer items-center gap-1 border-3 border-black bg-white px-2.5 py-1 font-bangers text-stat-label text-black uppercase shadow-comic-sm transition-transform hover:-translate-y-0.5 hover:bg-comic-yellow active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-comic-yellow sm:px-3 sm:py-1.5"
             >
-              {projectsCopy.nextIssueShort} <ChevronRight className="size-5 stroke-[3]" aria-hidden="true" />
+              {projectsCopy.nextIssueShort}{" "}
+              <ChevronRight className="size-5" strokeWidth={3} aria-hidden="true" />
             </button>
           </nav>
         )}
       </div>
 
-      {/* Botão X Circular de gibi no canto superior direito */}
+      {/* Top-right circular comic close button */}
       <button
         type="button"
         onClick={onClose}
         aria-label={projectsCopy.modalCloseAriaLabel}
-        className="absolute top-3 right-3 sm:top-4 sm:right-4 flex size-9 sm:size-10 shrink-0 cursor-pointer items-center justify-center rounded-full border-2 sm:border-3 border-black bg-comic-yellow text-black shadow-comic-sm transition-transform hover:scale-110 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+        className="comic-modal-close"
       >
-        <X className="size-5 stroke-[2.5]" aria-hidden="true" />
+        <X className="size-5" strokeWidth={2.5} aria-hidden="true" />
       </button>
     </header>
   );

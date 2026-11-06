@@ -1,23 +1,27 @@
-export const themeClasses = {
+import type { BuildingTheme } from "@/app/types/building";
+
+export const themeClasses: Record<
+  BuildingTheme,
+  {
+    bg: string;
+    shadow: string;
+    roof: string;
+    windowOn: string;
+    windowOff: string;
+  }
+> = {
   dark: {
-    bg: "bg-slate-900",
+    bg: "bg-skyline-dark",
     shadow: "bg-black",
-    roof: "bg-slate-950",
-    windowOn: "bg-yellow-300 shadow-[0_0_8px_2px_rgba(253,224,71,0.6)]",
-    windowOff: "bg-slate-800",
+    roof: "bg-skyline-roof",
+    windowOn: "bg-skyline-window-warm shadow-window-warm",
+    windowOff: "bg-skyline-window-off",
   },
   default: {
-    bg: "bg-slate-600",
+    bg: "bg-skyline-facade",
     shadow: "bg-black",
-    roof: "bg-slate-900",
-    windowOn: "bg-comic-yellow shadow-[0_0_12px_2px_rgba(255,255,255,0.7)]",
-    windowOff: "bg-slate-800",
+    roof: "bg-skyline-dark",
+    windowOn: "bg-comic-yellow shadow-window-bright",
+    windowOff: "bg-skyline-window-off",
   },
-  noir: {
-    bg: "bg-black",
-    shadow: "bg-zinc-900",
-    roof: "bg-zinc-950",
-    windowOn: "bg-white shadow-[0_0_8px_2px_rgba(255,255,255,0.8)]",
-    windowOff: "bg-zinc-900",
-  },
-} as const;
+};

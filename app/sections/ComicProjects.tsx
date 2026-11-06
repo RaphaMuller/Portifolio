@@ -7,13 +7,14 @@ import { ComicSectionHeader } from "@/app/components/ui/global/ComicSection/Comi
 import { ComicProjectModal } from "@/app/components/ui/projects/ComicHub/ComicProjectModal";
 import { ComicProjectsHub } from "@/app/components/ui/projects/ComicHub/ComicProjectsHub";
 import { motionPresets } from "@/app/constants/motionPresets";
-import {
-  projectCategories,
-  projectsCopy,
-} from "@/app/constants/projectsData";
+import { projectCategories, projectsCopy } from "@/app/constants/projectsData";
 import { useComicProjects } from "@/app/sections/hooks/useComicProjects";
 
-export default function ComicProjects() {
+/**
+ * @example
+ * <ComicProjects />
+ */
+export function ComicProjects() {
   const {
     activeCategory,
     filteredProjects,
@@ -47,7 +48,7 @@ export default function ComicProjects() {
                 const isSelected = activeCategory === category;
                 const pillClasses = isSelected
                   ? "bg-comic-yellow text-black -translate-y-0.5 shadow-comic-sm"
-                  : "bg-zinc-900 text-white hover:bg-zinc-800";
+                  : "bg-comic-surface-elevated text-white hover:bg-comic-masthead";
 
                 return (
                   <button
@@ -55,7 +56,7 @@ export default function ComicProjects() {
                     type="button"
                     aria-pressed={isSelected}
                     onClick={() => handleSelectCategory(category)}
-                    className={`cursor-pointer border-2 border-black px-2.5 py-1 font-bangers text-stat-label uppercase transition-all focus-visible:ring-2 focus-visible:ring-comic-yellow ${pillClasses}`}
+                    className={`cursor-pointer border-2 border-black px-2.5 py-1 font-bangers text-stat-label uppercase transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-comic-yellow ${pillClasses}`}
                   >
                     {category}
                   </button>
@@ -67,7 +68,7 @@ export default function ComicProjects() {
 
         <motion.div
           {...motionPresets.blockSlideUp}
-          className="flex h-full min-h-0 w-full flex-1 flex-col items-center justify-center"
+          className="flex min-h-0 w-full flex-1 flex-col"
         >
           <ComicProjectsHub
             projectsList={filteredProjects}

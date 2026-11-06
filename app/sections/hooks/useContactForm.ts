@@ -1,15 +1,24 @@
+"use client";
+
 import { useState } from "react";
 
-const FORMSPREE_URL = process.env.NEXT_PUBLIC_FORMSPREE_URL || "https://formspree.io/f/mlgynrba";
+const DEFAULT_FORMSPREE_URL = "https://formspree.io/f/mlgynrba";
+const FORMSPREE_URL =
+  process.env.NEXT_PUBLIC_FORMSPREE_URL || DEFAULT_FORMSPREE_URL;
+const SUCCESS_RESET_DELAY_MS = 4000;
 
+/**
+ * @example
+ * const { form, setForm, sent, loading, error, handleSubmit } = useContactForm();
+ */
 export function useContactForm() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
     setLoading(true);
     setError(false);
 
@@ -29,7 +38,7 @@ export function useContactForm() {
 
       if (response.ok) {
         setSent(true);
-        setTimeout(() => setSent(false), 4000);
+        setTimeout(() => setSent(false), SUCCESS_RESET_DELAY_MS);
         setForm({ name: "", email: "", message: "" });
       } else {
         setError(true);

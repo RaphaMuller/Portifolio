@@ -1,8 +1,9 @@
 "use client";
 
-import React from "react";
+import type { ReactNode } from "react";
 import { ActionBadge } from "@/app/components/ui/global/ActionBadge/ActionBadge";
 import { motionPresets } from "@/app/constants/motionPresets";
+import type { ThemePreset } from "@/app/types/theme";
 
 export type ComicHeaderTheme = "about" | "skills" | "projects" | "contact";
 
@@ -10,46 +11,41 @@ interface ComicSectionHeaderProps {
   chapter?: string;
   title: string;
   theme?: ComicHeaderTheme;
-  rightSlot?: React.ReactNode;
+  rightSlot?: ReactNode;
   className?: string;
 }
 
 const THEME_STYLES: Record<
   ComicHeaderTheme,
   {
-    badgeTheme: "dark" | "yellow" | "blue" | "red";
+    badgeTheme: Extract<ThemePreset, "dark" | "yellow" | "blue" | "red">;
     shadowClass: string;
     textClass: string;
   }
 > = {
-  // About (Origem): Preto, Amarelo e Vermelho (contraste alto sobre fundo amarelo)
   about: {
     badgeTheme: "dark",
-    shadowClass: "shadow-[4px_4px_0_0_var(--color-comic-red)]",
+    shadowClass: "shadow-comic-red-md",
     textClass: "text-comic-yellow",
   },
-  // Skills (O Arsenal): Amarelo e Preto Batman (contraste vibrante sobre fundo escuro de armadura)
   skills: {
     badgeTheme: "yellow",
-    shadowClass: "shadow-[4px_4px_0_0_#000]",
+    shadowClass: "shadow-comic-md",
     textClass: "text-black",
   },
-  // Projects (As Missões): Azul Mangá e Amarelo (contraste sci-fi sobre fundo dark #1a1a2e)
   projects: {
     badgeTheme: "blue",
-    shadowClass: "shadow-[4px_4px_0_0_var(--color-comic-yellow)]",
+    shadowClass: "shadow-comic-white-md",
     textClass: "text-white",
   },
-  // Contact (Missão Contato): Vermelho e Branco Alerta (contraste sobre topo azul claro acinzentado)
   contact: {
     badgeTheme: "red",
-    shadowClass: "shadow-[4px_4px_0_0_#000]",
+    shadowClass: "shadow-comic-md",
     textClass: "text-white",
   },
 };
 
 /**
- * Nível 3: Header Canônico de Seção.
  * @example
  * <ComicSectionHeader chapter="CAPÍTULO 1" title="ORIGEM" theme="about" />
  */
@@ -73,11 +69,11 @@ export function ComicSectionHeader({
           {...motionPresets.headerSlide}
           className={`py-1 px-3 sm:px-5 ${currentTheme.shadowClass}`}
         >
-          <h1
+          <h2
             className={`font-bangers text-lg sm:text-2xl lg:text-h2 leading-none tracking-bangers-wide ${currentTheme.textClass}`}
           >
             {fullTitle}
-          </h1>
+          </h2>
         </ActionBadge>
       </div>
 

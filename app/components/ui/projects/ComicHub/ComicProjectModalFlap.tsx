@@ -16,25 +16,26 @@ export function ComicProjectModalFlap({ project }: ComicProjectModalFlapProps) {
   return (
     <aside
       aria-label={projectsCopy.modalFlapAriaLabel}
-      className="flex flex-col items-center justify-between gap-4 border-b-4 border-black bg-comic-projects-bg bg-comic-projects-gradient p-4 text-center text-white lg:col-span-4 lg:border-r-4 lg:border-b-0 sm:p-5"
+      className="flex flex-col items-center justify-between gap-4 border-b-4 border-black bg-comic-projects-bg bg-comic-projects-gradient p-4 text-center text-white sm:p-5 lg:col-span-4 lg:border-r-4 lg:border-b-0"
     >
-      {/* Miniatura da Capa (Visível em Desktop na Orelha do Livro) */}
-      <div className="relative aspect-2/3 w-36 sm:w-44 max-w-56 overflow-hidden border-3 border-black bg-zinc-900 shadow-comic lg:w-full lg:max-w-60">
+      {/* Cover thumbnail on the book flap */}
+      <div className="relative aspect-2/3 w-36 max-w-56 overflow-hidden border-3 border-black bg-comic-surface-elevated shadow-comic sm:w-44 lg:w-full lg:max-w-60">
         <Image
           src={project.image}
           alt={project.title}
           fill
           unoptimized
           quality={100}
+          decoding="sync"
           sizes="260px"
-          className="object-cover object-top"
+          className="object-fill"
         />
-        <span className="absolute top-2 right-2 rotate-3 border-2 border-black bg-comic-yellow px-2 py-0.5 font-bangers text-stat-label text-black uppercase shadow-comic-sm">
+        <span className="comic-stamp-pill absolute top-2 right-2 rotate-3 bg-comic-yellow text-black">
           {project.action}
         </span>
       </div>
 
-      {/* Botões de Ação Principais Padronizados (Amarelo + Branco) */}
+      {/* Primary demo and source code links */}
       <div className="grid w-full grid-cols-2 gap-2.5 lg:grid-cols-1">
         {project.demoUrl && (
           <a
@@ -61,10 +62,10 @@ export function ComicProjectModalFlap({ project }: ComicProjectModalFlapProps) {
         )}
       </div>
 
-      {/* Arsenal de Tecnologias 100% Centralizado */}
+      {/* Centered tech arsenal tags */}
       <div className="w-full border-t-2 border-dashed border-white/35 pt-3">
         <span className="mb-2 block text-center font-bangers text-stat-label text-comic-yellow uppercase">
-          — {projectsCopy.arsenalHeading} —
+          {projectsCopy.arsenalHeading}
         </span>
         <ul
           aria-label={projectsCopy.techListAriaLabel}

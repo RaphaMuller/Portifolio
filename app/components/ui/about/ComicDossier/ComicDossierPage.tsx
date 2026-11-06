@@ -1,34 +1,30 @@
 "use client";
 
-import React from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { aboutData, type DossierTab } from "@/app/constants/aboutData";
+import { AnimatePresence, motion } from "framer-motion";
+import { aboutData } from "@/app/constants/aboutData";
+import { renderBoldText } from "@/app/lib/renderBoldText";
+import type { DossierTab } from "@/app/types/about";
 
 interface ComicDossierPageProps {
   tab: DossierTab;
-}
-
-function renderBoldText(text: string) {
-  const parts = text.split(/(\*\*.*?\*\*)/g);
-  return parts.map((part, index) => {
-    if (part.startsWith("**") && part.endsWith("**")) {
-      return (
-        <strong key={index} className="font-bold text-black">
-          {part.slice(2, -2)}
-        </strong>
-      );
-    }
-    return part;
-  });
+  idPrefix?: string;
 }
 
 /**
  * @example
  * <ComicDossierPage tab={activeTab} />
  */
-export function ComicDossierPage({ tab }: ComicDossierPageProps) {
+export function ComicDossierPage({
+  tab,
+  idPrefix = "dossier",
+}: ComicDossierPageProps) {
   return (
-    <div className="relative flex min-h-0 flex-1 h-full flex-col overflow-hidden comic-paper-damp p-4 text-center sm:p-5">
+    <div
+      id={`${idPrefix}-panel-${tab.id}`}
+      role="tabpanel"
+      aria-labelledby={`${idPrefix}-tab-${tab.id}`}
+      className="relative flex min-h-0 flex-1 h-full flex-col overflow-hidden comic-paper-damp p-4 text-center sm:p-5"
+    >
       <AnimatePresence mode="wait">
         <motion.div
           key={tab.id}
@@ -38,14 +34,14 @@ export function ComicDossierPage({ tab }: ComicDossierPageProps) {
           transition={{ duration: 0.2, ease: "easeOut" }}
           className="flex h-full min-h-0 flex-col justify-between gap-3.5 overflow-y-auto overscroll-contain pr-1 sm:pr-2"
         >
-          {/* Quadro 1: Recordatório Clássico de HQ Centralizado */}
+          {/* Panel 1: Centered comic narrator box */}
           <blockquote className="relative mt-3.5 border-3 border-black bg-comic-yellow px-4 py-3 shadow-comic-sm sm:mt-4">
             <span className="absolute -top-2 left-4 border-2 border-black bg-white px-2 py-0.5 font-bangers text-stat-label text-black uppercase sm:-top-2.5">
               {tab.code}
             </span>
             <span
               aria-hidden="true"
-              className="absolute -top-2 right-4 -rotate-3 border-2 border-black bg-white px-2 py-0.5 font-bangers text-stat-label text-black uppercase shadow-comic-sm sm:-top-2.5"
+              className="comic-stamp-pill absolute -top-2 right-4 -rotate-3 bg-white text-black sm:-top-2.5"
             >
               {tab.label}
             </span>
@@ -54,19 +50,19 @@ export function ComicDossierPage({ tab }: ComicDossierPageProps) {
             </p>
           </blockquote>
 
-          {/* Quadro 2: História Centralizada com Negrito Puro */}
+          {/* Panel 2: Centered narrative summary */}
           <div className="flex flex-col items-center justify-center border-y-2 border-dashed border-black/25 py-3">
-            <h3 className="font-bangers text-h3 text-black uppercase">
+            <h4 className="font-bangers text-h3 text-black uppercase">
               — {tab.title} —
-            </h3>
-            <p className="mt-1.5 max-w-xl text-center font-comic text-body text-zinc-900">
+            </h4>
+            <p className="mt-1.5 max-w-xl text-center font-comic text-body text-comic-ink">
               {renderBoldText(tab.summary)}
             </p>
           </div>
 
-          {/* Quadro 3: Grade 2x2 de Pilares de Operação */}
+          {/* Panel 3: 2x2 operation pillars grid */}
           <div>
-            <span className="mb-2 block text-center font-bangers text-stat-label text-zinc-700 uppercase">
+            <span className="mb-2 block text-center font-bangers text-stat-label text-comic-muted uppercase">
               {aboutData.pillarsHeading}
             </span>
             <ul
@@ -80,10 +76,10 @@ export function ComicDossierPage({ tab }: ComicDossierPageProps) {
                     idx % 2 === 0 ? "sm:border-r-3 sm:border-black" : ""
                   } ${idx < 2 ? "sm:border-b-3 sm:border-black" : ""}`}
                 >
-                  <span className="border-2 border-black bg-comic-yellow px-2 py-0.5 font-bangers text-stat-label text-black uppercase shadow-comic-sm">
+                  <span className="comic-stamp-pill bg-comic-yellow text-black">
                     {pillar.label}
                   </span>
-                  <p className="font-comic text-caption text-zinc-800 not-italic">
+                  <p className="text-pillar-detail text-comic-ink-soft">
                     {pillar.detail}
                   </p>
                 </li>

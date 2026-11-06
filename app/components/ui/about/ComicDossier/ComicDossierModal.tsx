@@ -1,15 +1,17 @@
 "use client";
 
-import React, { useEffect, useId, useRef } from "react";
-import { ActionBadge } from "@/app/components/ui/global/ActionBadge/ActionBadge";
+import { useId } from "react";
 import { X } from "lucide-react";
-import { ComicDossierTabs } from "@/app/components/ui/about/ComicDossier/ComicDossierTabs";
+import { ActionBadge } from "@/app/components/ui/global/ActionBadge/ActionBadge";
 import { ComicDossierPage } from "@/app/components/ui/about/ComicDossier/ComicDossierPage";
-import { aboutData, type DossierTab } from "@/app/constants/aboutData";
+import { ComicDossierTabs } from "@/app/components/ui/about/ComicDossier/ComicDossierTabs";
+import { aboutData } from "@/app/constants/aboutData";
+import { useComicDialog } from "@/app/sections/hooks/useComicDialog";
+import type { DossierTab } from "@/app/types/about";
 
 interface ComicDossierModalProps {
   isOpen: boolean;
-  tabs: DossierTab[];
+  tabs: readonly DossierTab[];
   activeTab: DossierTab;
   onSelectTab: (id: DossierTab["id"]) => void;
   onClose: () => void;
@@ -17,7 +19,7 @@ interface ComicDossierModalProps {
 
 /**
  * @example
- * <ComicDossierModal isOpen={isOpen} tabs={tabs} activeTab={activeTab} onSelectTab={setTab} onClose={handleClose} />
+ * <ComicDossierModal isOpen={isOpen} tabs={dossierTabs} activeTab={activeTab} onSelectTab={setTab} onClose={handleClose} />
  */
 export function ComicDossierModal({
   isOpen,
@@ -26,24 +28,8 @@ export function ComicDossierModal({
   onSelectTab,
   onClose,
 }: ComicDossierModalProps) {
-  const dialogRef = useRef<HTMLDialogElement>(null);
+  const dialogRef = useComicDialog(isOpen);
   const titleId = useId();
-
-  useEffect(() => {
-    const dialog = dialogRef.current;
-    if (!dialog) return;
-
-    if (isOpen) {
-      if (!dialog.open) dialog.showModal();
-      const originalOverflow = document.body.style.overflow;
-      document.body.style.overflow = "hidden";
-      return () => {
-        document.body.style.overflow = originalOverflow;
-      };
-    } else if (dialog.open) {
-      dialog.close();
-    }
-  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -57,8 +43,7 @@ export function ComicDossierModal({
       }}
       className="fixed inset-0 m-0 flex flex-col h-dvh max-h-dvh w-full max-w-none border-0 p-0 shadow-none overscroll-contain overflow-y-auto bg-comic-bege text-black backdrop:bg-black/80 backdrop:backdrop-blur-xs md:hidden"
     >
-      {/* Topo Masthead do Dossiê no Modal */}
-      <header className="sticky top-0 z-40 shrink-0 relative flex flex-col gap-3 border-b-4 border-black bg-zinc-800 p-4 pr-14 text-white sm:p-5 sm:pr-16 select-none">
+      <header className="sticky top-0 z-40 shrink-0 relative flex flex-col gap-3 border-b-4 border-black bg-comic-masthead p-4 pr-14 text-white sm:p-5 sm:pr-16 select-none">
         <div className="flex items-center justify-between gap-3">
           <div className="flex items-center gap-2.5">
             <ActionBadge
@@ -78,34 +63,33 @@ export function ComicDossierModal({
               >
                 {aboutData.subject}
               </h2>
-              <p className="mt-0.5 inline-block border-2 border-black bg-white px-1.5 py-0.5 font-bangers text-[10px] sm:text-stat-label text-black uppercase shadow-comic-sm">
+              <p className="mt-0.5 inline-block border-2 border-black bg-white px-1.5 py-0.5 font-bangers text-micro sm:text-stat-label text-black uppercase shadow-comic-sm">
                 {aboutData.classification}
               </p>
             </div>
           </div>
         </div>
 
-        {/* Abas Integradas no Topo */}
         <ComicDossierTabs
           tabs={tabs}
           activeTabId={activeTab.id}
           onSelectTab={onSelectTab}
+          idPrefix="dossier-modal"
           className="justify-center pt-1"
         />
-              {/* Botão X Circular de gibi no canto superior direito */}
+
         <button
           type="button"
           onClick={onClose}
           aria-label={aboutData.modalCloseAriaLabel}
-          className="absolute top-3 right-3 sm:top-4 sm:right-4 flex size-9 sm:size-10 shrink-0 cursor-pointer items-center justify-center rounded-full border-2 sm:border-3 border-black bg-comic-yellow text-black shadow-comic-sm transition-transform hover:scale-110 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+          className="comic-modal-close"
         >
-          <X className="size-5 stroke-[2.5]" aria-hidden="true" />
+          <X className="size-5" strokeWidth={2.5} aria-hidden="true" />
         </button>
       </header>
 
-      {/* Conteúdo Detalhado da Aba Selecionada */}
       <div className="flex flex-col flex-1 min-h-0 w-full p-0">
-        <ComicDossierPage tab={activeTab} />
+        <ComicDossierPage tab={activeTab} idPrefix="dossier-modal" />
       </div>
     </dialog>
   );

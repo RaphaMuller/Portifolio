@@ -1,20 +1,15 @@
 "use client";
 
-import React from "react";
+import type { ReactNode } from "react";
 
 interface ComicSectionBodyProps {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
 }
 
 /**
- * Nível 2: Faixa Panorâmica (max-w-7xl).
- * Fornece a moldura larga de 1280px para criar o efeito cascata com o header.
  * @example
- * <ComicSectionBody>
- *   <ComicSectionHeader title="MEUS PROJETOS" />
- *   <main className="max-w-6xl mx-auto flex-1 min-h-0">{children}</main>
- * </ComicSectionBody>
+ * <ComicSectionBody>{children}</ComicSectionBody>
  */
 export function ComicSectionBody({
   children,

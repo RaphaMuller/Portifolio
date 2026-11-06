@@ -1,11 +1,15 @@
-import ComicHero from "@/app/sections/ComicHero";
-import ComicAbout from "@/app/sections/ComicAbout";
-import Navbar from "@/app/components/Navbar";
-import ComicSkills from "@/app/sections/ComicSkills";
-import ComicProjects from "@/app/sections/ComicProjects";
+import { ComicPageScroller } from "@/app/components/ComicPageScroller";
+import { Navbar } from "@/app/components/Navbar";
+import { ComicAbout } from "@/app/sections/ComicAbout";
 import { ComicContact } from "@/app/sections/ComicContact";
-import { ComicPageScroller } from "@/app/components/ui/global/ComicScroll/ComicPageScroller";
+import { ComicHero } from "@/app/sections/ComicHero";
+import { ComicProjects } from "@/app/sections/ComicProjects";
+import { ComicSkills } from "@/app/sections/ComicSkills";
 
+/**
+ * @example
+ * <Home />
+ */
 export default function Home() {
   return (
     <main className="flex flex-col items-center justify-center">

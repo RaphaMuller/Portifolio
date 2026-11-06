@@ -5,37 +5,10 @@ import type {
   WindowType,
 } from "@/app/types/building";
 
-// Presets balanceados de silhueta (altura, largura, tipo de janela)
 const SILHOUETTES: Record<
   SkylineCount,
-  Array<{ height: number; width: number; windowType: WindowType }>
+  ReadonlyArray<{ height: number; width: number; windowType: WindowType }>
 > = {
-  // Bloco 3: Pirâmide clássica (médio, alto, médio/baixo)
-  3: [
-    { height: 40, width: 24, windowType: "grid" },
-    { height: 54, width: 32, windowType: "tall" },
-    { height: 38, width: 24, windowType: "grid" },
-  ],
-  // Bloco 5: Onda harmônica (baixo, médio, alto, médio, baixo)
-  5: [
-    { height: 36, width: 20, windowType: "horizontal" },
-    { height: 46, width: 28, windowType: "grid" },
-    { height: 54, width: 32, windowType: "tall" },
-    { height: 42, width: 24, windowType: "grid" },
-    { height: 38, width: 20, windowType: "horizontal" },
-  ],
-  // Bloco 8: Panorama denso equilibrado
-  8: [
-    { height: 36, width: 20, windowType: "horizontal" },
-    { height: 48, width: 28, windowType: "tall" },
-    { height: 40, width: 24, windowType: "grid" },
-    { height: 54, width: 32, windowType: "tall" },
-    { height: 42, width: 24, windowType: "grid" },
-    { height: 50, width: 28, windowType: "tall" },
-    { height: 38, width: 20, windowType: "horizontal" },
-    { height: 46, width: 24, windowType: "grid" },
-  ],
-  // Bloco Full (24 prédios): Horizonte metropolitano denso 100% da tela sem lacunas
   full: [
     { height: 36, width: 20, windowType: "horizontal" },
     { height: 44, width: 24, windowType: "grid" },
@@ -81,20 +54,25 @@ function calculateWindowsPerFloor(width: number, windowType: WindowType): number
 function generateLitWindows(
   floors: number,
   windowsPerFloor: number,
-  buildingIndex: number
+  buildingIndex: number,
 ): Record<string, boolean> {
   const lit: Record<string, boolean> = {};
-  for (let f = 0; f < floors; f++) {
-    for (let w = 0; w < windowsPerFloor; w++) {
-      // Cálculo determinístico para evitar erros de hidratação no SSR
-      lit[`${f}-${w}`] = (f * 13 + w * 29 + buildingIndex * 17) % 10 > 4;
+  for (let floor = 0; floor < floors; floor++) {
+    for (let windowIndex = 0; windowIndex < windowsPerFloor; windowIndex++) {
+      // Deterministic formula avoids SSR/client hydration mismatch.
+      lit[`${floor}-${windowIndex}`] =
+        (floor * 13 + windowIndex * 29 + buildingIndex * 17) % 10 > 4;
     }
   }
   return lit;
 }
 
+/**
+ * @example
+ * const buildings = generateSkyline({ count: "full" });
+ */
 export function generateSkyline(
-  options: GenerateSkylineOptions = {}
+  options: GenerateSkylineOptions = {},
 ): BuildingConfig[] {
   const countKey = options.count ?? "full";
   const preset = SILHOUETTES[countKey];

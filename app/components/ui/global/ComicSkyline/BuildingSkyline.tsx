@@ -2,19 +2,14 @@
 
 import { useMemo } from "react";
 import { motion } from "framer-motion";
-import { ComicBuilding } from "./ComicBuilding";
+import { ComicBuilding } from "@/app/components/ui/global/ComicSkyline/ComicBuilding";
 import { generateSkyline } from "@/app/lib/generateSkyline";
-import type {
-  BuildingTheme,
-  SkylineCount,
-  SkylinePattern,
-} from "@/app/types/building";
+import type { BuildingTheme, SkylineCount } from "@/app/types/building";
 
 interface SkylineProps {
   position?: "relative" | "absolute";
   theme?: BuildingTheme;
   count?: SkylineCount;
-  pattern?: SkylinePattern;
   className?: string;
   staggerDelay?: number;
   align?: "left" | "center" | "right";
@@ -24,27 +19,22 @@ const ALIGNMENT_MAP = {
   left: "justify-start",
   center: "justify-center",
   right: "justify-end",
-};
+} as const;
 
 /**
  * @example
  * <BuildingSkyline count="full" align="center" theme="default" />
- * <BuildingSkyline count={8} theme="dark" position="absolute" />
  */
 export function BuildingSkyline({
   position = "relative",
   theme = "dark",
   count = "full",
-  pattern,
   className = "",
   staggerDelay = 0.025,
   align = "center",
 }: SkylineProps) {
-  // Geração determinística (zero hydration mismatch entre SSR e cliente)
-  const buildings = useMemo(
-    () => generateSkyline({ count, pattern }),
-    [count, pattern]
-  );
+  // Deterministic generation guarantees zero hydration mismatch between SSR and client.
+  const buildings = useMemo(() => generateSkyline({ count }), [count]);
 
   return (
     <div
@@ -70,5 +60,3 @@ export function BuildingSkyline({
     </div>
   );
 }
-
-export default BuildingSkyline;

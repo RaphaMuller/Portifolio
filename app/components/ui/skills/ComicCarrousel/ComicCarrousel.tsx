@@ -1,138 +1,121 @@
 "use client";
 
-import React, { useCallback, useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import useEmblaCarousel from "embla-carousel-react";
-import Autoplay from "embla-carousel-autoplay";
-import type { EmblaCarouselType } from "embla-carousel";
-
 import { ActionBadge } from "@/app/components/ui/global/ActionBadge/ActionBadge";
-import BeltPouch from "./BeltPouch";
-import NextArrow from "./NextArrow";
-import PrevArrow from "./PrevArrow";
-import { beltItems } from "@/app/constants/itemsCarousel";
+import { BeltPouch } from "@/app/components/ui/skills/ComicCarrousel/BeltPouch";
+import { NextArrow } from "@/app/components/ui/skills/ComicCarrousel/NextArrow";
+import { PrevArrow } from "@/app/components/ui/skills/ComicCarrousel/PrevArrow";
+import { beltItems, skillsCopy } from "@/app/constants/itemsCarousel";
 import { motionPresets } from "@/app/constants/motionPresets";
+import { useComicCarousel } from "@/app/sections/hooks/useComicCarousel";
 
 /**
  * @example
  * <ComicCarrousel />
  */
-export default function ComicCarrousel() {
-  const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop: true, align: "start" },
-    [Autoplay({ delay: 3000, stopOnInteraction: false })]
-  );
-
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
-
-  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
-  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
-  const scrollTo = useCallback((i: number) => emblaApi?.scrollTo(i), [emblaApi]);
-
-  useEffect(() => {
-    if (!emblaApi) return;
-
-    const onSelect = (api: EmblaCarouselType) => setSelectedIndex(api.selectedScrollSnap());
-    const onInit = (api: EmblaCarouselType) => setScrollSnaps(api.scrollSnapList());
-
-    emblaApi.on("select", onSelect).on("reInit", onInit).on("reInit", onSelect);
-    queueMicrotask(() => {
-      onInit(emblaApi);
-      onSelect(emblaApi);
-    });
-
-    return () => {
-      emblaApi.off("select", onSelect).off("reInit", onInit).off("reInit", onSelect);
-    };
-  }, [emblaApi]);
+export function ComicCarrousel() {
+  const {
+    emblaRef,
+    selectedIndex,
+    scrollSnaps,
+    scrollPrev,
+    scrollNext,
+    scrollTo,
+  } = useComicCarousel({ autoplayDelay: 3000, loop: true });
 
   return (
-    <ActionBadge
-      className="flex-1 h-full min-h-0 w-full max-w-7xl rounded-4xl bg-comic-shadow flex flex-col justify-between overflow-hidden"
-      theme="batmanArmor"
-      noPadding
+    <motion.div
+      className="relative flex h-full min-h-0 w-full max-w-7xl flex-1 flex-col"
       {...motionPresets.slideInLeft}
     >
-      {/* Header */}
-      <div className="shrink-0 flex justify-center py-2 sm:py-3.5">
-        <ActionBadge
-          theme="yellow"
-          className="mb-2 flex justify-center text-title md:text-h4 lg:text-h3"
-        >
-          <h2>🦇 CINTO DE UTILIDADES</h2>
-        </ActionBadge>
-      </div>
+      <PrevArrow onClick={scrollPrev} />
+      <NextArrow onClick={scrollNext} />
 
-      {/* Structure */}
-      <div className="relative flex-1 min-h-0 flex flex-col justify-between">
-        <div className="relative shrink-0 h-6 border-y-4 border-black bg-comic-gradient-belt shadow-sm">
-          <div className="relative top-1/2 right-0 left-0 h-px -translate-y-1/2 bg-comic-stitching" />
-        </div>
-
-        <div className="absolute top-3 left-1/2 z-20 -translate-x-1/2 -translate-y-1/2">
+      <ActionBadge
+        className="flex h-full min-h-0 w-full flex-1 flex-col justify-between overflow-hidden rounded-4xl"
+        theme="batmanArmor"
+        noPadding
+      >
+        {/* Belt masthead */}
+        <div className="flex shrink-0 justify-center py-2 sm:py-3.5">
           <ActionBadge
             theme="yellow"
-            className="bg-gradient-to-br from-gold to-bronze px-4 font-bangers text-xl tracking-bangers-tight sm:text-2xl"
+            className="mb-2 flex justify-center text-title md:text-h4 lg:text-h3"
           >
-            🦇
+            <h3>{skillsCopy.beltHeading}</h3>
           </ActionBadge>
         </div>
 
-        {/* Carousel */}
-        <div className="relative flex-1 min-h-0 flex flex-col justify-center border-x-4 border-black bg-comic-section-gradient px-2 py-1.5 sm:px-4 lg:px-14 xl:px-16">
-          <PrevArrow onClick={scrollPrev} />
-          <NextArrow onClick={scrollNext} />
+        {/* Belt structure */}
+        <div className="relative flex min-h-0 flex-1 flex-col justify-between">
+          <div className="comic-belt-strap shrink-0 shadow-sm">
+            <div className="relative top-1/2 right-0 left-0 h-px -translate-y-1/2 bg-comic-stitching" />
+          </div>
 
-          <div className="overflow-hidden w-full flex-1 min-h-0 flex items-center" ref={emblaRef}>
-            <div className="flex touch-pan-y w-full items-center">
-              {beltItems.map((item) => (
-                <div
-                  key={item.tech}
-                  className="min-w-0 flex-none basis-full sm:basis-1/2 md:basis-1/2 lg:basis-1/3 xl:basis-1/4"
-                >
-                  <BeltPouch item={item} />
-                </div>
+          <div className="absolute top-3 left-1/2 z-20 -translate-x-1/2 -translate-y-1/2">
+            <ActionBadge
+              theme="yellow"
+              className="bg-linear-to-br from-gold to-bronze px-4 font-bangers text-xl tracking-bangers-tight sm:text-2xl"
+            >
+              <span aria-hidden="true">{skillsCopy.buckleSymbol}</span>
+            </ActionBadge>
+          </div>
+
+          {/* Pouches carousel */}
+          <div className="relative flex min-h-0 flex-1 flex-col justify-center border-x-4 border-black bg-comic-section-gradient px-2 py-1.5 sm:px-4 lg:px-14 xl:px-16">
+            <div
+              className="flex min-h-0 w-full flex-1 items-center overflow-hidden"
+              ref={emblaRef}
+            >
+              <div className="flex w-full touch-pan-y items-center">
+                {beltItems.map((item) => (
+                  <div
+                    key={item.tech}
+                    className="min-w-0 flex-none basis-full sm:basis-1/2 md:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+                  >
+                    <BeltPouch item={item} />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Pagination dots */}
+            <div className="mt-2 mb-1 flex shrink-0 justify-center gap-2 sm:mt-3">
+              {scrollSnaps.map((_, index) => (
+                <button
+                  key={index}
+                  type="button"
+                  onClick={() => scrollTo(index)}
+                  className={`size-2 cursor-pointer rounded-full border border-gold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold sm:size-3 ${
+                    index === selectedIndex
+                      ? "bg-gold"
+                      : "bg-gold/40 hover:bg-gold/80"
+                  }`}
+                  aria-label={`${skillsCopy.goToSlidePrefix} ${index + 1}`}
+                />
               ))}
             </div>
           </div>
 
-          {/* Dots */}
-          <div className="shrink-0 mt-2 mb-1 sm:mt-3 flex justify-center gap-2">
-            {scrollSnaps.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => scrollTo(index)}
-                className={`h-2 w-2 cursor-pointer rounded-full border border-gold transition-colors sm:h-3 sm:w-3 ${
-                  index === selectedIndex
-                    ? "bg-gold"
-                    : "bg-gold/40 hover:bg-gold/80"
-                }`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
+          {/* Lower belt strap */}
+          <div className="comic-belt-strap shadow-sm">
+            <div className="relative top-1/2 right-0 left-0 h-px -translate-y-1/2 bg-comic-stitching" />
           </div>
         </div>
 
-        {/* Strap */}
-        <div className="relative h-6 border-y-4 border-black bg-comic-gradient-belt shadow-sm">
-          <div className="relative top-1/2 right-0 left-0 h-px -translate-y-1/2 bg-comic-stitching" />
-        </div>
-      </div>
-
-      {/* Caption */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.5 }}
-        className="shrink-0 flex items-center justify-center py-1 sm:py-2"
-      >
-        <span className="px-4 text-center text-stat-label text-gold/60">
-          &ldquo;Eu sou o programador que Gotham merece... e que os bugs
-          temem.&ldquo;
-        </span>
-      </motion.div>
-    </ActionBadge>
+        {/* Belt caption */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5 }}
+          className="flex shrink-0 items-center justify-center py-1 sm:py-2"
+        >
+          <span className="px-4 text-center text-stat-label text-gold/60">
+            &ldquo;{skillsCopy.quote}&rdquo;
+          </span>
+        </motion.div>
+      </ActionBadge>
+    </motion.div>
   );
 }

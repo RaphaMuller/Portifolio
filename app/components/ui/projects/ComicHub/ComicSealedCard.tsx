@@ -21,57 +21,58 @@ export function ComicSealedCard({
   onSelect,
 }: ComicSealedCardProps) {
   return (
-    <article className="flex h-full w-full min-h-0 max-w-full items-center justify-center p-0 sm:p-1.5">
+    <article className="flex min-h-0 w-full max-w-full flex-1 flex-col items-stretch p-0 sm:p-1.5 lg:items-center">
       <button
         type="button"
         onClick={() => onSelect(project)}
         aria-label={`${projectsCopy.openModalAriaLabelPrefix} ${project.title}`}
-        className="group/sealed relative flex w-full max-w-sm sm:max-w-md md:max-w-none h-full max-h-full lg:w-auto lg:aspect-2/3 cursor-pointer flex-col overflow-hidden rounded-sm border-2 border-white/35 bg-white/10 p-1.5 sm:p-2.5 text-left shadow-comic-lg backdrop-blur-xs transition-transform duration-300 ease-out hover:-translate-y-1.5 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-comic-yellow"
+        className="group/sealed relative mx-auto flex aspect-2/3 max-h-full min-h-0 w-full flex-1 cursor-pointer flex-col overflow-hidden rounded-sm border-2 border-white/35 bg-white/10 p-1.5 text-left shadow-comic-lg backdrop-blur-xs transition-transform duration-300 ease-out hover:-translate-y-1.5 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-comic-yellow sm:p-2.5 md:aspect-auto lg:aspect-2/3 lg:w-auto lg:max-w-md xl:max-w-lg"
       >
-        {/* Aba Superior do Saco Plástico Lacrado (Polybag Header Seal) */}
+        {/* Polybag top header seal */}
         <div
           aria-hidden="true"
-          className="relative mb-1.5 flex h-5 sm:h-6 w-full shrink-0 items-center justify-between border-b border-white/30 bg-white/15 px-2.5"
+          className="relative mb-1.5 flex h-5 w-full shrink-0 items-center justify-between border-b border-white/30 bg-white/15 px-2.5 sm:h-6"
         >
           <span className="h-1 w-10 rounded-full bg-white/35" />
-          <span className="border border-black bg-comic-yellow px-1.5 py-0.5 font-mono text-stat-label font-bold text-black uppercase shadow-comic-sm">
+          <span className="border border-black bg-comic-yellow px-1.5 py-0.5 text-stat-label text-black uppercase shadow-comic-sm">
             {projectsCopy.sealedBadgeLabel}
           </span>
           <span className="h-1 w-10 rounded-full bg-white/35" />
         </div>
 
-        {/* Capa da HQ + Papel Cartão Interno (Backing Board) */}
-        <div className="relative flex min-h-0 w-full flex-1 flex-col overflow-hidden border-3 sm:border-4 border-black bg-zinc-950 shadow-comic-sm">
+        {/* Comic cover and backing board */}
+        <div className="relative flex min-h-0 w-full flex-1 flex-col overflow-hidden border-3 border-black bg-comic-surface-dark shadow-comic-sm sm:border-4">
           <Image
             src={project.image}
             alt={project.title}
             fill
             unoptimized
             quality={100}
-            sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 30vw"
-            className="object-cover object-top transition-transform duration-500 ease-out group-hover/sealed:scale-105"
-            priority
+            preload
+            decoding="sync"
+            sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 35vw"
+            className="object-fill"
           />
 
-          {/* Selos Superiores da Capa */}
+          {/* Top cover stamps */}
           <div className="absolute top-2.5 right-2.5 left-2.5 z-10 flex items-center justify-between gap-2">
-            <span className="border-2 border-black bg-comic-green px-2 py-0.5 font-bangers text-stat-label text-white shadow-comic-sm">
+            <span className="comic-stamp-pill bg-comic-green text-white">
               {issueNumberLabel}
             </span>
 
-            <span className="rotate-3 border-2 border-black bg-comic-red px-2 py-0.5 font-bangers text-stat-label text-white uppercase shadow-comic-sm">
+            <span className="comic-stamp-pill rotate-3 bg-comic-red text-white">
               {project.action}
             </span>
           </div>
 
-          {/* Rodapé da Capa com Título em ActionBadge */}
+          {/* Cover footer title badge */}
           <div className="absolute inset-x-2.5 bottom-2.5 z-10 flex items-end justify-start">
             <ActionBadge theme="white" noPadding className="shadow-comic">
               <div className="px-3 py-1.5 sm:px-3.5 sm:py-2">
                 <h3 className="font-bangers text-h3 text-black uppercase">
                   {project.title}
                 </h3>
-                <p className="mt-0.5 font-comic text-caption font-bold text-zinc-700 uppercase">
+                <p className="mt-0.5 font-comic text-caption font-bold text-comic-muted uppercase">
                   {project.subtitle}
                 </p>
               </div>
@@ -79,14 +80,14 @@ export function ComicSealedCard({
           </div>
         </div>
 
-        {/* Camada de Plástico Transparente com Vincos e Reflexo 100% do Container */}
+        {/* Plastic polybag crease and gloss sheen overlays */}
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 z-20 comic-plastic-crease ring-1 ring-inset ring-white/40"
+          className="comic-plastic-crease pointer-events-none absolute inset-0 z-20 ring-1 ring-white/40 ring-inset"
         />
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 z-20 comic-plastic-sheen opacity-85 transition-opacity duration-500 ease-out group-hover/sealed:opacity-100"
+          className="comic-plastic-sheen pointer-events-none absolute inset-0 z-20 opacity-85 transition-opacity duration-500 ease-out group-hover/sealed:opacity-100"
         />
       </button>
     </article>

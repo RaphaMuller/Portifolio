@@ -1,12 +1,13 @@
 "use client";
 
-import React from "react";
-import type { DossierTab } from "@/app/constants/aboutData";
+import { aboutData } from "@/app/constants/aboutData";
+import type { DossierTab } from "@/app/types/about";
 
 interface ComicDossierTabsProps {
-  tabs: DossierTab[];
-  activeTabId: string;
+  tabs: readonly DossierTab[];
+  activeTabId: DossierTab["id"];
   onSelectTab: (id: DossierTab["id"]) => void;
+  idPrefix?: string;
   className?: string;
 }
 
@@ -18,12 +19,13 @@ export function ComicDossierTabs({
   tabs,
   activeTabId,
   onSelectTab,
+  idPrefix = "dossier",
   className = "",
 }: ComicDossierTabsProps) {
   return (
     <div
       role="tablist"
-      aria-label="Divisórias do Arquivo"
+      aria-label={aboutData.tabsAriaLabel}
       className={`flex flex-wrap items-center gap-1.5 sm:gap-2 ${className}`}
     >
       {tabs.map((tab) => {
@@ -31,9 +33,11 @@ export function ComicDossierTabs({
         return (
           <button
             key={tab.id}
+            id={`${idPrefix}-tab-${tab.id}`}
             type="button"
             role="tab"
             aria-selected={isActive}
+            aria-controls={`${idPrefix}-panel-${tab.id}`}
             onClick={() => onSelectTab(tab.id)}
             className={`cursor-pointer border-2 border-black px-2.5 py-1 sm:px-3.5 sm:py-1.5 font-bangers text-stat-label uppercase transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-comic-yellow ${
               isActive

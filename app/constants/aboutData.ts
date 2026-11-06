@@ -1,38 +1,18 @@
+import type { DossierTab } from "@/app/types/about";
+
 export const heroStats = [
   { value: "2+", label: "Anos de XP" },
   { value: "2+", label: "Projetos" },
 ] as const;
 
-export interface DossierPillar {
-  label: string;
-  detail: string;
-}
-
-export interface DossierTab {
-  id: "origin" | "philosophy" | "operations";
-  label: string;
-  code: string;
-  title: string;
-  subtitle: string;
-  summary: string;
-  paragraphs: string[];
-  pillars: readonly DossierPillar[];
-  tags?: string[];
-  highlight: string;
-}
-
-export const dossierTabs: DossierTab[] = [
+export const dossierTabs: readonly DossierTab[] = [
   {
     id: "origin",
     label: "01. ORIGEM",
     code: "EDIÇÃO #01",
     title: "O DESPERTAR DO HERÓI",
-    subtitle: "De um garoto do interior a arquiteto de software",
     summary:
       "Aos 15 anos, montou o primeiro computador peça por peça. Na faculdade de **Gestão da TI**, descobriu que **lógica e arquitetura de software** eram seu verdadeiro superpoder: o hardware foi o prólogo, o código virou a saga.",
-    paragraphs: [
-      "Aos 15 anos, um garoto do interior montou o primeiro computador do zero: cada peça pesquisada, cada especificação conferida. Quando a máquina ligou, nasceu a missão.",
-    ],
     pillars: [
       {
         label: "Base em Hardware",
@@ -62,12 +42,8 @@ export const dossierTabs: DossierTab[] = [
     label: "02. FILOSOFIA",
     code: "DIRETRIZES",
     title: "PRIMEIRO O BATMAN. DEPOIS O STARK.",
-    subtitle: "Investigação tática antes da engenharia de ponta",
     summary:
       "Antes de escrever uma linha, investiga como o **Batman**: vasculha a regra de negócio e isola o gargalo. Depois constrói como o **Tony Stark**: arquitetura modular, **tipagem estrita** e validação automatizada antes de ir para produção.",
-    paragraphs: [
-      "Antes de escrever uma linha, investigo como o Batman: vasculho a regra de negócio, sigo as pistas e só então aponto o culpado.",
-    ],
     pillars: [
       {
         label: "Investigação Tática",
@@ -98,12 +74,8 @@ export const dossierTabs: DossierTab[] = [
     label: "03. MODUS OPERANDI",
     code: "MISSÕES ACEITAS",
     title: "FULL-STACK & IA APLICADA",
-    subtitle: "Disponível para contratos: CLT, PJ e Freelance",
     summary:
       "Desenvolvimento **Full-Stack e Front-End** com foco em interfaces de alta performance em **React e Next.js**, APIs rápidas em **Python e FastAPI**, bancos relacionais em **PostgreSQL** e fluxos integrados com **Inteligência Artificial**.",
-    paragraphs: [
-      "Desenvolvimento Full-Stack e Front-End com React/Next.js, TypeScript, Python/FastAPI e integração com inteligência artificial.",
-    ],
     pillars: [
       {
         label: "Front-End Moderno",
@@ -126,29 +98,26 @@ export const dossierTabs: DossierTab[] = [
           "Pronto para atuar em projetos e equipes nos formatos CLT, PJ ou Freelance.",
       },
     ],
-    tags: [
-      "TypeScript",
-      "React / Next.js",
-      "Python / FastAPI",
-      "PostgreSQL",
-      "Docker",
-    ],
     highlight: "A stack muda, o instinto de investigar e construir fica.",
   },
 ];
 
 export const aboutData = {
-  caption: "CAPÍTULO 1: ORIGEM",
+  sectionAriaLabel: "Capítulo 1: Origem",
+  chapter: "CAPÍTULO 1",
+  title: "ORIGEM",
   dossierCode: "DOC #01",
   classification: "FULL-STACK DEVELOPER",
   subject: "RAPHAEL MULLER",
-  status: "ATIVO // DISPONÍVEL",
+  sidebarAriaLabel: "Evidências do Dossiê",
+  setupImageAlt: "Workspace de desenvolvimento do herói",
   hqBadge: "BASE DE OPERAÇÕES ⚡",
+  missionDirectiveBadge: "DIRETRIZ DA MISSÃO",
+  tabsAriaLabel: "Divisórias do Arquivo",
   pillarsHeading: "— PILARES DE OPERAÇÃO —",
   statsHeading: "— ESTATÍSTICAS CONFIRMADAS —",
   openDossierLabel: "ABRIR DOSSIÊ COMPLETO ➔",
   openDossierAriaLabel: "Abrir dossiê confidencial completo no modal",
-  modalCloseLabel: "FECHAR ✕",
   modalCloseAriaLabel: "Fechar modal do dossiê",
   bioSummary:
     "Engenheiro de software focado em arquitetura modular, tipagem estrita e interfaces web de alta performance.",

@@ -9,13 +9,12 @@ interface ComicHeroIdentityProps {
 }
 
 /**
- * Comic-cover title: big name + issue line.
  * @example
- * <ComicHeroIdentity name="RAPHAEL MULLER" role="FULL-STACK DEVELOPER" />
+ * <ComicHeroIdentity name={heroCopy.name} role={heroCopy.role} />
  */
 export function ComicHeroIdentity({
-  name = "RAPHAEL MULLER",
-  role = "FULL-STACK DEVELOPER",
+  name = heroCopy.name,
+  role = heroCopy.role,
 }: ComicHeroIdentityProps) {
   return (
     <div className="flex flex-col items-center gap-2 select-none">

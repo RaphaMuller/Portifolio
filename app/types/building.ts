@@ -1,7 +1,6 @@
-export type BuildingTheme = "dark" | "default" | "noir";
+export type BuildingTheme = "dark" | "default";
 export type WindowType = "grid" | "horizontal" | "tall";
-export type SkylineCount = 3 | 5 | 8 | "full";
-export type SkylinePattern = "pyramid" | "wave" | "harmonic" | "random";
+export type SkylineCount = "full";
 
 export interface BuildingConfig {
   id: string;
@@ -15,6 +14,4 @@ export interface BuildingConfig {
 
 export interface GenerateSkylineOptions {
   count?: SkylineCount;
-  pattern?: SkylinePattern;
-  seed?: number;
 }

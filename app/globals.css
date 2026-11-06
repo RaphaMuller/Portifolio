@@ -5,29 +5,68 @@
   --foreground: #ededed;
   --hq-slant: 1rem;
   --hq-gutter: 0.375rem;
-  --gibi-slant: 1rem;
-  --gibi-gutter: 0.75rem;
 }
 
 @theme {
-  /*Colors and themes*/
+  /* Core Comic Palette */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-comic-red: rgba(255, 100, 100, 1);
   --color-comic-red-soft: rgba(255, 176, 176, 1);
   --color-comic-yellow: rgba(255, 245, 116, 1);
   --color-comic-blue: rgba(155, 165, 255, 1);
+  --color-comic-lightblue: var(--color-comic-blue);
   --color-comic-shadow: rgba(94, 81, 88, 1);
   --color-bat-gold: #f2c94c;
   --color-comic-green: rgba(40, 178, 56, 1);
   --color-comic-projects-bg: #9c7da1;
   --color-comic-project-overlay: rgba(0, 0, 0, 0.25);
   --color-comic-bege: rgba(254, 244, 231, 1);
-  --color-comic-lightblue: rgba(155, 165, 255, 1);
+  --color-comic-ice: rgba(200, 222, 230, 1);
   --color-gold: #ffd700;
   --color-bronze: #c8960c;
 
-  /* Fontes e Variações de Tracking */
+  /* Semantic Surfaces & Ink Tokens (1:1 mapped) */
+  --color-batman-armor: #2f2f2f;
+  --color-batman-border: #1a1a1a;
+  --color-comic-surface-dark: var(--color-zinc-950);
+  --color-comic-surface-elevated: var(--color-zinc-900);
+  --color-comic-masthead: var(--color-zinc-800);
+  --color-comic-ink: var(--color-zinc-900);
+  --color-comic-ink-soft: var(--color-zinc-800);
+  --color-comic-muted: var(--color-zinc-700);
+  --color-comic-subtle: var(--color-zinc-600);
+  --color-comic-divider: var(--color-zinc-300);
+  --color-comic-curb: var(--color-zinc-300);
+  --color-comic-speech-warm: var(--color-amber-50);
+  --color-comic-input-bg: var(--color-sky-50);
+  --color-comic-badge-sky-bg: var(--color-sky-100);
+  --color-comic-badge-sky-text: var(--color-sky-900);
+  --color-comic-danger: var(--color-red-600);
+  --color-contact-hint: var(--color-gray-500);
+
+  /* Utility Belt & Skyline Tokens */
+  --color-pouch-muted: var(--color-gray-400);
+  --color-pouch-tip: var(--color-gray-300);
+  --color-pouch-inactive: var(--color-neutral-700);
+  --color-pouch-rivet-border: var(--color-neutral-500);
+  --color-pouch-rivet-bg: var(--color-neutral-600);
+  --color-pouch-rivet-dark: var(--color-neutral-900);
+  --color-skyline-facade: var(--color-slate-600);
+  --color-skyline-dark: var(--color-slate-900);
+  --color-skyline-roof: var(--color-slate-950);
+  --color-skyline-window-off: var(--color-slate-800);
+  --color-skyline-window-warm: var(--color-yellow-300);
+
+  /* Scenic Palm SVG Tokens */
+  --color-palm-trunk: #854d0e;
+  --color-palm-coconut-dark: #713f12;
+  --color-palm-leaf-dark: #15803d;
+  --color-palm-leaf-mid: #16a34a;
+  --color-palm-leaf-base: #22c55e;
+  --color-palm-leaf-light: #4ade80;
+
+  /* Fonts & Tracking */
   --font-bangers: var(--font-bangers), cursive;
   --font-comic: var(--font-comic-neue), cursive;
   --font-bebas: var(--font-bebas-neue), sans-serif;
@@ -36,49 +75,58 @@
   --tracking-bangers-tight: 0.06em;
   --tracking-bangers-wide: 0.08em;
 
-  /* Gradientes e Imagens de Fundo */
-  --background-image-comic-gradient-belt: linear-gradient(90deg,
-      #8b6914 0%,
-      #c8960c 20%,
-      #ffd700 50%,
-      #c8960c 80%,
-      #8b6914 100%);
-  --background-image-comic-gradient-pouch-front: linear-gradient(160deg,
-      #1c1c1c 0%,
-      #2e2e2e 50%,
-      #1a1a1a 100%);
-  --background-image-comic-gradient-pouch-back: linear-gradient(160deg,
-      #0d0d1a 0%,
-      #1a1a2e 100%);
-  --background-image-comic-section-gradient: linear-gradient(180deg,
-      #1a1400 0%,
-      #0d0d1a 30%,
-      #0d0d1a 70%,
-      #1a1400 100%);
-  --background-image-comic-stitching: repeating-linear-gradient(90deg,
-      #8b6914 0px,
-      #8b6914 8px,
-      transparent 8px,
-      transparent 14px);
-  --background-image-comic-projects-dots: radial-gradient(circle,
-      rgba(255, 228, 77, 0.15) 1px,
-      transparent 1px);
-  --background-image-comic-projects-gradient: linear-gradient(90deg, #243748, #4B749F);
-  --background-image-comic-night-sky: linear-gradient(180deg,
-      #0b0b26 0%,
-      #050510 60%,
-      #000000 100%);
-  --background-image-comic-contact-gradient: linear-gradient(180deg,
-      rgba(200, 222, 230, 1) 0%,
-      rgba(0, 0, 0, 1) 100%);
+  /* Background Gradients & Textures */
+  --background-image-comic-gradient-belt: linear-gradient(
+    90deg,
+    #8b6914 0%,
+    #c8960c 20%,
+    #ffd700 50%,
+    #c8960c 80%,
+    #8b6914 100%
+  );
+  --background-image-comic-gradient-pouch-front: linear-gradient(
+    160deg,
+    #1c1c1c 0%,
+    #2e2e2e 50%,
+    #1a1a1a 100%
+  );
+  --background-image-comic-gradient-pouch-back: linear-gradient(
+    160deg,
+    #0d0d1a 0%,
+    #1a1a2e 100%
+  );
+  --background-image-comic-section-gradient: linear-gradient(
+    180deg,
+    #1a1400 0%,
+    #0d0d1a 30%,
+    #0d0d1a 70%,
+    #1a1400 100%
+  );
+  --background-image-comic-stitching: repeating-linear-gradient(
+    90deg,
+    #8b6914 0px,
+    #8b6914 8px,
+    transparent 8px,
+    transparent 14px
+  );
+  --background-image-comic-projects-gradient: linear-gradient(
+    90deg,
+    #243748,
+    #4b749f
+  );
+  --background-image-comic-contact-gradient: linear-gradient(
+    180deg,
+    rgba(200, 222, 230, 1) 0%,
+    rgba(0, 0, 0, 1) 100%
+  );
 
-  /*Background Dots Colors*/
+  /* Halftone Dots */
   --comic-dot-color: rgba(1, 1, 1, 0.3);
   --comic-dot-size: 20px;
 }
 
 /* -------------------------------------------------
-   Tipografia semântica – @utility (Tailwind v4)
+   Semantic Typography Scale (@utility)
    ------------------------------------------------- */
 @utility text-title {
   font-family: var(--font-bangers);
@@ -139,12 +187,12 @@
   font-size: 0.875rem;
 }
 
-@utility text-description {
+@utility text-pillar-detail {
   font-family: var(--font-comic);
   font-weight: 400;
-  letter-spacing: normal;
-  line-height: 1.2;
-  font-size: clamp(0.9rem, 3vw, 1rem);
+  font-style: normal;
+  line-height: 1.3;
+  font-size: 0.875rem;
 }
 
 @utility text-stat-label {
@@ -164,20 +212,40 @@
   font-size: clamp(0.75rem, 2vw, 0.95rem);
 }
 
-@utility bg-comic-stars {
-  background-color: #0b0b26;
-  background-image:
-    radial-gradient(circle, rgba(255, 255, 255, 0.9) 1.5px, transparent 1.5px),
-    radial-gradient(circle, rgba(255, 245, 116, 0.7) 1px, transparent 1px),
-    linear-gradient(180deg, #0b0b26 0%, #050510 60%, #000000 100%);
-  background-size:
-    36px 36px,
-    52px 52px,
-    100% 100%;
+@utility text-micro {
+  font-size: 0.625rem;
+}
+
+@utility text-micro-md {
+  font-size: 0.6875rem;
+}
+
+@utility text-comic-stroke {
+  -webkit-text-stroke: 0.17em var(--color-black);
+  paint-order: stroke fill;
+}
+
+/* -------------------------------------------------
+   Comic Hard-Edge Shadow Scale & Glows (@utility)
+   ------------------------------------------------- */
+@utility shadow-comic-xs {
+  box-shadow: 1px 1px 0 0 #000;
 }
 
 @utility shadow-comic-sm {
   box-shadow: 2px 2px 0 0 #000;
+}
+
+@utility shadow-comic-3 {
+  box-shadow: 3px 3px 0 0 #000;
+}
+
+@utility shadow-comic-md {
+  box-shadow: 4px 4px 0 0 #000;
+}
+
+@utility shadow-comic-badge {
+  box-shadow: 5px 5px 0 0 #000;
 }
 
 @utility shadow-comic {
@@ -188,40 +256,75 @@
   box-shadow: 8px 8px 0 0 #000;
 }
 
-@utility aspect-manga {
-  aspect-ratio: 900 / 952;
+@utility shadow-comic-red-sm {
+  box-shadow: 2px 2px 0 0 var(--color-comic-red);
 }
 
-@utility manga-panel-hero {
-  position: absolute;
-  top: 3.5%;
-  left: 3.5%;
-  width: 93%;
-  height: 38%;
+@utility shadow-comic-red-md {
+  box-shadow: 4px 4px 0 0 var(--color-comic-red);
 }
 
-@utility manga-panel-dossier {
-  position: absolute;
-  top: 43.5%;
-  left: 3.5%;
-  width: 93%;
-  height: 21.5%;
+@utility shadow-comic-red-badge {
+  box-shadow: 5px 5px 0 0 var(--color-comic-red);
 }
 
-@utility manga-panel-execution {
-  position: absolute;
-  top: 66.5%;
-  left: 3.5%;
-  width: 34%;
-  height: 29%;
+@utility shadow-comic-white-md {
+  box-shadow: 4px 4px 0 0 #fff;
 }
 
-@utility manga-panel-arsenal {
-  position: absolute;
-  top: 66.5%;
-  left: 45%;
-  width: 51.5%;
-  height: 29%;
+@utility shadow-comic-bat-badge {
+  box-shadow: 5px 5px 0 0 var(--color-bat-gold);
+}
+
+@utility shadow-avatar-lunar {
+  box-shadow:
+    0 0 25px rgba(255, 255, 255, 0.45),
+    5px 5px 0 0 #000;
+
+  @media (min-width: 640px) {
+    box-shadow:
+      0 0 30px rgba(255, 255, 255, 0.5),
+      7px 7px 0 0 #000;
+  }
+}
+
+@utility drop-shadow-comic-sm {
+  filter: drop-shadow(2px 2px 0 #000);
+}
+
+@utility shadow-curb-inset {
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+@utility shadow-car-taillight {
+  box-shadow: 0 0 3px #dc2626;
+}
+
+@utility shadow-car-headlight {
+  box-shadow: 0 0 6px var(--color-gold);
+}
+
+@utility shadow-window-warm {
+  box-shadow: 0 0 8px 2px rgba(253, 224, 71, 0.6);
+}
+
+@utility shadow-window-bright {
+  box-shadow: 0 0 12px 2px rgba(255, 255, 255, 0.7);
+}
+
+/* -------------------------------------------------
+   Surfaces, 3D Transforms & Safe Viewport Utilities
+   ------------------------------------------------- */
+@utility bg-comic-stars {
+  background-color: #0b0b26;
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.9) 1.5px, transparent 1.5px),
+    radial-gradient(circle, rgba(255, 245, 116, 0.7) 1px, transparent 1px),
+    linear-gradient(180deg, #0b0b26 0%, #050510 60%, #000000 100%);
+  background-size:
+    36px 36px,
+    52px 52px,
+    100% 100%;
 }
 
 @utility perspective-1000 {
@@ -268,17 +371,52 @@
   );
 }
 
+@utility safe-top-nav {
+  padding-top: env(safe-area-inset-top);
+}
+
+@utility safe-pt-section {
+  padding-top: calc(4.5rem + env(safe-area-inset-top));
+}
+
+@utility safe-pb-section {
+  padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+}
+
+@utility modal-max-h-fit {
+  max-height: calc(100svh - 4rem);
+}
+
+@utility palm-anchor {
+  left: var(--palm-x);
+
+  @media (min-width: 640px) {
+    left: var(--palm-x-sm, var(--palm-x));
+  }
+}
+
+@utility no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 /* -------------------------------------------------
-   Navbar HQ – diagonal panels
+   Navbar HQ & Speech Bubble Tails
    ------------------------------------------------- */
 @utility hq-panel-clip {
   --hq-sl: var(--hq-slant);
   --hq-sr: var(--hq-slant);
   margin-left: calc(var(--hq-gutter) - var(--hq-slant));
-  clip-path: polygon(var(--hq-sl) 0,
-      100% 0,
-      calc(100% - var(--hq-sr)) 100%,
-      0 100%);
+  clip-path: polygon(
+    var(--hq-sl) 0,
+    100% 0,
+    calc(100% - var(--hq-sr)) 100%,
+    0 100%
+  );
 
   &[data-edge="start"] {
     --hq-sl: 0px;
@@ -312,52 +450,270 @@
   overflow-x: visible;
   overflow-y: clip;
 
-  &>* {
+  & > * {
     height: 100%;
     width: calc(100% + var(--hq-slant) - var(--hq-gutter));
   }
 }
 
-@utility no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+@utility speech-tail-bottom-border {
+  height: 0;
+  width: 0;
+  border-top: 1.25rem solid #000;
+  border-right: 0.75rem solid transparent;
+  border-left: 0.75rem solid transparent;
+}
 
-  &::-webkit-scrollbar {
-    display: none;
+@utility speech-tail-bottom-fill {
+  height: 0;
+  width: 0;
+  border-top: 1rem solid #fff;
+  border-right: 0.625rem solid transparent;
+  border-left: 0.625rem solid transparent;
+}
+
+@utility speech-tail-top-border {
+  height: 0;
+  width: 0;
+  border-right: 0.625rem solid transparent;
+  border-bottom: 1rem solid #000;
+  border-left: 0.625rem solid transparent;
+}
+
+@utility speech-tail-top-fill {
+  height: 0;
+  width: 0;
+  border-right: 0.5rem solid transparent;
+  border-bottom: 0.75rem solid #fff;
+  border-left: 0.5rem solid transparent;
+}
+
+@utility hero-tail-left-border {
+  height: 0;
+  width: 0;
+  border-top: 0.625rem solid transparent;
+  border-right: 0.875rem solid #000;
+  border-bottom: 0.625rem solid transparent;
+}
+
+@utility hero-tail-left-fill {
+  height: 0;
+  width: 0;
+  border-top: 0.4375rem solid transparent;
+  border-right: 0.6875rem solid var(--color-comic-speech-warm);
+  border-bottom: 0.4375rem solid transparent;
+}
+
+@utility hero-tail-top-border {
+  height: 0;
+  width: 0;
+  border-right: 0.625rem solid transparent;
+  border-bottom: 0.875rem solid #000;
+  border-left: 0.625rem solid transparent;
+}
+
+@utility hero-tail-top-fill {
+  height: 0;
+  width: 0;
+  border-right: 0.5rem solid transparent;
+  border-bottom: 0.6875rem solid var(--color-comic-speech-warm);
+  border-left: 0.5rem solid transparent;
+}
+
+/* -------------------------------------------------
+   Reusable Comic Component Patterns (1:1 Deduplicated)
+   ------------------------------------------------- */
+@utility comic-stamp-pill {
+  border: 2px solid #000;
+  padding: 0.125rem 0.5rem;
+  font-family: var(--font-bangers);
+  font-size: clamp(0.7rem, 2vw, 0.9rem);
+  line-height: 1;
+  letter-spacing: var(--tracking-comic);
+  text-transform: uppercase;
+  box-shadow: 2px 2px 0 0 #000;
+}
+
+@utility comic-tape {
+  pointer-events: none;
+  position: absolute;
+  top: -0.625rem;
+  left: 50%;
+  z-index: 20;
+  height: 1.25rem;
+  width: 5rem;
+  transform: translateX(-50%) rotate(-2deg);
+  border: 2px solid #000;
+  background-color: color-mix(in srgb, var(--color-comic-yellow) 90%, transparent);
+  box-shadow: 2px 2px 0 0 #000;
+}
+
+@utility comic-modal-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: flex;
+  height: 2.25rem;
+  width: 2.25rem;
+  flex-shrink: 0;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 2px solid #000;
+  background-color: var(--color-comic-yellow);
+  color: #000;
+  box-shadow: 2px 2px 0 0 #000;
+  transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  @media (min-width: 640px) {
+    top: 1rem;
+    right: 1rem;
+    height: 2.5rem;
+    width: 2.5rem;
+    border-width: 3px;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px #fff;
   }
 }
 
-@utility text-comic-stroke {
-  -webkit-text-stroke: 0.17em var(--color-black);
-  paint-order: stroke fill;
+@utility comic-carousel-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 30;
+  display: none;
+  height: 3rem;
+  width: 3rem;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  transition-property: all;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+
+  @media (min-width: 64rem) {
+    display: flex;
+  }
 }
 
-@utility gibi-cell-outline {
-  filter:
-    drop-shadow(3px 0 0 #000) drop-shadow(-3px 0 0 #000) drop-shadow(0 3px 0 #000) drop-shadow(0 -3px 0 #000);
-}
+@utility comic-hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  border: 2px solid #000;
+  padding: 0.375rem 0.75rem;
+  font-family: var(--font-bangers);
+  font-size: 0.75rem;
+  line-height: 1rem;
+  letter-spacing: var(--tracking-bangers-wide);
+  box-shadow: 3px 3px 0 0 #000;
+  transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1);
 
-@utility gibi-clip-opening {
+  @media (min-width: 640px) {
+    border-width: 3px;
+    padding: 0.375rem 0.875rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    box-shadow: 4px 4px 0 0 #000;
+  }
+
   @media (min-width: 1024px) {
-    padding-bottom: calc(var(--gibi-slant) + 0.75rem);
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--gibi-slant)), 0 100%);
+    padding: 0.5rem 0.875rem;
+  }
+
+  @media (min-width: 1280px) {
+    padding: 0.625rem 1.25rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  &:hover {
+    transform: translateY(-0.125rem);
+    box-shadow: 4px 4px 0 0 #000;
+  }
+
+  &:active {
+    transform: translate(0.125rem, 0.125rem);
+    box-shadow: none;
   }
 }
 
-@utility gibi-overlap-top {
-  @media (min-width: 1024px) {
-    margin-top: calc(var(--gibi-gutter) - var(--gibi-slant));
+@utility comic-belt-strap {
+  position: relative;
+  height: 1.5rem;
+  border-top: 4px solid #000;
+  border-bottom: 4px solid #000;
+  background-image: var(--background-image-comic-gradient-belt);
+}
+
+@utility comic-field-label {
+  margin-bottom: 0.125rem;
+  display: block;
+  font-family: var(--font-bangers);
+  font-size: 0.75rem;
+  line-height: 1rem;
+  letter-spacing: 0.025em;
+  color: #000;
+
+  @media (min-width: 640px) {
+    margin-bottom: 0.25rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
   }
 }
 
-@utility gibi-clip-slanted-top {
-  @media (min-width: 1024px) {
-    padding-top: calc(var(--gibi-slant) + 0.75rem);
-    clip-path: polygon(0 var(--gibi-slant), 100% 0, 100% 100%, 0 100%);
+@utility comic-input {
+  width: 100%;
+  border: 2px solid #000;
+  background-color: var(--color-comic-input-bg);
+  padding: 0.25rem 0.625rem;
+  font-family: var(--font-comic);
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: #000;
+
+  &::placeholder {
+    font-size: 0.625rem;
+  }
+
+  &:focus {
+    border-color: var(--color-comic-red);
+    box-shadow: 2px 2px 0 0 var(--color-comic-red);
+    outline: none;
+  }
+
+  @media (min-width: 640px) {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+
+    &::placeholder {
+      font-size: 0.75rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    padding-top: 0.375rem;
+    padding-bottom: 0.375rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+
+    &::placeholder {
+      font-size: 0.875rem;
+    }
   }
 }
-
-
 
 @layer utilities {
   .bg-comic-dots {
@@ -369,11 +725,9 @@
       0 0,
       calc(var(--comic-dot-size) / 2) calc(var(--comic-dot-size) / 2);
   }
-}
 
-@layer components {
-  .comic-section {
-    @apply relative flex min-h-screen w-full items-center justify-center overflow-hidden border-b-4 border-black py-16 md:py-24;
+  .bg-comic-dots-noir {
+    --comic-dot-color: rgba(255, 255, 255, 0.06);
   }
 }
 

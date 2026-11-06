@@ -1,13 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { heroCopy } from "@/app/constants/heroCopy";
 
 interface ComicAvatarProps {
   realImageSrc?: string;
   cartoonImageSrc?: string;
-  size?: number;
   autoSwitchDelay?: number;
   className?: string;
 }
@@ -19,13 +19,12 @@ interface ComicAvatarProps {
 export function ComicAvatar({
   realImageSrc = "/Profile.jpeg",
   cartoonImageSrc = "/Profile-cartoon.jpg",
-  size,
   autoSwitchDelay = 2600,
   className = "",
 }: ComicAvatarProps) {
   const [isCartoon, setIsCartoon] = useState(false);
 
-  // Troca automática da foto real para a cartonizada ao carregar a página
+  // Automatically switches from real photo to cartoon illustration after initial reveal.
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsCartoon(true);
@@ -40,82 +39,70 @@ export function ComicAvatar({
       transition={{ delay: 1.25, type: "spring", stiffness: 110, damping: 13, mass: 0.9 }}
       className={`flex flex-col items-center justify-center ${className}`}
     >
-      {/* Moldura Circular com Efeito de Troca Responsiva (140px mobile -> 160px tablet -> 190px 1024px -> 230px desktop) */}
-      <div
-        role="button"
-        tabIndex={0}
+      <button
+        type="button"
         onClick={() => setIsCartoon((prev) => !prev)}
-        onKeyDown={(e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            setIsCartoon((prev) => !prev);
-          }
-        }}
-        title="Clique para alternar entre versão real e cartoon"
-        className={`group relative cursor-pointer select-none ${
-          size
-            ? ""
-            : "h-[140px] w-[140px] sm:h-[160px] sm:w-[160px] lg:h-[190px] lg:w-[190px] xl:h-[230px] xl:w-[230px]"
-        }`}
-        style={size ? { width: size, height: size } : undefined}
+        title={heroCopy.avatarToggleTitle}
+        aria-label={heroCopy.avatarToggleAriaLabel}
+        aria-pressed={isCartoon}
+        className="group relative size-35 sm:size-40 lg:size-47.5 xl:size-57.5 cursor-pointer select-none focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-comic-yellow rounded-full"
       >
-        {/* Selo indicador Pop-Art Responsivo */}
-        <motion.div
+        <motion.span
           key={isCartoon ? "badge-toon" : "badge-real"}
           initial={{ scale: 0, rotate: -20 }}
           animate={{ scale: 1, rotate: isCartoon ? 12 : -12 }}
           transition={{ type: "spring", stiffness: 300, damping: 15 }}
-          className={`absolute -top-2 -right-2 z-30 border-2 border-black px-2 py-0.5 font-bangers text-xs sm:text-xs lg:text-sm tracking-bangers-wide text-white uppercase shadow-[2px_2px_0_0_#000] ${
-            isCartoon ? "bg-comic-red" : "bg-comic-yellow text-black"
+          className={`absolute -top-2 -right-2 z-30 border-2 border-black px-2 py-0.5 font-bangers text-xs lg:text-sm tracking-bangers-wide uppercase shadow-comic-sm ${
+            isCartoon ? "bg-comic-red text-white" : "bg-comic-yellow text-black"
           }`}
         >
-          {isCartoon ? "TOON!" : "REAL!"}
-        </motion.div>
+          {isCartoon ? heroCopy.avatarToonBadge : heroCopy.avatarRealBadge}
+        </motion.span>
 
-        {/* Container da Imagem Circular com Borda Lunar Branca e Contorno Comic */}
-        <div className="relative h-full w-full overflow-hidden rounded-full border-4 sm:border-[5px] border-white ring-4 ring-black bg-white shadow-[0_0_25px_rgba(255,255,255,0.45),_5px_5px_0_0_#000] sm:shadow-[0_0_30px_rgba(255,255,255,0.5),_7px_7px_0_0_#000] transition-transform duration-300 group-hover:scale-105 active:scale-95">
+        <span className="shadow-avatar-lunar relative block h-full w-full overflow-hidden rounded-full border-4 sm:border-5 border-white ring-4 ring-black bg-white transition-transform duration-300 group-hover:scale-105 active:scale-95">
           <AnimatePresence mode="wait">
             {isCartoon ? (
-              <motion.div
+              <motion.span
                 key="cartoon-view"
                 initial={{ opacity: 0, scale: 0.9, rotate: -5 }}
                 animate={{ opacity: 1, scale: 1, rotate: 0 }}
                 exit={{ opacity: 0, scale: 0.9, rotate: 5 }}
                 transition={{ duration: 0.5, type: "spring", bounce: 0.3 }}
-                className="relative h-full w-full"
+                className="relative block h-full w-full"
               >
                 <Image
                   src={cartoonImageSrc}
-                  alt="Raphael Muller em versão Cartoon estilo anos 30"
+                  alt={heroCopy.avatarCartoonAlt}
                   fill
-                  priority
-                  quality={95}
+                  preload
+                  quality={100}
                   sizes="(max-width: 640px) 140px, (max-width: 1024px) 190px, 230px"
                   className="object-cover"
                 />
-              </motion.div>
+              </motion.span>
             ) : (
-              <motion.div
+              <motion.span
                 key="real-view"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.5, type: "spring", bounce: 0.3 }}
-                className="relative h-full w-full"
+                className="relative block h-full w-full"
               >
                 <Image
                   src={realImageSrc}
-                  alt="Foto de perfil real de Raphael Muller"
+                  alt={heroCopy.avatarRealAlt}
                   fill
-                  priority
-                  quality={95}
+                  preload
+                  quality={100}
                   sizes="(max-width: 640px) 140px, (max-width: 1024px) 190px, 230px"
                   className="object-cover"
                 />
-              </motion.div>
+              </motion.span>
             )}
           </AnimatePresence>
-        </div>
-      </div>
+        </span>
+      </button>
     </motion.div>
   );
 }
